@@ -5,10 +5,18 @@
  */
 package es.unileon.iso.gpb.modelo.activities;
 
+import java.awt.Color;
+import java.sql.Time;
+import java.util.Date;
+
 /**
  *
  * @author Roberto
  */
 public class PersonalActivity extends Activity{
+    
+    public PersonalActivity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color) {
+        super(ID, name, date, endTime, duration, comments, color);
+    }
     
 }

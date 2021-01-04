@@ -53,7 +53,7 @@ public class PersonalActivities {
             i++;
         }
         
-        return 0;
+        return -1;
     }
     
     public PersonalActivity get(int pos){

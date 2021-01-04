@@ -53,7 +53,7 @@ public class Meetings {
             i++;
         }
         
-        return 0;
+        return -1;
     }
     
     

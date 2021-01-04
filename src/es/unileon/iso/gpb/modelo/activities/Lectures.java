@@ -53,7 +53,7 @@ public class Lectures {
             i++;
         }
         
-        return 0;
+        return -1;
     }
     
     public Lecture get(int pos){

@@ -27,6 +27,7 @@ public class Teacher extends User{
         
         this.tutorships = new Tutorships();
         this.meetings = new Meetings();
+        this.subjects = new Subjects();
         this.idTeacher = idTeacher;
     }
 
@@ -38,6 +39,9 @@ public class Teacher extends User{
         this.idTeacher = idTeacher;
     }
 
+    /*
+    * Metodos que gestionan las tutorship
+    */
     public void addTutorship(Tutorship ts) {
         this.tutorships.add(ts);
     }
@@ -57,7 +61,10 @@ public class Teacher extends User{
     public Tutorship searchTutorship(long ID){
         return this.tutorships.get(this.tutorships.search(ID));
     }
-        
+    
+    /*
+    * Metodos que gestionan los meetings
+    */    
     public void addMeeting(Meeting mt) {
         this.meetings.add(mt);
     }

@@ -37,7 +37,7 @@ public class Teachers {
             i++;
         }
         
-        return 0;
+        return -1;
     }
     
     public Teacher get(int pos){

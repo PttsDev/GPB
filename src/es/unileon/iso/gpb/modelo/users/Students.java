@@ -37,7 +37,7 @@ public class Students {
             i++;
         }
         
-        return 0;
+        return -1;
     }
     
     public Student get(int pos){

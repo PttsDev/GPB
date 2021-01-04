@@ -9,6 +9,7 @@ import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.Meetings;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.activities.Tutorships;
+import es.unileon.iso.gpb.modelo.sets.Subjects;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Teacher extends User{
     private Tutorships tutorships;
     private Meetings meetings;
     private String idTeacher;
+    private Subjects subjects; //TODO
     
     public Teacher(String name, String surName, String DNI, String email, String idTeacher) {
         super(name, surName, DNI, email);

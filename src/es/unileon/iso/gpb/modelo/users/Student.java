@@ -9,6 +9,7 @@ import es.unileon.iso.gpb.modelo.activities.PersonalActivities;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.activities.Tutorships;
+import es.unileon.iso.gpb.modelo.sets.Subjects;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class Student extends User{
     
     private PersonalActivities persAct;
     private Tutorships tutorships;
+    private Subjects subjects; //TODO
     
     private String idStudent;
     private ArrayList<Integer> group; //TODO METODOS, ETC

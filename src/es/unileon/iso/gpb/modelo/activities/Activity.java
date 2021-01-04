@@ -18,7 +18,19 @@ public class Activity {
     private String comments;
     private Color color;
     
-    
+    //TODO
+    /*
+    * FALTAN MAS CONSTRUCTORES SOBRECARGADOS QUITANDO DATOS QUE NO SEAN NECESARIOS
+    */
+    public Activity(long ID, String name, Date date, Time endTime, long duration){
+        this.ID=ID;
+        this.name=name;
+        this.date=date;
+        this.endTime=endTime;
+        this.duration=duration;
+        this.comments="";
+    }
+        
     public Activity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color){
         this.ID=ID;
         this.name=name;
@@ -28,7 +40,24 @@ public class Activity {
         this.comments=comments;
         this.color=color; 
     }
-    
+    public Activity(long ID, String name, Date date, Time endTime, long duration, Color color){
+        this.ID=ID;
+        this.name=name;
+        this.date=date;
+        this.endTime=endTime;
+        this.duration=duration;
+        this.comments="";
+        this.color=color; 
+    }
+    public Activity(long ID, String name, Date date, Time endTime, long duration, String comments){
+        this.ID=ID;
+        this.name=name;
+        this.date=date;
+        this.endTime=endTime;
+        this.duration=duration;
+        this.comments=comments; 
+    }
+        
     public void setID(long ID){
         this.ID = ID;
     }
@@ -91,5 +120,10 @@ public class Activity {
         //TODO
     }
     
+    @Override
+    public String toString(){
+        //TODO
+        return "";
+    }
             
 }

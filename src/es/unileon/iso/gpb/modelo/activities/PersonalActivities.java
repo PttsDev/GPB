@@ -56,6 +56,10 @@ public class PersonalActivities {
         return 0;
     }
     
+    public PersonalActivity get(int pos){
+        return this.list.get(pos);
+    }
+    
     @Override
     public String toString(){
         return ""; //TODO

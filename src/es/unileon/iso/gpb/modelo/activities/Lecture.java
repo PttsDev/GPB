@@ -17,6 +17,10 @@ public class Lecture extends Activity {
     
     private String classroom;
     
+    //TODO
+    /*
+    * Añadir constructores sobrecargados
+    */
     public Lecture(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String classroom) {
         super(ID, name, date, endTime, duration, comments, color);
         this.classroom = classroom;
@@ -28,5 +32,11 @@ public class Lecture extends Activity {
     
     public String getClassroom(){
         return this.classroom;
+    }
+    
+    @Override
+    public String toString(){
+        //TODO
+        return "";
     }
 }

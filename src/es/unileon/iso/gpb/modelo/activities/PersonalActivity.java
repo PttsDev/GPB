@@ -15,8 +15,17 @@ import java.util.Date;
  */
 public class PersonalActivity extends Activity{
     
+    //TODO
+    /*
+    * Añadir constructores sobrecargados
+    */
     public PersonalActivity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color) {
         super(ID, name, date, endTime, duration, comments, color);
     }
     
+    @Override
+    public String toString(){
+        //TODO
+        return "";
+    }
 }

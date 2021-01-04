@@ -56,6 +56,10 @@ public class Lectures {
         return 0;
     }
     
+    public Lecture get(int pos){
+        return this.list.get(pos);
+    }
+    
     @Override
     public String toString(){
         return ""; //TODO

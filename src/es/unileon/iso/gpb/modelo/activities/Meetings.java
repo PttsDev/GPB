@@ -56,6 +56,11 @@ public class Meetings {
         return 0;
     }
     
+    
+    public Meeting get(int pos){
+        return this.list.get(pos);
+    }
+    
     @Override
     public String toString(){
         return ""; //TODO

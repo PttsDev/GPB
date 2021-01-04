@@ -17,6 +17,10 @@ public class Meeting extends Activity{
     
     private String place;
     
+    //TODO
+    /*
+    * Añadir constructores sobrecargados
+    */
     public Meeting(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String place) {
         super(ID, name, date, endTime, duration, comments, color);
         this.place = place;
@@ -30,5 +34,10 @@ public class Meeting extends Activity{
         return this.place;
     }
     
+    @Override
+    public String toString(){
+        //TODO
+        return "";
+    }
     
 }

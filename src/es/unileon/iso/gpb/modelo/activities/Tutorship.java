@@ -5,6 +5,8 @@
  */
 package es.unileon.iso.gpb.modelo.activities;
 
+import es.unileon.iso.gpb.modelo.users.Student;
+import es.unileon.iso.gpb.modelo.users.Teacher;
 import java.awt.Color;
 import java.sql.Time;
 import java.util.Date;
@@ -16,15 +18,36 @@ import java.util.Date;
 public class Tutorship extends Activity{
     
     private String place;
+    private Teacher teacher;
+    private Student student;
     
     //TODO
     /*
     * Añadir constructores sobrecargados
     */
-    public Tutorship(long ID, String name, Date date, Time endTime, long duration, String comments, Color color) {
+    public Tutorship(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, Student student, Teacher teacher) {
         super(ID, name, date, endTime, duration, comments, color);
         this.place = place;
+        this.student = student;
+        this.teacher = teacher;
     }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    
     
     public void setPlace(String place){
         this.place = place;

@@ -16,6 +16,7 @@ import java.util.Date;
 public class Lecture extends Activity {
     
     private String classroom;
+    private boolean exam;
     
     //TODO
     /*
@@ -24,6 +25,15 @@ public class Lecture extends Activity {
     public Lecture(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String classroom) {
         super(ID, name, date, endTime, duration, comments, color);
         this.classroom = classroom;
+        this.exam = false;
+    }
+
+    public boolean isExam() {
+        return exam;
+    }
+
+    public void setIsExam(boolean isExam) {
+        this.exam = isExam;
     }
     
     public void setClassroom(String classroom){

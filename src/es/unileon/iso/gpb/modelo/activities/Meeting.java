@@ -5,6 +5,8 @@
  */
 package es.unileon.iso.gpb.modelo.activities;
 
+import es.unileon.iso.gpb.modelo.users.Teacher;
+import es.unileon.iso.gpb.modelo.users.Teachers;
 import java.awt.Color;
 import java.sql.Time;
 import java.util.Date;
@@ -16,6 +18,7 @@ import java.util.Date;
 public class Meeting extends Activity{
     
     private String place;
+    private Teachers teachers;
     
     //TODO
     /*
@@ -24,6 +27,7 @@ public class Meeting extends Activity{
     public Meeting(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String place) {
         super(ID, name, date, endTime, duration, comments, color);
         this.place = place;
+        this.teachers = new Teachers();
     }
     
     public void setPlace(String place){
@@ -32,6 +36,18 @@ public class Meeting extends Activity{
     
     public String getPlace(){
         return this.place;
+    }
+
+    public void addTeacher(Teacher tc){
+        this.teachers.add(tc);
+    }
+    
+    public void removeTeacher(String ID) {
+        this.teachers.remove(ID);
+    }
+    
+    public Teacher searchTeacher(String ID){
+        return this.teachers.get(this.teachers.search(ID));
     }
     
     @Override

@@ -17,6 +17,10 @@ public class Tutorship extends Activity{
     
     private String place;
     
+    //TODO
+    /*
+    * Añadir constructores sobrecargados
+    */
     public Tutorship(long ID, String name, Date date, Time endTime, long duration, String comments, Color color) {
         super(ID, name, date, endTime, duration, comments, color);
         this.place = place;
@@ -28,5 +32,11 @@ public class Tutorship extends Activity{
     
     public String getPlace(){
         return this.place;
+    }
+    
+    @Override
+    public String toString(){
+        //TODO
+        return "";
     }
 }

@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * @author Roberto
  */
 public class Tutorships {
-            private ArrayList<Tutorship> list;
+    
+    private ArrayList<Tutorship> list;
     
     public Tutorships(){
         list = new ArrayList<Tutorship>();
@@ -54,6 +55,10 @@ public class Tutorships {
         }
         
         return 0;
+    }
+    
+    public Tutorship get(int pos){
+        return this.list.get(pos);
     }
     
     @Override

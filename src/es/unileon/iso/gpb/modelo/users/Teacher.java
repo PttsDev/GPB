@@ -9,6 +9,7 @@ import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.Meetings;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.activities.Tutorships;
+import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.sets.Subjects;
 
 /**
@@ -85,6 +86,31 @@ public class Teacher extends User{
         return this.meetings.get(this.meetings.search(ID));
     }
 
+    /*
+    * Metodos que gestionan las subjects
+    */
+        
+    public void addSubject(Subject sb){
+        this.subjects.add(sb);
+    }
+    
+    public void removeSubject(String name) {
+        this.subjects.remove(name);
+    }
+    
+    public void removeSubject(long ID) {
+         this.subjects.remove(ID);
+    }
+    
+    public Subject searchSubject(String name){
+        return this.subjects.get(this.subjects.search(name));
+    }
+    
+    public Subject searchSubject(long ID){
+        return this.subjects.get(this.subjects.search(ID));
+    }
+    
+     
     @Override
     public String toString(){
         //TODO

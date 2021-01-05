@@ -39,7 +39,7 @@ public class DBConnection {
         return this.connection;
     }
     
-    public void disconnect() {
+    public void close() {
         this.connection = null;
     }
     

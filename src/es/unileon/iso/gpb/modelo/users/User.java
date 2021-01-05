@@ -20,6 +20,8 @@ public class User {
     private String DNI;
     private String email;
     
+    public User(){}
+    
     public User(String name, String surName, String DNI, String email) {
         this.name = name;
         this.surName = surName;

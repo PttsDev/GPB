@@ -17,10 +17,9 @@ public class GPB {
     public static void main(String args[]) {
         // TODO code application logic here
         
-        LogIn inicio = new LogIn();
-        inicio.pack();
-        inicio.setVisible(true);
-        
+        new LogIn().setVisible(true);
+
         DBConnection con = new DBConnection();
+
     }
 }

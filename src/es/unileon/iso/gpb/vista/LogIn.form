@@ -109,9 +109,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

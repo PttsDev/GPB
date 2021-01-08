@@ -164,9 +164,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -174,14 +171,17 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="confirmPasswordField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jPasswordField2"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmPasswordFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="createAccountButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Create account"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAccountButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

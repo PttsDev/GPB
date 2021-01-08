@@ -1,9 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package es.unileon.iso.gpb.vista;
+
+import javax.swing.JFrame;
+
 
 /**
  *
@@ -48,8 +47,6 @@ public class LogIn extends javax.swing.JFrame {
                 singInButtonActionPerformed(evt);
             }
         });
-
-        passwordField.setText("jPasswordField1");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("User:");
@@ -131,11 +128,24 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void singInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singInButtonActionPerformed
-        // TODO add your handling code here:
+        //Check fields TODO
+        
+        //Open General Calendar
+        this.setVisible(false);
+        GeneralCalendar c = new GeneralCalendar(this);
+        c.setVisible(true);
+        
+        //Eventos para controlar si el calendario se cierra TODO
+        
     }//GEN-LAST:event_singInButtonActionPerformed
 
     private void singUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singUpButtonActionPerformed
-        // TODO add your handling code here:
+        
+        this.setVisible(false);
+        Register r= new Register(this);
+        r.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        r.setVisible(true);
+
     }//GEN-LAST:event_singUpButtonActionPerformed
 
 

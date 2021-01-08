@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package es.unileon.iso.gpb.vista;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -11,11 +9,17 @@ package es.unileon.iso.gpb.vista;
  */
 public class GeneralCalendar extends javax.swing.JFrame {
 
+    private JFrame parent;
     /**
      * Creates new form GeneralCalendar
      */
     public GeneralCalendar() {
         initComponents();
+    }
+    
+    public GeneralCalendar(JFrame parent) {
+        initComponents();
+        this.parent = parent;
     }
 
     /**

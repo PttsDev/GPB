@@ -39,6 +39,7 @@ public class LogIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(333, 282));
+        setResizable(false);
 
         singInButton.setText("Sing in");
         singInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

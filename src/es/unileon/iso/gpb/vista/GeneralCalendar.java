@@ -29,65 +29,66 @@ public class GeneralCalendar extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        logOutButton = new javax.swing.JButton();
+        nameLabel = new javax.swing.JLabel();
+        subjectComboBox = new javax.swing.JComboBox<>();
+        g1RadioButton = new javax.swing.JRadioButton();
+        g2RadioButton = new javax.swing.JRadioButton();
+        g3RadioButton = new javax.swing.JRadioButton();
+        g4RadioButton = new javax.swing.JRadioButton();
+        createButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        remveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        calendarioTable = new javax.swing.JTable();
+        previusButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        weekLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(821, 541));
 
-        jButton1.setText("Log out");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logOutButton.setText("Log out");
+        logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logOutButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("name of user");
+        nameLabel.setText("name of user");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("G1");
-        jRadioButton1.setEnabled(false);
-        jRadioButton1.setHideActionText(true);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(g1RadioButton);
+        g1RadioButton.setText("G1");
+        g1RadioButton.setEnabled(false);
+        g1RadioButton.setHideActionText(true);
+        g1RadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                g1RadioButtonActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("G2");
-        jRadioButton2.setEnabled(false);
+        buttonGroup1.add(g2RadioButton);
+        g2RadioButton.setText("G2");
+        g2RadioButton.setEnabled(false);
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("G3");
-        jRadioButton3.setEnabled(false);
+        buttonGroup1.add(g3RadioButton);
+        g3RadioButton.setText("G3");
+        g3RadioButton.setEnabled(false);
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setText("G4");
-        jRadioButton4.setEnabled(false);
+        buttonGroup1.add(g4RadioButton);
+        g4RadioButton.setText("G4");
+        g4RadioButton.setEnabled(false);
 
-        jButton4.setText("Create");
-        jButton4.setEnabled(false);
+        createButton.setText("Create");
+        createButton.setEnabled(false);
 
-        jButton5.setText("Edit");
-        jButton5.setEnabled(false);
+        editButton.setText("Edit");
+        editButton.setEnabled(false);
 
-        jButton6.setText("Remove");
-        jButton6.setEnabled(false);
+        remveButton.setText("Remove");
+        remveButton.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,48 +97,48 @@ public class GeneralCalendar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remveButton)
+                    .addComponent(editButton)
+                    .addComponent(createButton)
+                    .addComponent(g4RadioButton)
+                    .addComponent(g3RadioButton)
+                    .addComponent(g2RadioButton)
+                    .addComponent(g1RadioButton)
+                    .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(nameLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))))
+                        .addComponent(logOutButton))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel2))
+                    .addComponent(logOutButton)
+                    .addComponent(nameLabel))
                 .addGap(82, 82, 82)
-                .addComponent(jButton4)
+                .addComponent(createButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(editButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
+                .addComponent(remveButton)
                 .addGap(50, 50, 50)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton1)
+                .addComponent(g1RadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(g2RadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(g3RadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(g4RadioButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane1.setColumnHeaderView(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        calendarioTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"0-1", null, null, null, null, null, null, null},
                 {"1-2", null, null, null, null, null, null, null},
@@ -176,13 +177,14 @@ public class GeneralCalendar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        calendarioTable.setMinimumSize(new java.awt.Dimension(600, 384));
+        jScrollPane1.setViewportView(calendarioTable);
 
-        jButton2.setText("Previus");
+        previusButton.setText("Previus");
 
-        jButton3.setText("Next");
+        nextButton.setText("Next");
 
-        jLabel1.setText("Day x to x (modificar)");
+        weekLabel.setText("Day x to x (modificar)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,10 +195,10 @@ public class GeneralCalendar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(previusButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addComponent(jLabel1))
+                        .addComponent(nextButton))
+                    .addComponent(weekLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -210,46 +212,46 @@ public class GeneralCalendar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
+                            .addComponent(previusButton)
+                            .addComponent(nextButton))
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel1)
+                        .addComponent(weekLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 126, Short.MAX_VALUE)))
+                        .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_logOutButtonActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void g1RadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g1RadioButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_g1RadioButtonActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTable calendarioTable;
+    private javax.swing.JButton createButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JRadioButton g1RadioButton;
+    private javax.swing.JRadioButton g2RadioButton;
+    private javax.swing.JRadioButton g3RadioButton;
+    private javax.swing.JRadioButton g4RadioButton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton logOutButton;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton previusButton;
+    private javax.swing.JButton remveButton;
+    private javax.swing.JComboBox<String> subjectComboBox;
+    private javax.swing.JLabel weekLabel;
     // End of variables declaration//GEN-END:variables
 }

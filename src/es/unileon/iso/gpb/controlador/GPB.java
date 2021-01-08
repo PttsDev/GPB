@@ -4,7 +4,7 @@
 package es.unileon.iso.gpb.controlador;
 
 import es.unileon.iso.gpb.vista.*;
-
+import es.unileon.iso.gpb.modelo.connection.*;
 /**
  *
  * @author Angel
@@ -21,5 +21,6 @@ public class GPB {
         inicio.pack();
         inicio.setVisible(true);
         
+        DBConnection con = new DBConnection();
     }
 }

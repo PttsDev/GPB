@@ -6,6 +6,7 @@
 package es.unileon.iso.gpb.modelo.connection;
 
 import java.sql.*;
+
 /**
  *
  * @author Roberto
@@ -13,10 +14,10 @@ import java.sql.*;
 public class DBConnection {
     
     //TODO
-    private static final String DB = "NOMBRE_BASE_DATOS";
-    private static final String USER = "USERNAME_BASE_DATOS";
-    private static final String PW = "PASSWORD_BASE_DATOS";
-    private static final String URL = "jdbc:mysql//URL_BASE_DATOS/"+DB;
+    private static final String DB = "db_a6d7c4_gpb";
+    private static final String USER = "a6d7c4_gpb";
+    private static final String PW = "AlvaroPeroBien1.";
+    private static final String URL = "jdbc:mysql//mysql5044.site4now.net/"+DB;
     private static final String DRIVER = "com.mysql.jdbc.driver";
     
     private Connection connection = null;

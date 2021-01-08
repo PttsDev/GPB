@@ -3,8 +3,8 @@ CREATE TABLE USER(
  Name varchar(15) not null,
  Surname varchar(20) not null,
  DNI varchar(11) not null CONSTRAINT UQ_User_DNI UNIQUE,
- Email varchar() not null CONSTRAINT UQ_User_Email UNIQUE,
- password varchar() not null
+ Email varchar(50) not null CONSTRAINT UQ_User_Email UNIQUE,
+ password varchar(25) not null
 );
 
 CREATE TABLE STUDENT(
@@ -22,7 +22,7 @@ SubjectID int not null CONSTRAINT PK_Subject_SubjectID PRIMARY KEY,
 Name varchar(50) not null
 );
 
-CREATE TABLE GROUP(
+CREATE TABLE GROUPS(
 GroupID varchar(15) not null CONSTRAINT PK_Group_GroupID PRIMARY KEY,
 Num tinyint not null,
 Type varchar(5) not null,

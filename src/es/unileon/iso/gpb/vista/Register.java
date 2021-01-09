@@ -18,6 +18,8 @@ public class Register extends JFrame {
     public Register() {
         initComponents();
         initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         createAccountButton.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = null;
@@ -32,6 +34,8 @@ public class Register extends JFrame {
     public Register(JFrame parent) {
         initComponents();
         initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         createAccountButton.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = parent;

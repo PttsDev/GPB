@@ -19,6 +19,8 @@ public class GeneralCalendar extends javax.swing.JFrame {
     public GeneralCalendar() {
         initComponents();
         initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.parent = null;
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
@@ -31,6 +33,8 @@ public class GeneralCalendar extends javax.swing.JFrame {
     public GeneralCalendar(JFrame parent) {
         initComponents();
         initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.parent = parent;
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }

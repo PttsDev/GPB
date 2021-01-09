@@ -19,6 +19,8 @@ public class LogIn extends javax.swing.JFrame {
         
         initComponents();
         initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         singInButton.setEnabled(false);
     }
 

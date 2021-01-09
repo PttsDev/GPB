@@ -2,6 +2,8 @@
 package es.unileon.iso.gpb.vista;
 
 import javax.swing.JFrame;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
 /**
@@ -14,7 +16,10 @@ public class LogIn extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public LogIn() {
+        
         initComponents();
+        initListeners();
+        singInButton.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -130,7 +135,7 @@ public class LogIn extends javax.swing.JFrame {
         GeneralCalendar c = new GeneralCalendar(this);
         c.setVisible(true);
         
-        //Eventos para controlar si el calendario se cierra TODO
+        
 
     }//GEN-LAST:event_singInButtonActionPerformed
 
@@ -139,7 +144,41 @@ public class LogIn extends javax.swing.JFrame {
         new Register(this).setVisible(true);
     }//GEN-LAST:event_singUpButtonActionPerformed
 
+    
+    
+    /*EVENTS*/
+    
+    public void initListeners(){
+            DocumentListener l = new DocumentListener(){
+            public void changedUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                modified();
+            }
 
+            public void modified() {
+                    
+                
+                if ( userTextField.getText().trim().equals("")    || 
+                     passwordField.getText().trim().equals("")     ) 
+                {
+                     singInButton.setEnabled(false);
+                }
+                else { 
+                       singInButton.setEnabled(true);
+                }
+                
+            }
+            
+        };
+            
+       userTextField.getDocument().addDocumentListener(l);
+       passwordField.getDocument().addDocumentListener(l);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

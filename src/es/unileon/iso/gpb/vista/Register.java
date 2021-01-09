@@ -18,8 +18,6 @@ public class Register extends JFrame {
     public Register() {
         initComponents();
         initListeners();
-        OKText.setVisible(false);
-        NOText.setVisible(false);
         createAccountButton.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = null;
@@ -34,8 +32,6 @@ public class Register extends JFrame {
     public Register(JFrame parent) {
         initComponents();
         initListeners();
-        OKText.setVisible(false);
-        NOText.setVisible(false);
         createAccountButton.setEnabled(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = parent;
@@ -73,7 +69,6 @@ public class Register extends JFrame {
         confirmPasswordTextField = new javax.swing.JPasswordField();
         createAccountButton = new javax.swing.JButton();
         OKText = new javax.swing.JTextField();
-        NOText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(333, 550));
@@ -125,11 +120,6 @@ public class Register extends JFrame {
 
         OKText.setEditable(false);
         OKText.setForeground(new java.awt.Color(0, 153, 0));
-        OKText.setText("✔");
-
-        NOText.setEditable(false);
-        NOText.setForeground(new java.awt.Color(255, 0, 0));
-        NOText.setText("✘");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,9 +144,7 @@ public class Register extends JFrame {
                     .addComponent(createAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OKText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NOText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,8 +176,7 @@ public class Register extends JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(OKText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NOText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(OKText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createAccountButton))
         );
@@ -231,6 +218,21 @@ public class Register extends JFrame {
             }
 
             public void modified() {
+                    
+                boolean samepw = false;
+                
+                if(!(passwordTextField.getText().trim().equals("") && 
+                        confirmPasswordTextField.getText().trim().equals(""))){
+                    samepw = samePw();
+                    
+                    if(samepw){
+                        OKText.setForeground(new java.awt.Color(0,153,0));
+                        OKText.setText("\u2714");
+                    }else{
+                        OKText.setForeground(new java.awt.Color(255,0,0));
+                        OKText.setText("\u2718");
+                    }
+                }
                 
                 if ( nameTextField.getText().trim().equals("")    || 
                      surnameTextField.getText().trim().equals("") ||      
@@ -241,34 +243,25 @@ public class Register extends JFrame {
                 {
                      createAccountButton.setEnabled(false);
                 }
-                else {
-                    
-                    if(passwordTextField.getText().trim().equals(confirmPasswordTextField.getText().trim())) {
-                        createAccountButton.setEnabled(true);
-                        OKText.setVisible(true);
-                        NOText.setVisible(false);
-                    }
-                        
-                    else{
-                        createAccountButton.setEnabled(false);
-                        OKText.setVisible(false);
-                        NOText.setVisible(true);
-                    }
+                else { 
+                        createAccountButton.setEnabled(samepw);
                 }
+                
+            }
+            
+            public boolean samePw(){
+                
+                
+             return passwordTextField.getText().trim().equals(confirmPasswordTextField.getText().trim());
 
             }
         };
                 
         nameTextField.getDocument().addDocumentListener(l);
-        
         surnameTextField.getDocument().addDocumentListener(l);
-        
-        dniTextField.getDocument().addDocumentListener(l);
-        
-        userTextField.getDocument().addDocumentListener(l);
-        
+        dniTextField.getDocument().addDocumentListener(l); 
+        userTextField.getDocument().addDocumentListener(l);  
         passwordTextField.getDocument().addDocumentListener(l);
-        
         confirmPasswordTextField.getDocument().addDocumentListener(l);
         
     }
@@ -300,7 +293,6 @@ public class Register extends JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NOText;
     private javax.swing.JTextField OKText;
     private javax.swing.JPasswordField confirmPasswordTextField;
     private javax.swing.JButton createAccountButton;

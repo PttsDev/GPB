@@ -130,10 +130,14 @@ public class LogIn extends javax.swing.JFrame {
     private void singInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singInButtonActionPerformed
         //Check fields TODO
         
+        /*
+        * Send to controller to check
+        * userTextField.getText().trim();
+        * passwordField.getText().trim();
+        */
         //Open General Calendar
         this.setVisible(false);
-        GeneralCalendar c = new GeneralCalendar(this);
-        c.setVisible(true);
+        new GeneralCalendar(this).setVisible(true);
         
         
 

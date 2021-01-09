@@ -1,7 +1,8 @@
 
 package es.unileon.iso.gpb.vista;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 /**
  *
  * @author diego
@@ -11,17 +12,47 @@ public class Register extends JFrame {
     private JFrame parent;
     
     /**
-     * Creates new form Register
+     * Constructor which creates the Register frame
+     * setting its parent to null.
      */
     public Register() {
-        initComponents();   
+        initComponents();
+        initListeners();
+        OKText.setVisible(false);
+        NOText.setVisible(false);
+        createAccountButton.setEnabled(false);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.parent = null;
+        
     }
     
+    /**
+     * Constructor of the Register frame
+     * Setting a reference of its parent.
+     * @param parent Parent JFrame
+     */
     public Register(JFrame parent) {
-        initComponents();   
+        initComponents();
+        initListeners();
+        OKText.setVisible(false);
+        NOText.setVisible(false);
+        createAccountButton.setEnabled(false);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.parent = parent;
     }
 
+    /**
+     * Dispose method
+     * Sets its parent visible again if the frame
+     * has parent.
+     */
+    @Override
+    public void dispose(){
+        if(parent!=null)parent.setVisible(true);
+        super.dispose(); 
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,14 +68,15 @@ public class Register extends JFrame {
         jLabel5 = new javax.swing.JLabel();
         userTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
+        passwordTextField = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
-        confirmPasswordField = new javax.swing.JPasswordField();
+        confirmPasswordTextField = new javax.swing.JPasswordField();
         createAccountButton = new javax.swing.JButton();
+        OKText = new javax.swing.JTextField();
+        NOText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(333, 550));
-        setPreferredSize(new java.awt.Dimension(333, 500));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(333, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(333, 500));
@@ -70,11 +102,17 @@ public class Register extends JFrame {
 
         jLabel6.setText("Password:");
 
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel7.setText("Confirm Password:");
 
-        confirmPasswordField.addActionListener(new java.awt.event.ActionListener() {
+        confirmPasswordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmPasswordFieldActionPerformed(evt);
+                confirmPasswordTextFieldActionPerformed(evt);
             }
         });
 
@@ -84,6 +122,14 @@ public class Register extends JFrame {
                 createAccountButtonActionPerformed(evt);
             }
         });
+
+        OKText.setEditable(false);
+        OKText.setForeground(new java.awt.Color(0, 153, 0));
+        OKText.setText("✔");
+
+        NOText.setEditable(false);
+        NOText.setForeground(new java.awt.Color(255, 0, 0));
+        NOText.setText("✘");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,10 +149,14 @@ public class Register extends JFrame {
                     .addComponent(dniTextField)
                     .addComponent(nameTextField)
                     .addComponent(userTextField)
-                    .addComponent(passwordField)
-                    .addComponent(confirmPasswordField)
+                    .addComponent(passwordTextField)
+                    .addComponent(confirmPasswordTextField)
                     .addComponent(createAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(OKText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NOText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,11 +182,14 @@ public class Register extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel7)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmPasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OKText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NOText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(createAccountButton))
         );
@@ -160,29 +213,96 @@ public class Register extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*EVENTS & ACTIONS*/
+    
+    private void initListeners(){
+        
+        //Register frame = this;
+        //Doc listener
+        DocumentListener l = new DocumentListener(){
+            public void changedUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                modified();
+            }
+
+            public void modified() {
+                
+                if ( nameTextField.getText().trim().equals("")    || 
+                     surnameTextField.getText().trim().equals("") ||      
+                     dniTextField.getText().trim().equals("")     ||
+                     userTextField.getText().trim().equals("")    ||
+                     passwordTextField.getText().trim().equals("")|| 
+                     confirmPasswordTextField.getText().trim().equals("") ) 
+                {
+                     createAccountButton.setEnabled(false);
+                }
+                else {
+                    
+                    if(passwordTextField.getText().trim().equals(confirmPasswordTextField.getText().trim())) {
+                        createAccountButton.setEnabled(true);
+                        OKText.setVisible(true);
+                        NOText.setVisible(false);
+                    }
+                        
+                    else{
+                        createAccountButton.setEnabled(false);
+                        OKText.setVisible(false);
+                        NOText.setVisible(true);
+                    }
+                }
+
+            }
+        };
+                
+        nameTextField.getDocument().addDocumentListener(l);
+        
+        surnameTextField.getDocument().addDocumentListener(l);
+        
+        dniTextField.getDocument().addDocumentListener(l);
+        
+        userTextField.getDocument().addDocumentListener(l);
+        
+        passwordTextField.getDocument().addDocumentListener(l);
+        
+        confirmPasswordTextField.getDocument().addDocumentListener(l);
+        
+    }
+    
     private void surnameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_surnameTextFieldActionPerformed
 
-    private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
+    private void confirmPasswordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmPasswordFieldActionPerformed
+    }//GEN-LAST:event_confirmPasswordTextFieldActionPerformed
 
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
         //Register method TODO
+        
+        //Take data from text fields
+        
+        //Call controller to create the user
+        
+        //Message of creation
+        
+        
         this.dispose();
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
 
-    //Set the parent visible when closing register
-    @Override
-    public void dispose(){
-        parent.setVisible(true);
-        super.dispose(); 
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField confirmPasswordField;
+    private javax.swing.JTextField NOText;
+    private javax.swing.JTextField OKText;
+    private javax.swing.JPasswordField confirmPasswordTextField;
     private javax.swing.JButton createAccountButton;
     private javax.swing.JTextField dniTextField;
     private javax.swing.JLabel jLabel1;
@@ -194,7 +314,7 @@ public class Register extends JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JTextField surnameTextField;
     private javax.swing.JTextField userTextField;
     // End of variables declaration//GEN-END:variables

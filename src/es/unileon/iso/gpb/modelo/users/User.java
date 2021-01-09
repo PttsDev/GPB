@@ -19,14 +19,41 @@ public class User {
     private String surName;
     private String DNI;
     private String email;
+    private String userName;
+    private String pw;
     
     public User(){}
     
-    public User(String name, String surName, String DNI, String email) {
+    public User(String name, String surName, String DNI, String email, String userName) {
         this.name = name;
         this.surName = surName;
         this.DNI = DNI;
         this.email = email;
+        this.userName = userName;
+    }
+    
+    public User(String name, String surName, String DNI, String email, String userName, String pw) {
+        this.name = name;
+        this.surName = surName;
+        this.DNI = DNI;
+        this.email = email;
+        this.pw = pw;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
+    public String getUserName() {
+        return userName;
     }
 
     public void setName(String name) {

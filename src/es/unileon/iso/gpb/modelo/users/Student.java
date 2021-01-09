@@ -26,8 +26,8 @@ public class Student extends User{
     private String idStudent;
     private ArrayList<Integer> group; //TODO METODOS, ETC
     
-    public Student(String name, String surName, String DNI, String email, String idStudent) {
-        super(name, surName, DNI, email);
+    public Student(String name, String surName, String DNI, String email, String username, String idStudent) {
+        super(name, surName, DNI, email, username);
         this.tutorships = new Tutorships();
         this.persAct = new PersonalActivities();
         this.subjects = new Subjects();

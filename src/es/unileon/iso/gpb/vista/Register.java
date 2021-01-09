@@ -284,6 +284,14 @@ public class Register extends JFrame {
         //Message of creation
         
         
+        /* Send data to the controller for creating an user with:
+        nameTextField.getText().trim()
+        surnameTextField.getText().trim()
+        dniTextField.getText().trim()
+        userTextField.getText().trim()
+        passwordTextField.getText().trim()
+        confirmPasswordTextField.getText().trim()
+        */
         this.dispose();
     }//GEN-LAST:event_createAccountButtonActionPerformed
 

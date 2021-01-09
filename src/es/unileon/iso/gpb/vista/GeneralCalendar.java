@@ -266,7 +266,7 @@ public class GeneralCalendar extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt){
                 
-                String[] ops = {"Logout", "Close", "Cancel"};
+                String[] ops = {"Log out", "Close", "Cancel"};
                 
                 int o = JOptionPane.showOptionDialog(null, "Do you want to exit?", "Exit?", 
                         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, 
@@ -291,7 +291,19 @@ public class GeneralCalendar extends javax.swing.JFrame {
     }
     
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-        // TODO add your handling code here:
+        
+        String[] ops = {"Yes", "No"};
+        
+        int o = JOptionPane.showOptionDialog(null, "Do you want to log out?", "Log out?", 
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, 
+                        null, ops, ops[0]);
+        switch(o){
+            case 0:
+                this.dispose();
+                break;
+            case 1:
+                break;
+        }
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void g1RadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g1RadioButtonActionPerformed

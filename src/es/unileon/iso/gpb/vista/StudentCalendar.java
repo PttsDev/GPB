@@ -17,6 +17,8 @@ public class StudentCalendar extends javax.swing.JFrame {
 
     private JFrame parent;
     private User user;
+    private LocalDate sActual;
+    private LocalDate eActual;
     
     /**
      * Constructor which creates the GeneralCalendar
@@ -72,20 +74,21 @@ public class StudentCalendar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         logOutButton = new javax.swing.JButton();
         nameLabel = new javax.swing.JLabel();
-        subjectComboBox = new javax.swing.JComboBox<>();
-        g1RadioButton = new javax.swing.JRadioButton();
-        g2RadioButton = new javax.swing.JRadioButton();
-        g3RadioButton = new javax.swing.JRadioButton();
-        g4RadioButton = new javax.swing.JRadioButton();
-        createButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        remveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         calendarioTable = new javax.swing.JTable();
         previusButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         weekLabel = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        AccountMenu = new javax.swing.JMenu();
+        LogOutMenu = new javax.swing.JMenuItem();
+        HelpMenu = new javax.swing.JMenuItem();
+        EditMenu = new javax.swing.JMenu();
+        CreateActivityMenu = new javax.swing.JMenuItem();
+        EditActivityMenu = new javax.swing.JMenuItem();
+        RemoveActivityMenu = new javax.swing.JMenuItem();
+        SelectGroupMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(821, 541));
@@ -99,58 +102,15 @@ public class StudentCalendar extends javax.swing.JFrame {
 
         nameLabel.setText("Disconnected");
 
-        subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        buttonGroup1.add(g1RadioButton);
-        g1RadioButton.setText("G1");
-        g1RadioButton.setEnabled(false);
-        g1RadioButton.setHideActionText(true);
-        g1RadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                g1RadioButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(g2RadioButton);
-        g2RadioButton.setText("G2");
-        g2RadioButton.setEnabled(false);
-
-        buttonGroup1.add(g3RadioButton);
-        g3RadioButton.setText("G3");
-        g3RadioButton.setEnabled(false);
-
-        buttonGroup1.add(g4RadioButton);
-        g4RadioButton.setText("G4");
-        g4RadioButton.setEnabled(false);
-
-        createButton.setText("Create");
-        createButton.setEnabled(false);
-
-        editButton.setText("Edit");
-        editButton.setEnabled(false);
-
-        remveButton.setText("Remove");
-        remveButton.setEnabled(false);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(remveButton)
-                    .addComponent(editButton)
-                    .addComponent(createButton)
-                    .addComponent(g4RadioButton)
-                    .addComponent(g3RadioButton)
-                    .addComponent(g2RadioButton)
-                    .addComponent(g1RadioButton)
-                    .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nameLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(logOutButton))))
+                .addComponent(nameLabel)
+                .addGap(18, 18, 18)
+                .addComponent(logOutButton))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,22 +119,6 @@ public class StudentCalendar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logOutButton)
                     .addComponent(nameLabel))
-                .addGap(82, 82, 82)
-                .addComponent(createButton)
-                .addGap(18, 18, 18)
-                .addComponent(editButton)
-                .addGap(18, 18, 18)
-                .addComponent(remveButton)
-                .addGap(50, 50, 50)
-                .addComponent(subjectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(g1RadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(g2RadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(g3RadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(g4RadioButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -222,13 +166,63 @@ public class StudentCalendar extends javax.swing.JFrame {
         calendarioTable.setMinimumSize(new java.awt.Dimension(600, 384));
         jScrollPane1.setViewportView(calendarioTable);
 
-        previusButton.setText("Previus");
+        previusButton.setText("Previous");
+        previusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previusButtonActionPerformed(evt);
+            }
+        });
 
         nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
 
         weekLabel.setText("Day x to x (modificar)");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
+
+        AccountMenu.setText("Account");
+
+        LogOutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        LogOutMenu.setText("Log out");
+        LogOutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutMenuActionPerformed(evt);
+            }
+        });
+        AccountMenu.add(LogOutMenu);
+
+        HelpMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        HelpMenu.setText("Help");
+        AccountMenu.add(HelpMenu);
+
+        jMenuBar1.add(AccountMenu);
+
+        EditMenu.setText("Edit");
+
+        CreateActivityMenu.setText("Create Activity");
+        CreateActivityMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateActivityMenuActionPerformed(evt);
+            }
+        });
+        EditMenu.add(CreateActivityMenu);
+
+        EditActivityMenu.setText("Edit Activity");
+        EditMenu.add(EditActivityMenu);
+
+        RemoveActivityMenu.setText("Remove Activity");
+        EditMenu.add(RemoveActivityMenu);
+
+        SelectGroupMenu.setText("Select Group");
+        EditMenu.add(SelectGroupMenu);
+
+        jMenuBar1.add(EditMenu);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,7 +259,7 @@ public class StudentCalendar extends javax.swing.JFrame {
                         .addComponent(weekLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 26, Short.MAX_VALUE)))
+                        .addGap(0, 2, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -285,7 +279,9 @@ public class StudentCalendar extends javax.swing.JFrame {
         LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
         LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );
         LocalDate wSunday = today.with( TemporalAdjusters.next( DayOfWeek.SUNDAY ) );
-        weekLabel.setText("From: "+wMonday.toString()+" To: "+wSunday);
+        this.sActual=wMonday;
+        this.eActual=wSunday;
+        weekLabel.setText("From: "+sActual+" To: "+eActual);
         
         //Username
         if(user!=null)
@@ -345,29 +341,46 @@ public class StudentCalendar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logOutButtonActionPerformed
 
-    private void g1RadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_g1RadioButtonActionPerformed
+    private void LogOutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutMenuActionPerformed
+        this.logOutButtonActionPerformed(null);
+    }//GEN-LAST:event_LogOutMenuActionPerformed
+
+    private void CreateActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateActivityMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_g1RadioButtonActionPerformed
+    }//GEN-LAST:event_CreateActivityMenuActionPerformed
+
+    private void previusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previusButtonActionPerformed
+        this.sActual = sActual.minusDays(7);
+        this.eActual = eActual.minusDays(7);
+        weekLabel.setText("From: "+sActual+" To: "+eActual);
+    }//GEN-LAST:event_previusButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        this.sActual = sActual.plusDays(7);
+        this.eActual = eActual.plusDays(7);
+        weekLabel.setText("From: "+sActual+" To: "+eActual);
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu AccountMenu;
+    private javax.swing.JMenuItem CreateActivityMenu;
+    private javax.swing.JMenuItem EditActivityMenu;
+    private javax.swing.JMenu EditMenu;
+    private javax.swing.JMenuItem HelpMenu;
+    private javax.swing.JMenuItem LogOutMenu;
+    private javax.swing.JMenuItem RemoveActivityMenu;
+    private javax.swing.JMenuItem SelectGroupMenu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTable calendarioTable;
-    private javax.swing.JButton createButton;
-    private javax.swing.JButton editButton;
-    private javax.swing.JRadioButton g1RadioButton;
-    private javax.swing.JRadioButton g2RadioButton;
-    private javax.swing.JRadioButton g3RadioButton;
-    private javax.swing.JRadioButton g4RadioButton;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logOutButton;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previusButton;
-    private javax.swing.JButton remveButton;
-    private javax.swing.JComboBox<String> subjectComboBox;
     private javax.swing.JLabel weekLabel;
     // End of variables declaration//GEN-END:variables
 }

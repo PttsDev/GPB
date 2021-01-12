@@ -1,6 +1,7 @@
 
 package es.unileon.iso.gpb.vista;
 
+import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.JFrame;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -16,12 +17,8 @@ public class LogIn extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public LogIn() {
-        
-        initComponents();
-        initListeners();
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        singInButton.setEnabled(false);
+        init();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -129,6 +126,14 @@ public class LogIn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void init(){
+        initComponents();
+        initListeners();
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        singInButton.setEnabled(false);
+    }
+    
     private void singInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singInButtonActionPerformed
         //Check fields TODO
         
@@ -137,11 +142,16 @@ public class LogIn extends javax.swing.JFrame {
         * userTextField.getText().trim();
         * passwordField.getText().trim();
         */
+        /*
+        * Receive user from controler
+        */
+        
+        //!!!!!!!!USUARIO DE PRUEBA, ELIMINAR DESPUES!!!!!!!
+        
+        User user = new User("Pruebon", "Pruebin", "777777", "hola@hola.es", userTextField.getText().trim());
         //Open General Calendar
         this.setVisible(false);
-        new GeneralCalendar(this).setVisible(true);
-        
-        
+        new StudentCalendar(this, user).setVisible(true); 
 
     }//GEN-LAST:event_singInButtonActionPerformed
 

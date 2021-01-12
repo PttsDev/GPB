@@ -16,8 +16,6 @@ public class Register extends JFrame {
      * setting its parent to null.
      */
     public Register() {
-        initComponents();
-        initListeners();
         init();
         this.parent = null;
         
@@ -29,8 +27,6 @@ public class Register extends JFrame {
      * @param parent Parent JFrame
      */
     public Register(JFrame parent) {
-        initComponents();
-        initListeners();
         init();
         this.parent = parent;
     }
@@ -249,6 +245,8 @@ public class Register extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void init(){
+        initComponents();
+        initListeners();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         createAccountButton.setEnabled(false);

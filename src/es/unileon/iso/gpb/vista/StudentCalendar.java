@@ -1,28 +1,30 @@
 
 package es.unileon.iso.gpb.vista;
 
+import es.unileon.iso.gpb.modelo.users.User;
+import java.time.DayOfWeek;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  *
  * @author diego
  */
-public class GeneralCalendar extends javax.swing.JFrame {
+public class StudentCalendar extends javax.swing.JFrame {
 
     private JFrame parent;
+    private User user;
     
     /**
      * Constructor which creates the GeneralCalendar
      * Frame setting its parent to null.
      */
-    public GeneralCalendar() {
-        initComponents();
-        initListeners();
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        this.parent = null;
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    public StudentCalendar() {
+        this.user = null;
+        init();
     }
     
     /**
@@ -30,13 +32,24 @@ public class GeneralCalendar extends javax.swing.JFrame {
      * Setting a reference of its parent.
      * @param parent Parent JFrame
      */
-    public GeneralCalendar(JFrame parent) {
-        initComponents();
-        initListeners();
-        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    public StudentCalendar(JFrame parent) {
+        this.user=null;
+        init();
         this.parent = parent;
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }
+    
+     /**
+     * Constructor of the GeneralCalendar frame
+     * Setting a reference of its parent.
+     * @param parent Parent JFrame
+     * @param user User who did login
+     */
+    public StudentCalendar(JFrame parent, User user) {
+        this.user = user;
+        
+        init();
+        this.parent = parent;
+        
     }
 
      /**
@@ -72,6 +85,7 @@ public class GeneralCalendar extends javax.swing.JFrame {
         previusButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         weekLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(821, 541));
@@ -83,7 +97,7 @@ public class GeneralCalendar extends javax.swing.JFrame {
             }
         });
 
-        nameLabel.setText("name of user");
+        nameLabel.setText("Disconnected");
 
         subjectComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -123,7 +137,7 @@ public class GeneralCalendar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(remveButton)
                     .addComponent(editButton)
@@ -168,30 +182,30 @@ public class GeneralCalendar extends javax.swing.JFrame {
 
         calendarioTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"0-1", null, null, null, null, null, null, null},
-                {"1-2", null, null, null, null, null, null, null},
-                {"2-3", null, null, null, null, null, null, null},
-                {"3-4", null, null, null, null, null, null, null},
-                {"4-5", null, null, null, null, null, null, null},
-                {"5-6", null, null, null, null, null, null, null},
-                {"6-7", null, null, null, null, null, null, null},
-                {"7-8", null, null, null, null, null, null, null},
-                {"8-9", null, null, null, null, null, null, null},
-                {"9-10", null, null, null, null, null, null, null},
-                {"10-11", null, null, null, null, null, null, null},
-                {"11-12", null, null, null, null, null, null, null},
-                {"12-13", null, null, null, null, null, null, null},
-                {"13-14", null, null, null, null, null, null, null},
-                {"14-15", null, null, null, null, null, null, null},
-                {"15-16", null, null, null, null, null, null, null},
-                {"16-17", null, null, null, null, null, null, null},
-                {"17-18", null, null, null, null, null, null, null},
-                {"18-19", null, null, null, null, null, null, null},
-                {"19-20", null, null, null, null, null, null, null},
-                {"20-21", null, null, null, null, null, null, null},
-                {"21-22", null, null, null, null, null, null, null},
-                {"22-23", null, null, null, null, null, null, null},
-                {"23-0", null, null, null, null, null, null, null}
+                {"00:00", null, null, null, null, null, null, null},
+                {"01:00", null, null, null, null, null, null, null},
+                {"02:00", null, null, null, null, null, null, null},
+                {"03:00", null, null, null, null, null, null, null},
+                {"04:00", null, null, null, null, null, null, null},
+                {"05:00", null, null, null, null, null, null, null},
+                {"06:00", null, null, null, null, null, null, null},
+                {"07:00", null, null, null, null, null, null, null},
+                {"08:00", null, null, null, null, null, null, null},
+                {"09:00", null, null, null, null, null, null, null},
+                {"10:00", null, null, null, null, null, null, null},
+                {"11:00", null, null, null, null, null, null, null},
+                {"12:00", null, null, null, null, null, null, null},
+                {"13:00", null, null, null, null, null, null, null},
+                {"14:00", null, null, null, null, null, null, null},
+                {"15:00", null, null, null, null, null, null, null},
+                {"16:00", null, null, null, null, null, null, null},
+                {"17:00", null, null, null, null, null, null, null},
+                {"18:00", null, null, null, null, null, null, null},
+                {"19:00", null, null, null, null, null, null, null},
+                {"20:00", null, null, null, null, null, null, null},
+                {"21:00", null, null, null, null, null, null, null},
+                {"22:00", null, null, null, null, null, null, null},
+                {"23:00", null, null, null, null, null, null, null}
             },
             new String [] {
                 "Hours", "Monday", "Tueday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
@@ -214,6 +228,8 @@ public class GeneralCalendar extends javax.swing.JFrame {
 
         weekLabel.setText("Day x to x (modificar)");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,7 +241,9 @@ public class GeneralCalendar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(previusButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton))
+                        .addComponent(nextButton)
+                        .addGap(33, 33, 33)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(weekLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,7 +259,8 @@ public class GeneralCalendar extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(previusButton)
-                            .addComponent(nextButton))
+                            .addComponent(nextButton)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addComponent(weekLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -253,14 +272,34 @@ public class GeneralCalendar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void init(){
+        this.parent = null;
+        
+        initComponents();
+        initListeners();
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
+        
+        //start week label
+        LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
+        LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );
+        LocalDate wSunday = today.with( TemporalAdjusters.next( DayOfWeek.SUNDAY ) );
+        weekLabel.setText("From: "+wMonday.toString()+" To: "+wSunday);
+        
+        //Username
+        if(user!=null)
+            nameLabel.setText(user.getUserName());
+        
+
+    }
     /*EVENTS & ACTIONS*/
         
     /**
      * Method that inits event listeners
      */
     private void initListeners(){
-        GeneralCalendar frame = this;
+        StudentCalendar frame = this;
         this.addWindowListener( new java.awt.event.WindowAdapter(){
             
             @Override
@@ -320,6 +359,7 @@ public class GeneralCalendar extends javax.swing.JFrame {
     private javax.swing.JRadioButton g2RadioButton;
     private javax.swing.JRadioButton g3RadioButton;
     private javax.swing.JRadioButton g4RadioButton;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logOutButton;

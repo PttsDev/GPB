@@ -17,15 +17,18 @@ import java.util.ArrayList;
  *
  * @author Roberto
  */
-public class Student extends User{
-    
+public class Student extends User {
+
     private PersonalActivities persAct;
     private Tutorships tutorships;
     private Subjects subjects;
-    
+
     private String idStudent;
     private ArrayList<Integer> group; //TODO METODOS, ETC
-    
+
+    public Student() {
+    }
+
     public Student(String name, String surName, String DNI, String email, String username, String idStudent) {
         super(name, surName, DNI, email, username);
         this.tutorships = new Tutorships();
@@ -42,80 +45,78 @@ public class Student extends User{
     public void setIdStudent(String idStudent) {
         this.idStudent = idStudent;
     }
-    
+
     /*
     * Metodos que gestionan las activity
-    */
+     */
     public void addPersonalActivity(PersonalActivity pa) {
         this.persAct.add(pa);
     }
-    
-    public void removePersonalActivity(String name){
+
+    public void removePersonalActivity(String name) {
         this.persAct.remove(name);
     }
-    
-    public void removePersonalActivity(long ID){
+
+    public void removePersonalActivity(long ID) {
         this.persAct.remove(ID);
     }
-    
-    public PersonalActivity searchPersonalActivity(String name){
+
+    public PersonalActivity searchPersonalActivity(String name) {
         return this.persAct.get(this.persAct.search(name));
     }
-    
-    public PersonalActivity searchPersonalActivity(long ID){
+
+    public PersonalActivity searchPersonalActivity(long ID) {
         return this.persAct.get(this.persAct.search(ID));
     }
-    
+
     /*
     * Metodos que gestionan los tutorships
-    */
+     */
     public void addTutorship(Tutorship ts) {
         this.tutorships.add(ts);
     }
-    
-    public void removeTutorship(String name){
+
+    public void removeTutorship(String name) {
         this.tutorships.remove(name);
     }
-    
-    public void removeTutorship(long ID){
+
+    public void removeTutorship(long ID) {
         this.tutorships.remove(ID);
     }
-    
-    public Tutorship searchTutorship(String name){
+
+    public Tutorship searchTutorship(String name) {
         return this.tutorships.get(this.tutorships.search(name));
     }
-    
-    public Tutorship searchTutorship(long ID){
+
+    public Tutorship searchTutorship(long ID) {
         return this.tutorships.get(this.tutorships.search(ID));
     }
-    
+
     /*
     * Metodos que gestionan las subjects
-    */
-    
-    public void addSubject(Subject sb){
+     */
+    public void addSubject(Subject sb) {
         this.subjects.add(sb);
     }
-    
+
     public void removeSubject(String name) {
         this.subjects.remove(name);
     }
-    
+
     public void removeSubject(long ID) {
-         this.subjects.remove(ID);
+        this.subjects.remove(ID);
     }
-    
-    public Subject searchSubject(String name){
+
+    public Subject searchSubject(String name) {
         return this.subjects.get(this.subjects.search(name));
     }
-    
-    public Subject searchSubject(long ID){
+
+    public Subject searchSubject(long ID) {
         return this.subjects.get(this.subjects.search(ID));
     }
-    
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         //TODO
         return "";
     }

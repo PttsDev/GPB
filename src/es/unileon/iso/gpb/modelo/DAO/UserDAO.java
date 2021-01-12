@@ -5,6 +5,7 @@
  */
 package es.unileon.iso.gpb.modelo.DAO;
 
+import com.mysql.jdbc.Connection;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
 import es.unileon.iso.gpb.modelo.users.User;
 import java.sql.Statement;
@@ -17,54 +18,97 @@ import java.util.ArrayList;
  *
  * @author Roberto
  */
-public class UserDAO {
-    
-    
-    public void registerUser(User user){
-        
-        DBConnection connect = new DBConnection();
-        
+public class UserDAO extends DBConnection {
+
+
+
+    public boolean userExist(String UserID) {
+
+        boolean exists = false;
+
         try {
-            Statement stat = connect.getConnection().createStatement();
-            stat.executeUpdate("INSERT INTO user VALUES \\VALUES USER//");//TODO
-            
-            stat.close();
-            connect.close();
-        }catch (SQLException e){
-            System.out.println(e);
-            //Llamar a controlador para sacar mensaje por vista TODO
-        }
-        
-    }
-    
-    public ArrayList<User> userList(){
-        
-        ArrayList<User> users = new ArrayList<User>();
-        DBConnection connect = new DBConnection();
-        
-        try{
-            PreparedStatement query = connect.getConnection().prepareStatement("SELECT * FROM user");
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
             ResultSet rs = query.executeQuery();
-            
-            while( rs.next() ){
-                
-                //String name, String surName, String DNI, String email
-                //ADD USER DATA TODO
-                User user = new User();
-                user.setName(rs.getString("name"));
-                user.setSurName(rs.getString("surname"));
-                user.setDNI(rs.getString("DNI"));
-                user.setEmail(rs.getString("email"));
-                users.add(user);
+
+            while (rs.next() && !exists) {
+
+                if (rs.getString("UserID").equals(UserID)) {
+                    exists = true;
+                }
+
             }
-            
-        }catch(Exception e){
+
+            this.close();
+
+        } catch (Exception e) {
             System.out.println(e);
             //Llamar al controlador para mensaje por pantalla TODO
         }
-        
-        return users;
+
+        return exists;
     }
-    //TODO METODOS 
-    
+
+    public boolean userLogIn(String UserID, String pw) {
+
+        boolean exists = false;
+
+        try {
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next() && !exists) {
+
+                if (rs.getString("UserID").equals(UserID) && rs.getString("password").equals(pw)) {
+                    exists = true;
+                }
+
+            }
+
+            this.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar al controlador para mensaje por pantalla TODO
+        }
+
+        return exists;
+    }
+
+    public User getUser(String UserID) {
+
+        boolean exists = false;
+        User user = new User();
+
+        try {
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next() && !exists) {
+
+                if (rs.getString("UserID").equals(UserID)) {
+                    exists = true;
+                    user.setName(rs.getString("Name"));
+                    user.setSurName(rs.getString("SurName"));
+                    user.setDNI(rs.getString("DNI"));
+                    user.setEmail(rs.getString("Email"));
+                }
+
+            }
+
+            this.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar al controlador para mensaje por pantalla TODO
+        }
+        if (exists) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
 }

@@ -22,7 +22,8 @@ public class User {
     private String userName;
     private String pw;
     
-    public User(){}
+    public User() {
+    }
     
     public User(String name, String surName, String DNI, String email, String userName) {
         this.name = name;
@@ -120,4 +121,5 @@ public class User {
         //TODO
         return "";
     }
+
 }

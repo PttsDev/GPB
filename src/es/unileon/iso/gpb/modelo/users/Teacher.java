@@ -23,6 +23,8 @@ public class Teacher extends User{
     private String idTeacher;
     private Subjects subjects; //TODO
     
+    public Teacher(){}
+    
     public Teacher(String name, String surName, String DNI, String email, String username, String idTeacher) {
         super(name, surName, DNI, email, username);
         

@@ -33,7 +33,7 @@ public class Register {
 
     public User registerUser(String name, String surName, String DNI, String email, String userName, String pw){
         User user = new User(name, surName, DNI, email, userName, pw);
-        user.
+        //user.
         //Crear UserDao y comprobar con un if si esta devolverlo o null si no
         UserDAO userDAO = new UserDAO();
         return null; 

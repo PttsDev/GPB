@@ -197,6 +197,11 @@ public class StudentCalendar extends javax.swing.JFrame {
 
         HelpMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         HelpMenu.setText("Help");
+        HelpMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HelpMenuActionPerformed(evt);
+            }
+        });
         AccountMenu.add(HelpMenu);
 
         jMenuBar1.add(AccountMenu);
@@ -360,6 +365,10 @@ public class StudentCalendar extends javax.swing.JFrame {
         this.eActual = eActual.plusDays(7);
         weekLabel.setText("From: "+sActual+" To: "+eActual);
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void HelpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpMenuActionPerformed
+        new Help().setVisible(true);
+    }//GEN-LAST:event_HelpMenuActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

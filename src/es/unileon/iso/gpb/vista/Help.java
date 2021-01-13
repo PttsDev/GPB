@@ -27,6 +27,7 @@ public class Help extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("GPB Help");
 
         jLabel1.setText("GPB Manual");
 

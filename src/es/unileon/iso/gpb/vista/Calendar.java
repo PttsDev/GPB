@@ -13,7 +13,7 @@ import java.time.temporal.TemporalAdjusters;
  *
  * @author diego
  */
-public class StudentCalendar extends javax.swing.JFrame {
+public class Calendar extends javax.swing.JFrame {
 
     private JFrame parent;
     private User user;
@@ -24,7 +24,7 @@ public class StudentCalendar extends javax.swing.JFrame {
      * Constructor which creates the GeneralCalendar
      * Frame setting its parent to null.
      */
-    public StudentCalendar() {
+    public Calendar() {
         this.user = null;
         init();
     }
@@ -34,7 +34,7 @@ public class StudentCalendar extends javax.swing.JFrame {
      * Setting a reference of its parent.
      * @param parent Parent JFrame
      */
-    public StudentCalendar(JFrame parent) {
+    public Calendar(JFrame parent) {
         this.user=null;
         init();
         this.parent = parent;
@@ -46,7 +46,7 @@ public class StudentCalendar extends javax.swing.JFrame {
      * @param parent Parent JFrame
      * @param user User who did login
      */
-    public StudentCalendar(JFrame parent, User user) {
+    public Calendar(JFrame parent, User user) {
         this.user = user;
         
         init();
@@ -80,6 +80,8 @@ public class StudentCalendar extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
         weekLabel = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        UserTypeLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         AccountMenu = new javax.swing.JMenu();
         LogOutMenu = new javax.swing.JMenuItem();
@@ -90,8 +92,13 @@ public class StudentCalendar extends javax.swing.JFrame {
         RemoveActivityMenu = new javax.swing.JMenuItem();
         SelectGroupMenu = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(821, 541));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("GPB Calendar");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(900, 650));
+        setMinimumSize(new java.awt.Dimension(835, 600));
+        setPreferredSize(new java.awt.Dimension(837, 600));
+        setResizable(false);
 
         logOutButton.setText("Log out");
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,19 +113,20 @@ public class StudentCalendar extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addComponent(nameLabel)
-                .addGap(18, 18, 18)
-                .addComponent(logOutButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logOutButton)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logOutButton)
-                    .addComponent(nameLabel))
+                    .addComponent(nameLabel)
+                    .addComponent(logOutButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -184,6 +192,10 @@ public class StudentCalendar extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
 
+        jLabel1.setText("User Type:");
+
+        UserTypeLabel.setText("Disconnected");
+
         AccountMenu.setText("Account");
 
         LogOutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
@@ -236,16 +248,23 @@ public class StudentCalendar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(previusButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton)
-                        .addGap(33, 33, 33)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(weekLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(previusButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nextButton)
+                                .addGap(33, 33, 33)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(weekLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(UserTypeLabel)
+                        .addGap(53, 53, 53)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -253,9 +272,12 @@ public class StudentCalendar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(UserTypeLabel))
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(previusButton)
                             .addComponent(nextButton)
@@ -264,8 +286,7 @@ public class StudentCalendar extends javax.swing.JFrame {
                         .addComponent(weekLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 10, Short.MAX_VALUE))))
         );
 
         pack();
@@ -300,7 +321,7 @@ public class StudentCalendar extends javax.swing.JFrame {
      * Method that inits event listeners
      */
     private void initListeners(){
-        StudentCalendar frame = this;
+        Calendar frame = this;
         this.addWindowListener( new java.awt.event.WindowAdapter(){
             
             @Override
@@ -380,9 +401,11 @@ public class StudentCalendar extends javax.swing.JFrame {
     private javax.swing.JMenuItem LogOutMenu;
     private javax.swing.JMenuItem RemoveActivityMenu;
     private javax.swing.JMenuItem SelectGroupMenu;
+    private javax.swing.JLabel UserTypeLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTable calendarioTable;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

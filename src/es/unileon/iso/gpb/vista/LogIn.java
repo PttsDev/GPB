@@ -130,6 +130,8 @@ public class LogIn extends javax.swing.JFrame {
     private void init(){
         initComponents();
         initListeners();
+        java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
+        setIconImage(t.getImage(getClass().getResource("logo.png")));
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         singInButton.setEnabled(false);

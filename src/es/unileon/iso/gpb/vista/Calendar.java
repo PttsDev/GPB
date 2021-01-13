@@ -112,11 +112,11 @@ public class Calendar extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(nameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logOutButton)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,6 +285,9 @@ public class Calendar extends javax.swing.JFrame {
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
         
+        java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
+
+        setIconImage(t.getImage(getClass().getResource("logo.png")));
         //start week label
         LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
         LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );

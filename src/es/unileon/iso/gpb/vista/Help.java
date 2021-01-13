@@ -12,6 +12,8 @@ public class Help extends javax.swing.JFrame {
     public Help() {
         initComponents();
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
+        setIconImage(t.getImage(getClass().getResource("logo.png")));
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
     }
 

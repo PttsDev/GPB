@@ -45,6 +45,7 @@ public class ChangePassword extends javax.swing.JFrame {
         OKText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Title.setText("Change password");

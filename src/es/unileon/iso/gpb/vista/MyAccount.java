@@ -47,6 +47,7 @@ public class MyAccount extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GBP My Account");
+        setResizable(false);
 
         backButton.setText("←");
         backButton.setFocusable(false);

@@ -72,6 +72,7 @@ public class Register extends JFrame {
         createAccountButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GPB Register");
         setMinimumSize(new java.awt.Dimension(333, 550));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(333, 500));

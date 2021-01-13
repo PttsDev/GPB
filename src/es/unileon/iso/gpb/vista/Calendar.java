@@ -287,7 +287,7 @@ public class Calendar extends javax.swing.JFrame {
         
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
 
-        setIconImage(t.getImage(getClass().getResource("logo.png")));
+        setIconImage(t.getImage(getClass().getResource("./logo.png")));
         //start week label
         LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
         LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );

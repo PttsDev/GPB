@@ -36,6 +36,7 @@ public class LogIn extends javax.swing.JFrame {
         userTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("GPB Login");
         setMinimumSize(new java.awt.Dimension(333, 282));
         setResizable(false);
 

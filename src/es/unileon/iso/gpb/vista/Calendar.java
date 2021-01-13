@@ -339,7 +339,7 @@ public class Calendar extends javax.swing.JFrame {
         if(userType.equals("Teacher")){
             SelectGroupMenu.setEnabled(false);
             SelectGroupMenu.setVisible(false);
-            String[] ops = {"Personal Calendar", "Tutories and Meetings"};
+            String[] ops = {"General Calendar", "Tutories and Meetings"};
             DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
             calendarOptions.setModel(model);
         }

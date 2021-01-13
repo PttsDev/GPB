@@ -209,51 +209,10 @@
         <Component class="javax.swing.JTable" name="calendarioTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;00:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;01:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;02:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;03:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;04:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;05:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;06:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;07:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;08:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;09:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;10:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;11:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;12:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;13:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;14:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;15:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;16:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;17:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;18:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;19:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;20:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;21:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;22:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;23:00&quot;, null, null, null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Hours&quot;, &quot;Monday&quot;, &quot;Tueday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;, &quot;Sunday&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, true, true, true, true, true, true, true&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;00:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;01:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;02:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;03:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;04:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;05:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;06:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;07:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;08:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;09:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;10:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;11:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;12:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;13:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;14:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;15:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;16:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;17:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;18:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;19:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;20:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;21:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;22:00&quot;, null, null, null, null, null, null, null},&#xa;        {&quot;23:00&quot;, null, null, null, null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Hours&quot;, &quot;Monday&quot;, &quot;Tueday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;, &quot;Sunday&quot;&#xa;    }&#xa;) {&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, false, false, false, false, false&#xa;    };&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
+              <TableColumnModel selectionModel="0"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[600, 384]"/>

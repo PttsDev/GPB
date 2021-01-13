@@ -372,7 +372,7 @@ public class Register extends JFrame {
         emailTextField.getText().trim
         passwordTextField.getText().trim()
         confirmPasswordTextField.getText().trim()
-        Tipo: String.valueOf(typeSelector.getSelectedItem())
+        Tipo: String.valueOf(typeSelector.getSelectedItem()) 
         */
         this.dispose();
     }//GEN-LAST:event_createAccountButtonActionPerformed

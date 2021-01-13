@@ -90,8 +90,8 @@ public class Calendar extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         AccountMenu = new javax.swing.JMenu();
         myAccountMenu = new javax.swing.JMenuItem();
-        LogOutMenu = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenuItem();
+        LogOutMenu = new javax.swing.JMenuItem();
         EditMenu = new javax.swing.JMenu();
         CreateActivityMenu = new javax.swing.JMenuItem();
         EditActivityMenu = new javax.swing.JMenuItem();
@@ -221,15 +221,6 @@ public class Calendar extends javax.swing.JFrame {
         });
         AccountMenu.add(myAccountMenu);
 
-        LogOutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        LogOutMenu.setText("Log out");
-        LogOutMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogOutMenuActionPerformed(evt);
-            }
-        });
-        AccountMenu.add(LogOutMenu);
-
         HelpMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         HelpMenu.setText("Help");
         HelpMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +229,15 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
         AccountMenu.add(HelpMenu);
+
+        LogOutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        LogOutMenu.setText("Log out");
+        LogOutMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutMenuActionPerformed(evt);
+            }
+        });
+        AccountMenu.add(LogOutMenu);
 
         jMenuBar1.add(AccountMenu);
 

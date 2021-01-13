@@ -1,7 +1,7 @@
 /*
  * Clase encargada de registrar lo seleccionado por los usuarios
  */
-package es.unileon.iso.gpb.controlador;
+package es.unileon.iso.gpb.controller;
 
 import es.unileon.iso.gpb.modelo.DAO.GroupDAO;
 import es.unileon.iso.gpb.modelo.DAO.LectureDAO;
@@ -26,7 +26,7 @@ import java.awt.Color;
  *
  * @author Angel
  */
-public class Register {
+public class Controller {
 
     //DUDA: SE PUEDE PASAR POR ATRIBUTO Teacher teacher por ejemplo o siempre nombre, etc... y crearlo en ese metodo
     //Esto es basicamente el esqueleto

@@ -1,7 +1,7 @@
 /*
  * Clase main de GPB
  */
-package es.unileon.iso.gpb.controlador;
+package es.unileon.iso.gpb.controller;
 
 import es.unileon.iso.gpb.vista.*;
 import es.unileon.iso.gpb.modelo.connection.*;

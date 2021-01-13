@@ -98,7 +98,7 @@ public class Controller {
         return null;
     }
 
-    public Group modificateGroup(Teacher teacher, Group group){
+    public Group modifyGroup(Teacher teacher, Group group){
         GroupDAO groupDAO = new GroupDAO();
         return null;
     }
@@ -112,7 +112,7 @@ public class Controller {
         return null;
     }
 
-    public Meeting modificateMeeting(Teacher teacher, Meeting meeting){
+    public Meeting modifyMeeting(Teacher teacher, Meeting meeting){
         MeetingDAO meetingDAO = new MeetingDAO();
         return null;
     }

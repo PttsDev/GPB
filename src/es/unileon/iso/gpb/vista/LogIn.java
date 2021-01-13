@@ -154,7 +154,7 @@ public class LogIn extends javax.swing.JFrame {
         User user = new User("Pruebon", "Pruebin", "777777", "hola@hola.es", userTextField.getText().trim());
         //Open General Calendar
         this.setVisible(false);
-        new Calendar(this, user).setVisible(true); 
+        new Calendar(this, user, "Teacher").setVisible(true); 
 
     }//GEN-LAST:event_singInButtonActionPerformed
 

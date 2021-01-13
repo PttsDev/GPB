@@ -117,6 +117,7 @@ public class Register extends JFrame {
         OKText.setForeground(new java.awt.Color(0, 153, 0));
 
         jButton1.setText("←");
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

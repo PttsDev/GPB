@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Calendar extends javax.swing.JFrame {
 
     private JFrame parent;
     private User user;
+    private String userType;
     private LocalDate sActual;
     private LocalDate eActual;
     
@@ -26,6 +29,7 @@ public class Calendar extends javax.swing.JFrame {
      */
     public Calendar() {
         this.user = null;
+        this.userType = "Disconnected";
         init();
     }
     
@@ -36,6 +40,7 @@ public class Calendar extends javax.swing.JFrame {
      */
     public Calendar(JFrame parent) {
         this.user=null;
+        this.userType = "Disconnected";
         init();
         this.parent = parent;
     }
@@ -46,9 +51,9 @@ public class Calendar extends javax.swing.JFrame {
      * @param parent Parent JFrame
      * @param user User who did login
      */
-    public Calendar(JFrame parent, User user) {
+    public Calendar(JFrame parent, User user, String userType) {
         this.user = user;
-        
+        this.userType = userType;
         init();
         this.parent = parent;
         
@@ -79,23 +84,25 @@ public class Calendar extends javax.swing.JFrame {
         previusButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         weekLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        calendarOptions = new javax.swing.JComboBox<>();
+        manageAccountsButton = new javax.swing.JButton();
+        mySubjectsButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         AccountMenu = new javax.swing.JMenu();
+        myAccountMenu = new javax.swing.JMenuItem();
         LogOutMenu = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenuItem();
         EditMenu = new javax.swing.JMenu();
         CreateActivityMenu = new javax.swing.JMenuItem();
         EditActivityMenu = new javax.swing.JMenuItem();
         RemoveActivityMenu = new javax.swing.JMenuItem();
+        manageGroupsButton = new javax.swing.JMenuItem();
         SelectGroupMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("GPB Calendar Logged as: "+this.user.getUserName()+ " (Teacher)");
+        setTitle("GPB Calendar Logged as: "+this.user.getUserName()+ " ("+this.userType+")");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(900, 650));
         setMinimumSize(new java.awt.Dimension(835, 600));
-        setPreferredSize(new java.awt.Dimension(837, 600));
         setResizable(false);
 
         logOutButton.setText("Log out");
@@ -116,7 +123,7 @@ public class Calendar extends javax.swing.JFrame {
                 .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logOutButton)
-                .addGap(0, 61, Short.MAX_VALUE))
+                .addGap(0, 49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,9 +195,31 @@ public class Calendar extends javax.swing.JFrame {
 
         weekLabel.setText("Day x to x (modificar)");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
+        calendarOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
+
+        manageAccountsButton.setText("Manage Accounts");
+        manageAccountsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageAccountsButtonActionPerformed(evt);
+            }
+        });
+
+        mySubjectsButton.setText("My Subjects");
+        mySubjectsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mySubjectsButtonActionPerformed(evt);
+            }
+        });
 
         AccountMenu.setText("Account");
+
+        myAccountMenu.setText("My Account");
+        myAccountMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myAccountMenuActionPerformed(evt);
+            }
+        });
+        AccountMenu.add(myAccountMenu);
 
         LogOutMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         LogOutMenu.setText("Log out");
@@ -228,6 +257,14 @@ public class Calendar extends javax.swing.JFrame {
         RemoveActivityMenu.setText("Remove Activity");
         EditMenu.add(RemoveActivityMenu);
 
+        manageGroupsButton.setText("Manage Groups");
+        manageGroupsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageGroupsButtonActionPerformed(evt);
+            }
+        });
+        EditMenu.add(manageGroupsButton);
+
         SelectGroupMenu.setText("Select Group");
         EditMenu.add(SelectGroupMenu);
 
@@ -248,10 +285,14 @@ public class Calendar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nextButton)
                         .addGap(33, 33, 33)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(weekLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(mySubjectsButton)
+                        .addComponent(manageAccountsButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -259,18 +300,24 @@ public class Calendar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(previusButton)
                             .addComponent(nextButton)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addComponent(weekLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))))
+                        .addGap(0, 10, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(mySubjectsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(manageAccountsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -286,8 +333,23 @@ public class Calendar extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
         
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        
+        //If account type teacher
+        if(userType.equals("Teacher")){
+            SelectGroupMenu.setEnabled(false);
+            SelectGroupMenu.setVisible(false);
+            String[] ops = {"Personal Calendar", "Tutories and Meetings"};
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
+            calendarOptions.setModel(model);
+        }
+        //If account type Student
+        if(userType.equals("Student")){
+            manageAccountsButton.setEnabled(false);
+            manageAccountsButton.setVisible(false);
+            manageGroupsButton.setEnabled(false);
+            manageGroupsButton.setVisible(false);
+        }
         //start week label
         LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
         LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );
@@ -378,6 +440,22 @@ public class Calendar extends javax.swing.JFrame {
         new Help().setVisible(true);
     }//GEN-LAST:event_HelpMenuActionPerformed
 
+    private void manageAccountsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageAccountsButtonActionPerformed
+
+    private void mySubjectsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mySubjectsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mySubjectsButtonActionPerformed
+
+    private void myAccountMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountMenuActionPerformed
+        new MyAccount(this.user).setVisible(true);
+    }//GEN-LAST:event_myAccountMenuActionPerformed
+
+    private void manageGroupsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageGroupsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageGroupsButtonActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;
@@ -389,12 +467,16 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.JMenuItem RemoveActivityMenu;
     private javax.swing.JMenuItem SelectGroupMenu;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> calendarOptions;
     private javax.swing.JTable calendarioTable;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logOutButton;
+    private javax.swing.JButton manageAccountsButton;
+    private javax.swing.JMenuItem manageGroupsButton;
+    private javax.swing.JMenuItem myAccountMenu;
+    private javax.swing.JButton mySubjectsButton;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previusButton;

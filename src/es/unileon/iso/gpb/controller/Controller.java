@@ -117,7 +117,7 @@ public class Controller {
 	public static String getTipo(String UserID) {
 		TeacherDAO teacherDAO = new TeacherDAO();
 		String type;
-		
+                		
 		if(teacherDAO.teacherExist(UserID)) {
 			type = "Teacher";
 		}else {

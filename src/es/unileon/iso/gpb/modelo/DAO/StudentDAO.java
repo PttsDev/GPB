@@ -129,6 +129,8 @@ public class StudentDAO extends DBConnection {
                     student.setSurName(rs.getString("SurName"));
                     student.setDNI(rs.getString("DNI"));
                     student.setEmail(rs.getString("Email"));
+                    student.setID(rs.getString("ID"));
+                    student.setUserName(rs.getString("UserName"));
                 }
 
             }

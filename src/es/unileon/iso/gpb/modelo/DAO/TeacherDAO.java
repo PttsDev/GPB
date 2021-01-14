@@ -131,6 +131,8 @@ public class TeacherDAO extends DBConnection {
                     teacher.setSurName(rs.getString("SurName"));
                     teacher.setDNI(rs.getString("DNI"));
                     teacher.setEmail(rs.getString("Email"));
+                    teacher.setID(rs.getString("ID"));
+                    teacher.setUserName(rs.getString("UserName"));
                 }
 
             }

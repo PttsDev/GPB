@@ -32,7 +32,7 @@ public class StudentDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-                if(rs.getString("DNI").equals(teacher.getDNI())){
+                if(rs.getString("DNI").equals(student.getDNI())){
                     return false;
                 }
                 id++;

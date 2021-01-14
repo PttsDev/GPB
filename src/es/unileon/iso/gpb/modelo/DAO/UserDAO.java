@@ -47,13 +47,11 @@ public class UserDAO extends DBConnection {
 
         return exists;
     }
-    
-  
 
     public boolean userLogIn(String UserName, String pw) {
 
         boolean exists = false;
-       
+
         try {
             this.abrirConexion();
             PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
@@ -128,8 +126,8 @@ public class UserDAO extends DBConnection {
 
             while (rs.next()) {
 
-                if(id<=Integer.parseInt(rs.getString("userID"))){
-                    id=Integer.parseInt(rs.getString("userID"))+1;
+                if (id <= Integer.parseInt(rs.getString("userID"))) {
+                    id = Integer.parseInt(rs.getString("userID")) + 1;
                 }
             }
 
@@ -152,6 +150,24 @@ public class UserDAO extends DBConnection {
 
         return id;
 
+    }
+
+    public void changePassword(String UserName, String pw) {
+        try {
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement(" ALTER TABLE user MODIFY password ?");
+
+            stat.setString(1, pw);
+
+            stat.executeUpdate();
+
+            this.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
     }
 
 }

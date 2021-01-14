@@ -8,6 +8,7 @@ package es.unileon.iso.gpb.modelo.DAO;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
 import es.unileon.iso.gpb.modelo.users.Student;
 import es.unileon.iso.gpb.modelo.users.Student;
+import es.unileon.iso.gpb.modelo.users.Student;
 import es.unileon.iso.gpb.modelo.users.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public class StudentDAO extends DBConnection {
 
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (UserID) VALUES (?");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StudentID) VALUES (?");
 
             stat.setString(1, ID);
 
@@ -113,7 +114,7 @@ public class StudentDAO extends DBConnection {
                     student.setDNI(rs.getString("DNI"));
                     student.setEmail(rs.getString("Email"));
                     student.setID(rs.getString("ID"));
-                    student.setUserName(rs.getString("UserName"));
+                    student.setStudentName(rs.getString("StudentName"));
                 }
 
             }
@@ -131,4 +132,21 @@ public class StudentDAO extends DBConnection {
         }
     }
 
+    public void registerStudnent(String id) {
+
+        try {
+
+            this.abrirConexion();
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StudentID) VALUES (?)");
+
+            stat.setString(6, id);
+
+            stat.executeUpdate();
+
+            this.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
+    }
 }

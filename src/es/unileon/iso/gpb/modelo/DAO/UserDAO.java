@@ -128,7 +128,7 @@ public class UserDAO extends DBConnection {
                 id++;
             }
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO user (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO user (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?)");
 
             stat.setString(1, user.getName());
             stat.setString(2, user.getSurName());

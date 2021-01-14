@@ -460,7 +460,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_HelpMenuActionPerformed
 
     private void manageAccountsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsButtonActionPerformed
-        // TODO add your handling code here:
+        new ManageAccounts().setVisible(true);
     }//GEN-LAST:event_manageAccountsButtonActionPerformed
 
     private void myAccountMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountMenuActionPerformed

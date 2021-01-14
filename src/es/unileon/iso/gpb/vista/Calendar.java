@@ -86,7 +86,8 @@ public class Calendar extends javax.swing.JFrame {
         weekLabel = new javax.swing.JLabel();
         calendarOptions = new javax.swing.JComboBox<>();
         manageAccountsButton = new javax.swing.JButton();
-        mySubjectsButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        comboBoxSubjects = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         AccountMenu = new javax.swing.JMenu();
         myAccountMenu = new javax.swing.JMenuItem();
@@ -208,13 +209,9 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
 
-        mySubjectsButton.setText("My Subjects");
-        mySubjectsButton.setFocusable(false);
-        mySubjectsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mySubjectsButtonActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("My Subjects:");
+
+        comboBoxSubjects.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Subjects" }));
 
         AccountMenu.setText("Account");
 
@@ -281,6 +278,11 @@ public class Calendar extends javax.swing.JFrame {
         EditMenu.add(manageGroupsButton);
 
         SelectGroupMenu.setText("Select Group");
+        SelectGroupMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectGroupMenuActionPerformed(evt);
+            }
+        });
         EditMenu.add(SelectGroupMenu);
 
         jMenuBar1.add(EditMenu);
@@ -305,9 +307,9 @@ public class Calendar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mySubjectsButton)
-                        .addComponent(manageAccountsButton)))
+                    .addComponent(manageAccountsButton)
+                    .addComponent(jLabel1)
+                    .addComponent(comboBoxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -328,8 +330,10 @@ public class Calendar extends javax.swing.JFrame {
                         .addGap(0, 10, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)
-                        .addComponent(mySubjectsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(manageAccountsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -459,10 +463,6 @@ public class Calendar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_manageAccountsButtonActionPerformed
 
-    private void mySubjectsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mySubjectsButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mySubjectsButtonActionPerformed
-
     private void myAccountMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountMenuActionPerformed
         new MyAccount(this.user).setVisible(true);
     }//GEN-LAST:event_myAccountMenuActionPerformed
@@ -479,6 +479,10 @@ public class Calendar extends javax.swing.JFrame {
         new RemoveActivity(this.user, this.userType).setVisible(true);
     }//GEN-LAST:event_RemoveActivityMenuActionPerformed
 
+    private void SelectGroupMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectGroupMenuActionPerformed
+        new SelectGroups(this.user).setVisible(true);
+    }//GEN-LAST:event_SelectGroupMenuActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;
@@ -492,6 +496,8 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> calendarOptions;
     private javax.swing.JTable calendarioTable;
+    private javax.swing.JComboBox<String> comboBoxSubjects;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -499,7 +505,6 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.JButton manageAccountsButton;
     private javax.swing.JMenuItem manageGroupsButton;
     private javax.swing.JMenuItem myAccountMenu;
-    private javax.swing.JButton mySubjectsButton;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previusButton;

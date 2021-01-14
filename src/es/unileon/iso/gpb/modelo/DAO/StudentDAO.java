@@ -38,7 +38,7 @@ public class StudentDAO extends DBConnection {
                 id++;
             }
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (Name, SurName, DNI, Email, password, UserID) VALUES (?,?,?,?,?,?");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?");
 
             stat.setString(1, student.getName());
             stat.setString(2, student.getSurName());
@@ -46,6 +46,7 @@ public class StudentDAO extends DBConnection {
             stat.setString(4, student.getEmail());
             stat.setString(5, student.getPw());
             stat.setInt(6, id);
+            stat.setString(7, student.getUserName());
             stat.executeUpdate();
 
             this.close();

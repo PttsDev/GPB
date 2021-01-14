@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS USER (
  Surname varchar(20) not null,
  DNI varchar(11) not null UNIQUE,
  Email varchar(50) not null UNIQUE,
+ UserName varchar(25) not null UNIQUE,
  password varchar(25) not null,
  CONSTRAINT PK_User_UserID PRIMARY KEY (UserID)
 );

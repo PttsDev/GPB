@@ -81,8 +81,8 @@ public class Controller {
     //Visualizar calendario personal
 
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color){
-
-        Activity activity = new Activity(ID, name, date, endTime, duration, comments, color);
+        //eeeeeee
+        //Activity activity = new Activity(ID, name, date, endTime, duration, comments, color);
         PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
         //Llamar al DAO.
         return null;

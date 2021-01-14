@@ -30,188 +30,189 @@ import java.awt.Color;
  */
 public class Controller {
 
-	// DUDA: SE PUEDE PASAR POR ATRIBUTO Teacher teacher por ejemplo o siempre
-	// nombre, etc... y crearlo en ese metodo
-	// Esto es basicamente el esqueleto
-	public static boolean registerUser(String name, String surName, String DNI, String email, String userName,
-			String pw, String tipo) {
+    // DUDA: SE PUEDE PASAR POR ATRIBUTO Teacher teacher por ejemplo o siempre
+    // nombre, etc... y crearlo en ese metodo
+    // Esto es basicamente el esqueleto
+    public static boolean registerUser(String name, String surName, String DNI, String email, String userName,
+            String pw, String tipo) {
 
-		// User user = new User(name, surName, DNI, email, userName, pw);
-		if (tipo == "Teacher") {
+        // User user = new User(name, surName, DNI, email, userName, pw);
+        if (tipo == "Teacher") {
 
-			return registTeacher(name, surName, DNI, email, userName, pw);
+            return registTeacher(name, surName, DNI, email, userName, pw);
 
-		} else if (tipo == "Student") {
-			return registStudent(name, surName, DNI, email, userName, pw);
-		}
-		return false;
-	}
+        } else if (tipo == "Student") {
+            return registStudent(name, surName, DNI, email, userName, pw);
+        }
+        return false;
+    }
 
-	public static boolean registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
+    public static boolean registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
 
-		int i;
+        int i;
 
-		UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = new UserDAO();
 
-		Teacher teacher = new Teacher(name, surName, DNI, email, userName);
+        Teacher teacher = new Teacher(name, surName, DNI, email, userName);
 
-		teacher.setPw(pw);
+        teacher.setPw(pw);
 
-		i = userDAO.registerUser(teacher);
+        i = userDAO.registerUser(teacher);
 
-		if (i != 0) {
+        if (i != 0) {
 
-			teacher.setID(String.valueOf(i));
+            teacher.setID(String.valueOf(i));
 
-			TeacherDAO teacherDAO = new TeacherDAO();
+            TeacherDAO teacherDAO = new TeacherDAO();
 
-			if (teacherDAO.registerTeacher(teacher.getID()) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		return false;
+            if (teacherDAO.registerTeacher(teacher.getID()) == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
 
-	}
+    }
 
-	public static boolean registStudent(String name, String surName, String DNI, String email, String userName,
-			String pw) {
+    public static boolean registStudent(String name, String surName, String DNI, String email, String userName,
+            String pw) {
 
-		int i;
+        int i;
 
-		UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = new UserDAO();
 
-		Student student = new Student(name, surName, DNI, email, userName);
+        Student student = new Student(name, surName, DNI, email, userName);
 
-		student.setPw(pw);
+        student.setPw(pw);
 
-		i = userDAO.registerUser(student);
+        i = userDAO.registerUser(student);
 
-		if (i != 0) {
+        if (i != 0) {
 
-			student.setID(String.valueOf(i));
+            student.setID(String.valueOf(i));
 
-			StudentDAO studentDAO = new StudentDAO();
+            StudentDAO studentDAO = new StudentDAO();
 
-			if (studentDAO.registerStudent(student.getID()) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		return false;
-	}
+            if (studentDAO.registerStudent(student.getID()) == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
 
-	public static User loginUser(String userName, String pw) {
-		UserDAO userDAO = new UserDAO();
-		
-		if(userDAO.userLogIn(userName, pw) == true) {
-			User user = userDAO.getUser(userName);
-			return user;
-		}
-		
-		return null;
-	}
-	
-	public static String getTipo(String UserID) {
-		TeacherDAO teacherDAO = new TeacherDAO();
-		String type;
-                		
-		if(teacherDAO.teacherExist(UserID)) {
-			type = "Teacher";
-		}else {
-			type = "Student";
-		}
-		
-		return type;
-		
-	}
-	
-	public static boolean changePassword(String userName, String pw, String newPw) {
-		UserDAO userDAO = new UserDAO();
-		
-		if(userDAO.userLogIn(userName, pw)==true) {
-			return userDAO.changePassword(userName, newPw);
-		}
-		return false;
-	}
+    public static User loginUser(String userName, String pw) {
+        UserDAO userDAO = new UserDAO();
 
-	// Visualizar calendario personal
-	public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
-			String comments, Color color) {
-		// eeeeeee
-		// Activity activity = new Activity(ID, name, date, endTime, duration, comments,
-		// color);
-		PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
-		// Llamar al DAO.
-		return null;
-	}
+        if (userDAO.userLogIn(userName, pw) == true) {
+            User user = userDAO.getUser(userName);
+            return user;
+        }
 
-	/*
+        return null;
+    }
+
+    public static String getTipo(String UserID) {
+        TeacherDAO teacherDAO = new TeacherDAO();
+        String type;
+
+        if (teacherDAO.teacherExist(UserID)) {
+            type = "Teacher";
+        } else {
+            type = "Student";
+        }
+
+        return type;
+
+    }
+
+    public static boolean changePassword(String userName, String pw, String newPw) {
+        UserDAO userDAO = new UserDAO();
+
+        if (userDAO.userLogIn(userName, pw) == true) {
+            userDAO.changePassword(userName, newPw);
+            return true;
+        }
+        return false;
+    }
+
+    // Visualizar calendario personal
+    public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
+            String comments, Color color) {
+        // eeeeeee
+        // Activity activity = new Activity(ID, name, date, endTime, duration, comments,
+        // color);
+        PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
+        // Llamar al DAO.
+        return null;
+    }
+
+    /*
 	 * Crear una activity personal por cada tipo que puede modificar?
-	 */
-	public boolean removePersonalActivity(long ID, User user) {// boolean o user?
+     */
+    public boolean removePersonalActivity(long ID, User user) {// boolean o user?
 
-		UserDAO userDAO = new UserDAO();
-		// Llamar a borrarActividad de Dao
-		return false;
+        UserDAO userDAO = new UserDAO();
+        // Llamar a borrarActividad de Dao
+        return false;
 
-	}
+    }
 
-	/*
+    /*
 	 * Mostrar Actividades?
-	 */
-	public Activity showActivity(User user) {
-		return null;
-	}
+     */
+    public Activity showActivity(User user) {
+        return null;
+    }
 
-	public boolean selectGroup(User user, Group group) {// boolean o group?
-		GroupDAO groupDAO = new GroupDAO();// El grupo ya tiene que estar creado
-		return false;
-	}
+    public boolean selectGroup(User user, Group group) {// boolean o group?
+        GroupDAO groupDAO = new GroupDAO();// El grupo ya tiene que estar creado
+        return false;
+    }
 
-	public Lecture showLectures(User user) {
-		LectureDAO lectureDAO = new LectureDAO();
-		return null;
-	}
+    public Lecture showLectures(User user) {
+        LectureDAO lectureDAO = new LectureDAO();
+        return null;
+    }
 
-	public Tutorship showTutorship(User user) {
-		TutorshipDAO tutorshipDAO = new TutorshipDAO();
-		return null;
-	}
+    public Tutorship showTutorship(User user) {
+        TutorshipDAO tutorshipDAO = new TutorshipDAO();
+        return null;
+    }
 
-	// Haria falta un ClaseDao?
-	public Group createGroup(Teacher teacher, int number, String type) {
-		Group group = new Group(number, type);
-		GroupDAO groupDAO = new GroupDAO();
-		// comprobar el grupo del profesor
-		return null;
-	}
+    // Haria falta un ClaseDao?
+    public Group createGroup(Teacher teacher, int number, String type) {
+        Group group = new Group(number, type);
+        GroupDAO groupDAO = new GroupDAO();
+        // comprobar el grupo del profesor
+        return null;
+    }
 
-	public Group modifyGroup(Teacher teacher, Group group) {
-		GroupDAO groupDAO = new GroupDAO();
-		return null;
-	}
+    public Group modifyGroup(Teacher teacher, Group group) {
+        GroupDAO groupDAO = new GroupDAO();
+        return null;
+    }
 
-	public boolean removeGroup(Teacher teacher, Group group) {
-		GroupDAO groupDAO = new GroupDAO();
-		return false;
-	}
+    public boolean removeGroup(Teacher teacher, Group group) {
+        GroupDAO groupDAO = new GroupDAO();
+        return false;
+    }
 
-	public Meeting createMeeting(Teacher teacher) {// Al elegir quienes son, se le pasa por atributo la lista de
-													// alumnos?
-		return null;
-	}
+    public Meeting createMeeting(Teacher teacher) {// Al elegir quienes son, se le pasa por atributo la lista de
+        // alumnos?
+        return null;
+    }
 
-	public Meeting modifyMeeting(Teacher teacher, Meeting meeting) {
-		MeetingDAO meetingDAO = new MeetingDAO();
-		return null;
-	}
+    public Meeting modifyMeeting(Teacher teacher, Meeting meeting) {
+        MeetingDAO meetingDAO = new MeetingDAO();
+        return null;
+    }
 
-	public boolean removeMeeting(Teacher teacher, Meeting meeting) {
-		MeetingDAO meetingDAO = new MeetingDAO();
-		return false;
-	}
+    public boolean removeMeeting(Teacher teacher, Meeting meeting) {
+        MeetingDAO meetingDAO = new MeetingDAO();
+        return false;
+    }
 
 }

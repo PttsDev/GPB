@@ -23,28 +23,20 @@ public class Student extends User {
     private Tutorships tutorships;
     private Subjects subjects;
 
-    private String idStudent;
     private ArrayList<Integer> group; //TODO METODOS, ETC
 
     public Student() {
     }
 
-    public Student(String name, String surName, String DNI, String email, String username, String idStudent) {
+    public Student(String name, String surName, String DNI, String email, String username) {
         super(name, surName, DNI, email, username);
         this.tutorships = new Tutorships();
         this.persAct = new PersonalActivities();
         this.subjects = new Subjects();
         this.group = new ArrayList<Integer>();
-        this.idStudent = idStudent;
     }
 
-    public String getIdStudent() {
-        return this.idStudent;
-    }
 
-    public void setIdStudent(String idStudent) {
-        this.idStudent = idStudent;
-    }
 
     /*
     * Metodos que gestionan las activity

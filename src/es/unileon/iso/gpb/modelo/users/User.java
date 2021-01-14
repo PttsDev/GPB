@@ -21,6 +21,7 @@ public class User {
     private String email;
     private String userName;
     private String pw;
+    private String ID;
     
     public User() {
     }
@@ -47,6 +48,15 @@ public class User {
 
     public void setPw(String pw) {
         this.pw = pw;
+    }
+    
+    
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String userID) {
+        this.ID = ID;
     }
 
     public void setUserName(String userName) {

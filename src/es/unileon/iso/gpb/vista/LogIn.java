@@ -1,6 +1,8 @@
 
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.getTipo;
+import static es.unileon.iso.gpb.controller.Controller.loginUser;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.JFrame;
 import javax.swing.event.DocumentEvent;
@@ -150,13 +152,25 @@ public class LogIn extends javax.swing.JFrame {
         /*
         * Receive user from controler
         */
+        if( userTextField.getText().trim().length()>25    ||
+           passwordField.getText().trim().length()<5      ||
+           userTextField.getText().trim().length()<5      ||
+           passwordField.getText().trim().length()<5 ){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong input", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
         
-        //!!!!!!!!USUARIO DE PRUEBA, ELIMINAR DESPUES!!!!!!!
+        User user = loginUser(userTextField.getText().trim(), passwordField.getText().trim());
         
-        User user = new User("Pruebon", "Pruebin", "777777", "hola@hola.es", userTextField.getText().trim());
-        //Open General Calendar
-        this.setVisible(false);
-        new Calendar(this, user, "Teacher").setVisible(true); 
+        if(user==null){
+            
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            
+            String type = getTipo(userTextField.getText().trim());
+            new Calendar(this, user, type).setVisible(true);
+            
+        }       
 
     }//GEN-LAST:event_singInButtonActionPerformed
 

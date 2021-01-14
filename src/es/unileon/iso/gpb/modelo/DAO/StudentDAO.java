@@ -20,18 +20,21 @@ import java.sql.Statement;
  */
 public class StudentDAO extends DBConnection {
 
-    public void registerStudent(Student student) {
+    public boolean registerStudent(Student student) {
 
         try {
 
             this.abrirConexion();
 
-            int id = -1;
+            int id = 1;
 
             PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM student");
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
+                if(rs.getString("DNI").equals(teacher.getDNI())){
+                    return false;
+                }
                 id++;
             }
 
@@ -50,7 +53,7 @@ public class StudentDAO extends DBConnection {
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
-
+        return true;
     }
 
     public boolean studentExist(String StudentID) {

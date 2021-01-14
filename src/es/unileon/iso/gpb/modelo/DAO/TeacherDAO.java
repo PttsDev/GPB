@@ -20,7 +20,7 @@ import java.sql.Statement;
  */
 public class TeacherDAO extends DBConnection {
 
-    public void registerTeacher(Teacher teacher) {
+    public boolean registerTeacher(Teacher teacher) {
 
         try {
 
@@ -32,6 +32,9 @@ public class TeacherDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
+                if(rs.getString("DNI").equals(teacher.getDNI())){
+                    return false;
+                }
                 id--;
             }
 
@@ -50,6 +53,8 @@ public class TeacherDAO extends DBConnection {
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
+        
+        return true;
 
     }
 

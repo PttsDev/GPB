@@ -20,26 +20,16 @@ public class Teacher extends User{
     
     private Tutorships tutorships;
     private Meetings meetings;
-    private String idTeacher;
     private Subjects subjects; //TODO
     
     public Teacher(){}
     
-    public Teacher(String name, String surName, String DNI, String email, String username, String idTeacher) {
+    public Teacher(String name, String surName, String DNI, String email, String username) {
         super(name, surName, DNI, email, username);
         
         this.tutorships = new Tutorships();
         this.meetings = new Meetings();
         this.subjects = new Subjects();
-        this.idTeacher = idTeacher;
-    }
-
-    public String getIdTeacher() {
-        return this.idTeacher;
-    }
-
-    public void setIdTeacher(String idTeacher) {
-        this.idTeacher = idTeacher;
     }
 
     /*

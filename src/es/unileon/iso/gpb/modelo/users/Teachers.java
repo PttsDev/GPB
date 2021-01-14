@@ -32,7 +32,7 @@ public class Teachers {
         int i = 0;
         while(i<list.size()){
             
-            if(list.get(i).getIdTeacher().equals(ID))
+            if(list.get(i).getID().equals(ID))
                 return i;
             i++;
         }

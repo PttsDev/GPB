@@ -86,6 +86,11 @@ public class MyAccount extends javax.swing.JFrame {
 
         jButton2.setText("Change email");
         jButton2.setFocusable(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         nameLabel.setFont(new java.awt.Font("Tw Cen MT", 2, 14)); // NOI18N
         nameLabel.setText("name");
@@ -104,6 +109,7 @@ public class MyAccount extends javax.swing.JFrame {
         usernameLabel.setText("username");
 
         jButton3.setText("Delete account");
+        jButton3.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,6 +194,10 @@ public class MyAccount extends javax.swing.JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new ChangeEmail(user).setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void init(){
         

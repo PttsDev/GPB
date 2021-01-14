@@ -33,7 +33,7 @@ public class Controller {
     //DUDA: SE PUEDE PASAR POR ATRIBUTO Teacher teacher por ejemplo o siempre nombre, etc... y crearlo en ese metodo
     //Esto es basicamente el esqueleto
 
-    public User registerUser(String name, String surName, String DNI, String email, String userName, String pw, String tipo){
+    public static User registerUser(String name, String surName, String DNI, String email, String userName, String pw, String tipo){
 
         if(tipo == "Teacher"){
         
@@ -46,7 +46,7 @@ public class Controller {
         return null;
     }
 
-    public Teacher registTeacher(String name, String surName, String DNI, String email, String userName, String pw){
+    public static Teacher registTeacher(String name, String surName, String DNI, String email, String userName, String pw){
         Teacher teacher = new Teacher(name, surName, DNI, email, userName);
 
         TeacherDAO teacherDAO = new TeacherDAO();
@@ -59,7 +59,7 @@ public class Controller {
 
     }
 
-    public Student registStudent(String name, String surName, String DNI, String email, String userName, String pw){
+    public static Student registStudent(String name, String surName, String DNI, String email, String userName, String pw){
         Student student = new Student(name, surName, DNI, email, userName);
 
         StudentDAO studentDAO = new StudentDAO();

@@ -1,6 +1,7 @@
 package es.unileon.iso.gpb.vista;
 
 import es.unileon.iso.gpb.modelo.users.User;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -31,22 +32,234 @@ public class CreateActivity extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        fechaTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        horaInicioTextField = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        horaFinTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        comentariosTextField = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        typeSelector = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        duracionTextField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        createActivityButton = new javax.swing.JButton();
+        colorChooser = new javax.swing.JColorChooser();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GPB Create Activity");
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(333, 500));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Create Activity");
+        jLabel1.setAlignmentX(0.5F);
+
+        jLabel2.setText("Name:");
+
+        jLabel3.setText("Fecha");
+
+        fechaTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Hora inicio:");
+
+        horaInicioTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                horaInicioTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Hora fin:");
+
+        jLabel6.setText("Comentarios:");
+
+        comentariosTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comentariosTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Color:");
+
+        jButton1.setText("←");
+        jButton1.setFocusable(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        typeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal Activity", "Tutorship", "Meeting", "Lecture" }));
+        typeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeSelectorActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Type:");
+
+        jLabel9.setText("Duración:");
+
+        createActivityButton.setText("Create activity");
+        createActivityButton.setFocusable(false);
+        createActivityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createActivityButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                        .addComponent(fechaTextField)
+                        .addComponent(horaInicioTextField)
+                        .addComponent(nameTextField)
+                        .addComponent(comentariosTextField))
+                    .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(duracionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(createActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(horaInicioTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(duracionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comentariosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(createActivityButton)
+                .addGap(54, 54, 54))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fechaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaTextFieldActionPerformed
+
+    private void comentariosTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comentariosTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comentariosTextFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void typeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeSelectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_typeSelectorActionPerformed
+
+    private void createActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActivityButtonActionPerformed
+        //Register method TODO
+
+        //Take data from text fields
+
+        //Call controller to create the user
+
+        //Message of creation
+
+        /* Send data to the controller for creating an user with:
+        nameTextField.getText().trim()
+        fechaTextField.getText().trim()
+        horaInicioTextField.getText().trim()
+        horaFinTextField.getText().trim()
+        duracionTextField.getText().trim
+        comentariosTextField.getText().trim()
+        confirmPasswordTextField.getText().trim()
+        Tipo: String.valueOf(typeSelector.getSelectedItem())
+        */
+        this.dispose();
+    }//GEN-LAST:event_createActivityButtonActionPerformed
+
+    private void horaInicioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaInicioTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_horaInicioTextFieldActionPerformed
     
     private void init() {
         initComponents();
@@ -54,7 +267,39 @@ public class CreateActivity extends javax.swing.JFrame {
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        if(userType.equals("Teacher")){
+            String[] ops = {"Tutorship", "Meeting", "Lecture"};
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
+            typeSelector.setModel(model);
+        }
+        //If account type Student
+        if(userType.equals("Student")){
+            String[] ops = {"Personal Activity"};
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
+            typeSelector.setModel(model);
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JColorChooser colorChooser;
+    private javax.swing.JPasswordField comentariosTextField;
+    private javax.swing.JButton createActivityButton;
+    private javax.swing.JTextField duracionTextField;
+    private javax.swing.JTextField fechaTextField;
+    private javax.swing.JTextField horaFinTextField;
+    private javax.swing.JTextField horaInicioTextField;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JComboBox<String> typeSelector;
     // End of variables declaration//GEN-END:variables
 }

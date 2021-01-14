@@ -278,6 +278,11 @@ public class Calendar extends javax.swing.JFrame {
         EditMenu.add(manageGroupsButton);
 
         SelectGroupMenu.setText("Select Group");
+        SelectGroupMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectGroupMenuActionPerformed(evt);
+            }
+        });
         EditMenu.add(SelectGroupMenu);
 
         jMenuBar1.add(EditMenu);
@@ -473,6 +478,10 @@ public class Calendar extends javax.swing.JFrame {
     private void RemoveActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActivityMenuActionPerformed
         new RemoveActivity(this.user, this.userType).setVisible(true);
     }//GEN-LAST:event_RemoveActivityMenuActionPerformed
+
+    private void SelectGroupMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectGroupMenuActionPerformed
+        new SelectGroups(this.user).setVisible(true);
+    }//GEN-LAST:event_SelectGroupMenuActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

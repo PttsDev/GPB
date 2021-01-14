@@ -27,7 +27,7 @@ public class StudentDAO extends DBConnection {
 
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StudentID) VALUES (?");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StuID) VALUES (?)");
 
             stat.setString(1, ID);
 
@@ -132,22 +132,4 @@ public class StudentDAO extends DBConnection {
         }
     }
 
-    public void registerStudnent(String id) {
-
-        try {
-
-            this.abrirConexion();
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StuID) VALUES (?)");
-
-            
-            stat.setString(1, id);
-
-            stat.executeUpdate();
-
-            this.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            //Llamar a controlador para sacar mensaje por vista TODO
-        }
-    }
 }

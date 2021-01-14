@@ -81,7 +81,7 @@ public class Controller {
             student.setID(String.valueOf(i));
 
             StudentDAO studentDAO = new StudentDAO();
-
+            
             if (studentDAO.registerStudent(student.getID()) == true) {
                 return student;
             } else {

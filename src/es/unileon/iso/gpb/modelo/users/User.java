@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setID(String userID) {
-        this.ID = ID;
+        this.ID = userID;
     }
 
     public void setUserName(String userName) {

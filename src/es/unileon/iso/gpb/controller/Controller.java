@@ -127,6 +127,15 @@ public class Controller {
 		return type;
 		
 	}
+	
+	public static boolean changePassword(String userName, String pw, String newPw) {
+		UserDAO userDAO = new UserDAO();
+		
+		if(userDAO.userLogIn(userName, pw)==true) {
+			return userDAO.changePassword(userName, newPw);
+		}
+		return false;
+	}
 
 	// Visualizar calendario personal
 	public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,

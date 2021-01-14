@@ -205,6 +205,7 @@
         <Component class="javax.swing.JButton" name="logOutButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Log out"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logOutButtonActionPerformed"/>
@@ -254,6 +255,7 @@
     <Component class="javax.swing.JButton" name="previusButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Previous"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previusButtonActionPerformed"/>
@@ -262,6 +264,7 @@
     <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextButtonActionPerformed"/>
@@ -288,6 +291,7 @@
     <Component class="javax.swing.JButton" name="manageAccountsButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Accounts"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageAccountsButtonActionPerformed"/>
@@ -296,6 +300,7 @@
     <Component class="javax.swing.JButton" name="mySubjectsButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="My Subjects"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mySubjectsButtonActionPerformed"/>

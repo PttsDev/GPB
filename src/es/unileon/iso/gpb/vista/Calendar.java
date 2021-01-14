@@ -106,6 +106,7 @@ public class Calendar extends javax.swing.JFrame {
         setResizable(false);
 
         logOutButton.setText("Log out");
+        logOutButton.setFocusable(false);
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutButtonActionPerformed(evt);
@@ -180,6 +181,7 @@ public class Calendar extends javax.swing.JFrame {
         jScrollPane1.setViewportView(calendarioTable);
 
         previusButton.setText("Previous");
+        previusButton.setFocusable(false);
         previusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previusButtonActionPerformed(evt);
@@ -187,6 +189,7 @@ public class Calendar extends javax.swing.JFrame {
         });
 
         nextButton.setText("Next");
+        nextButton.setFocusable(false);
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
@@ -198,6 +201,7 @@ public class Calendar extends javax.swing.JFrame {
         calendarOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
 
         manageAccountsButton.setText("Manage Accounts");
+        manageAccountsButton.setFocusable(false);
         manageAccountsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageAccountsButtonActionPerformed(evt);
@@ -205,6 +209,7 @@ public class Calendar extends javax.swing.JFrame {
         });
 
         mySubjectsButton.setText("My Subjects");
+        mySubjectsButton.setFocusable(false);
         mySubjectsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mySubjectsButtonActionPerformed(evt);

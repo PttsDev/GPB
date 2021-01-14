@@ -224,6 +224,7 @@ public class Register extends JFrame {
         );
 
         createAccountButton.setText("Create account");
+        createAccountButton.setFocusable(false);
         createAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createAccountButtonActionPerformed(evt);

@@ -65,6 +65,7 @@ public class ChangePassword extends javax.swing.JFrame {
         jLabel3.setText("Confirm new password:");
 
         changePasswordButton.setText("Change password");
+        changePasswordButton.setFocusable(false);
         changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changePasswordButtonActionPerformed(evt);

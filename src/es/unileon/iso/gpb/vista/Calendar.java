@@ -257,9 +257,19 @@ public class Calendar extends javax.swing.JFrame {
         EditMenu.add(CreateActivityMenu);
 
         EditActivityMenu.setText("Edit Activity");
+        EditActivityMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActivityMenuActionPerformed(evt);
+            }
+        });
         EditMenu.add(EditActivityMenu);
 
         RemoveActivityMenu.setText("Remove Activity");
+        RemoveActivityMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveActivityMenuActionPerformed(evt);
+            }
+        });
         EditMenu.add(RemoveActivityMenu);
 
         manageGroupsButton.setText("Manage Groups");
@@ -458,8 +468,16 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_myAccountMenuActionPerformed
 
     private void manageGroupsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageGroupsButtonActionPerformed
-        // TODO add your handling code here:
+       new ManageGroups(this.user).setVisible(true);
     }//GEN-LAST:event_manageGroupsButtonActionPerformed
+
+    private void EditActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActivityMenuActionPerformed
+        new EditActivity(this.user, this.userType).setVisible(true);
+    }//GEN-LAST:event_EditActivityMenuActionPerformed
+
+    private void RemoveActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActivityMenuActionPerformed
+        new RemoveActivity(this.user, this.userType).setVisible(true);
+    }//GEN-LAST:event_RemoveActivityMenuActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

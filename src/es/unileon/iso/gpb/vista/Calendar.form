@@ -60,11 +60,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit Activity"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditActivityMenuActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="RemoveActivityMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove Activity"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveActivityMenuActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="manageGroupsButton">
               <Properties>

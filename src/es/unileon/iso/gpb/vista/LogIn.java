@@ -167,7 +167,7 @@ public class LogIn extends javax.swing.JFrame {
             
             }else{
             
-                String type = getTipo(userTextField.getText().trim());
+                String type = getTipo(user.getID());
                 new Calendar(this, user, type).setVisible(true);
             
             }  

@@ -53,8 +53,7 @@ public class UserDAO extends DBConnection {
     public boolean userLogIn(String UserID, String pw) {
 
         boolean exists = false;
-        boolean ets = false;
-
+       
         try {
             this.abrirConexion();
             PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");

@@ -56,7 +56,7 @@ public class Controller {
         
         TeacherDAO teacherDAO = new TeacherDAO();
 
-        if (teacherDAO.registerTeacher(teacher) == true) {
+        if (teacherDAO.registerTeacher(teacher.getID()) == true) {
             return teacher;
         } else {
             return null;

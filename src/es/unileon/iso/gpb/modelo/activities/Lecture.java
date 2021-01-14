@@ -6,8 +6,7 @@
 package es.unileon.iso.gpb.modelo.activities;
 
 import java.awt.Color;
-import java.sql.Time;
-import java.util.Date;
+import java.time.*;
 
 /**
  *
@@ -22,7 +21,7 @@ public class Lecture extends Activity {
     /*
     * Añadir constructores sobrecargados
     */
-    public Lecture(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String classroom) {
+    public Lecture(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color, String classroom) {
         super(ID, name, date, endTime, duration, comments, color);
         this.classroom = classroom;
         this.exam = false;

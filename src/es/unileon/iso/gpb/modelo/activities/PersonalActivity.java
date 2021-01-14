@@ -6,8 +6,7 @@
 package es.unileon.iso.gpb.modelo.activities;
 
 import java.awt.Color;
-import java.sql.Time;
-import java.util.Date;
+import java.time.*;
 
 /**
  *
@@ -19,7 +18,7 @@ public class PersonalActivity extends Activity{
     /*
     * Añadir constructores sobrecargados
     */
-    public PersonalActivity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color) {
+    public PersonalActivity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color) {
         super(ID, name, date, endTime, duration, comments, color);
     }
     

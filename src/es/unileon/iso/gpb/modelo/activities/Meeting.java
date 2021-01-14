@@ -8,8 +8,7 @@ package es.unileon.iso.gpb.modelo.activities;
 import es.unileon.iso.gpb.modelo.users.Teacher;
 import es.unileon.iso.gpb.modelo.users.Teachers;
 import java.awt.Color;
-import java.sql.Time;
-import java.util.Date;
+import java.time.*;
 
 /**
  *
@@ -24,7 +23,7 @@ public class Meeting extends Activity{
     /*
     * Añadir constructores sobrecargados
     */
-    public Meeting(long ID, String name, Date date, Time endTime, long duration, String comments, Color color, String place) {
+    public Meeting(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color, String place) {
         super(ID, name, date, endTime, duration, comments, color);
         this.place = place;
         this.teachers = new Teachers();

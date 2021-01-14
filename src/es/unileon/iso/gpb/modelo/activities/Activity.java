@@ -1,8 +1,7 @@
 
 package es.unileon.iso.gpb.modelo.activities;
 
-import java.util.Date;
-import java.sql.Time;
+import java.time.*;
 import java.awt.Color;
 
 /**
@@ -12,8 +11,8 @@ import java.awt.Color;
 public class Activity {
     private long ID;
     private String name;
-    private Date date;
-    private Time endTime;
+    private LocalDate date;
+    private LocalTime endTime;
     private long duration;
     private String comments;
     private Color color;
@@ -22,7 +21,7 @@ public class Activity {
     /*
     * FALTAN MAS CONSTRUCTORES SOBRECARGADOS QUITANDO DATOS QUE NO SEAN NECESARIOS
     */
-    public Activity(long ID, String name, Date date, Time endTime, long duration){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration){
         this.ID=ID;
         this.name=name;
         this.date=date;
@@ -31,7 +30,7 @@ public class Activity {
         this.comments="";
     }
         
-    public Activity(long ID, String name, Date date, Time endTime, long duration, String comments, Color color){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color){
         this.ID=ID;
         this.name=name;
         this.date=date;
@@ -40,7 +39,7 @@ public class Activity {
         this.comments=comments;
         this.color=color; 
     }
-    public Activity(long ID, String name, Date date, Time endTime, long duration, Color color){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, Color color){
         this.ID=ID;
         this.name=name;
         this.date=date;
@@ -49,7 +48,7 @@ public class Activity {
         this.comments="";
         this.color=color; 
     }
-    public Activity(long ID, String name, Date date, Time endTime, long duration, String comments){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments){
         this.ID=ID;
         this.name=name;
         this.date=date;
@@ -65,11 +64,11 @@ public class Activity {
         this.name=name;
     }
     
-    public void setDate(Date date){
+    public void setDate(LocalDate date){
         this.date=date;
     }
     
-    public void setEndTime(Time endTime){
+    public void setEndTime(LocalTime endTime){
         this.endTime=endTime;
        
     }
@@ -96,11 +95,11 @@ public class Activity {
         return this.name;
     }
     
-    public Date getDate(){
+    public LocalDate getDate(){
         return this.date;
     }
     
-    public Time getEndTime(){
+    public LocalTime getEndTime(){
         return this.endTime;
     }
     

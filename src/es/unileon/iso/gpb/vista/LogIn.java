@@ -42,6 +42,7 @@ public class LogIn extends javax.swing.JFrame {
 
         singInButton.setText("Sing in");
         singInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        singInButton.setFocusable(false);
         singInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singInButtonActionPerformed(evt);
@@ -55,6 +56,7 @@ public class LogIn extends javax.swing.JFrame {
 
         singUpButton.setText("Sing up");
         singUpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        singUpButton.setFocusable(false);
         singUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 singUpButtonActionPerformed(evt);

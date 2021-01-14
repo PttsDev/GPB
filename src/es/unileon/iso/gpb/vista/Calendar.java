@@ -426,7 +426,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutMenuActionPerformed
 
     private void CreateActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateActivityMenuActionPerformed
-        // TODO add your handling code here:
+        new CreateActivity(this.user, this.userType).setVisible(true);
     }//GEN-LAST:event_CreateActivityMenuActionPerformed
 
     private void previusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previusButtonActionPerformed

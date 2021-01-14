@@ -207,7 +207,15 @@ public class ChangePassword extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
-        // TODO add your handling code here:
+        
+        if( currentPasswordField.getText().trim().length() <5 || currentPasswordField.getText().trim().length()>25 ||
+           newPasswordField.getText().trim().length()<5 || newPasswordField.getText().trim().length()>25){
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong input!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        
+        //boolean ret = changePassword(this.user.getUserName(), currentPasswordField.getText().trim(), newPasswordField.getText().trim());
+        //if(ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
+        //else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfuly", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);}
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
 

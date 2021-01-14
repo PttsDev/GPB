@@ -163,7 +163,7 @@ public class LogIn extends javax.swing.JFrame {
         
             if(user==null){
             
-                javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
             
             }else{
             

@@ -379,9 +379,9 @@ public class Register extends JFrame {
         }else{
         
         if(registerUser(nameTextField.getText().trim(), surnameTextField.getText().trim(), dniTextField.getText().trim(), emailTextField.getText().trim(), userTextField.getText().trim(),  passwordTextField.getText().trim(), String.valueOf(typeSelector.getSelectedItem()) ))
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Registered", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Registered", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         else
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
         
         this.dispose();
         }

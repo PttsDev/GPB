@@ -47,10 +47,13 @@ public class UserDAO extends DBConnection {
 
         return exists;
     }
+    
+  
 
     public boolean userLogIn(String UserID, String pw) {
 
         boolean exists = false;
+        boolean ets = false;
 
         try {
             this.abrirConexion();

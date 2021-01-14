@@ -20,33 +20,16 @@ import java.sql.Statement;
  */
 public class TeacherDAO extends DBConnection {
 
-    public boolean registerTeacher(Teacher teacher) {
+    public boolean registerTeacher(String ID) {
 
         try {
 
             this.abrirConexion();
 
-            int id = -1;
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teacher (TeaID) VALUES (?)");
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM teacher");
-            ResultSet rs = query.executeQuery();
+            stat.setString(1, ID);
 
-            while (rs.next()) {
-                if(rs.getString("DNI").equals(teacher.getDNI())){
-                    return false;
-                }
-                id--;
-            }
-
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teacher (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?");
-
-            stat.setString(1, teacher.getName());
-            stat.setString(2, teacher.getSurName());
-            stat.setString(3, teacher.getDNI());
-            stat.setString(4, teacher.getEmail());
-            stat.setString(5, teacher.getPw());
-            stat.setInt(6, id);
-            stat.setString(7, teacher.getUserName());
             stat.executeUpdate();
 
             this.close();
@@ -54,9 +37,7 @@ public class TeacherDAO extends DBConnection {
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
-        
         return true;
-
     }
 
     public boolean teacherExist(String TeacherID) {

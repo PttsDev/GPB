@@ -50,7 +50,7 @@ public class UserDAO extends DBConnection {
     
   
 
-    public boolean userLogIn(String UserID, String pw) {
+    public boolean userLogIn(String UserName, String pw) {
 
         boolean exists = false;
        
@@ -61,7 +61,7 @@ public class UserDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("UserID").equals(UserID) && rs.getString("password").equals(pw)) {
+                if (rs.getString("UserName").equals(UserName) && rs.getString("password").equals(pw)) {
                     exists = true;
                 }
 
@@ -127,10 +127,10 @@ public class UserDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-                if (rs.getString("DNI").equals(user.getDNI())) {
-                    return 0;
+
+                if(id<=Integer.parseInt(rs.getString("userID"))){
+                    id=Integer.parseInt(rs.getString("userID"))+1;
                 }
-                id++;
             }
 
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO user (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?)");

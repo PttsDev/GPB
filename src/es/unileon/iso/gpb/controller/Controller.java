@@ -114,13 +114,11 @@ public class Controller {
 		return null;
 	}
 	
-	public static String getTipo(String userName) {
+	public static String getTipo(String UserID) {
 		TeacherDAO teacherDAO = new TeacherDAO();
-		UserDAO userDAO = new UserDAO();
-		User user = userDAO.getUser(userName);
 		String type;
 		
-		if(teacherDAO.teacherExist(user.getID())) {
+		if(teacherDAO.teacherExist(UserID)) {
 			type = "Teacher";
 		}else {
 			type = "Student";

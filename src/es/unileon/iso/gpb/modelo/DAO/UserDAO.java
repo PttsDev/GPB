@@ -156,7 +156,7 @@ public class UserDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement(" ALTER TABLE user MODIFY password ?");
+            PreparedStatement stat = this.getConnection().prepareStatement("ALTER TABLE user MODIFY password (?)");
 
             stat.setString(1, pw);
 

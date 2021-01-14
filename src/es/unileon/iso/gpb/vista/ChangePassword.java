@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.changePassword;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -213,9 +214,9 @@ public class ChangePassword extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Wrong input!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
         
-        //boolean ret = changePassword(this.user.getUserName(), currentPasswordField.getText().trim(), newPasswordField.getText().trim());
-        //if(ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
-        //else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfuly", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);}
+        boolean ret = changePassword(this.user.getUserName(), currentPasswordField.getText().trim(), newPasswordField.getText().trim());
+        if(ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
+        else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfuly", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);}
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
 

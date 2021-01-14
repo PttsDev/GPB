@@ -20,33 +20,16 @@ import java.sql.Statement;
  */
 public class StudentDAO extends DBConnection {
 
-    public boolean registerStudent(Student student) {
+    public boolean registerStudent(String ID) {
 
         try {
 
             this.abrirConexion();
 
-            int id = 1;
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (UserID) VALUES (?");
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM student");
-            ResultSet rs = query.executeQuery();
+            stat.setString(1, ID);
 
-            while (rs.next()) {
-                if(rs.getString("DNI").equals(student.getDNI())){
-                    return false;
-                }
-                id++;
-            }
-
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (Name, SurName, DNI, Email, password, UserID, UserName) VALUES (?,?,?,?,?,?,?");
-
-            stat.setString(1, student.getName());
-            stat.setString(2, student.getSurName());
-            stat.setString(3, student.getDNI());
-            stat.setString(4, student.getEmail());
-            stat.setString(5, student.getPw());
-            stat.setInt(6, id);
-            stat.setString(7, student.getUserName());
             stat.executeUpdate();
 
             this.close();

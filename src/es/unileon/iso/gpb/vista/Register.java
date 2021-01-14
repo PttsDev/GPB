@@ -365,13 +365,13 @@ public class Register extends JFrame {
 
         if(nameTextField.getText().trim().length()>15     ||
            surnameTextField.getText().trim().length()>20  ||     
-           dniTextField.getText().trim().length()>11      ||
+           dniTextField.getText().trim().length()>9       ||
            emailTextField.getText().trim().length()>50    ||
            userTextField.getText().trim().length()>25     ||
            passwordTextField.getText().trim().length()<5  ||
            nameTextField.getText().trim().length()<3      ||
            surnameTextField.getText().trim().length()<5   ||     
-           dniTextField.getText().trim().length()<11      ||
+           dniTextField.getText().trim().length()<9       ||
            emailTextField.getText().trim().length()<5     ||
            userTextField.getText().trim().length()<5      ||
            passwordTextField.getText().trim().length()<5 ){

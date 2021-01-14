@@ -32,7 +32,7 @@ public class Controller {
 
     //DUDA: SE PUEDE PASAR POR ATRIBUTO Teacher teacher por ejemplo o siempre nombre, etc... y crearlo en ese metodo
     //Esto es basicamente el esqueleto
-    public static User registerUser(String name, String surName, String DNI, String email, String userName, String pw, String tipo) {
+    public static boolean registerUser(String name, String surName, String DNI, String email, String userName, String pw, String tipo) {
 
         //User user = new User(name, surName, DNI, email, userName, pw);
         if (tipo == "Teacher") {
@@ -42,11 +42,10 @@ public class Controller {
         } else if (tipo == "Student") {
             return registStudent(name, surName, DNI, email, userName, pw);
         }
-
-        return null;
+        return false;
     }
 
-    public static Teacher registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
+    public static boolean registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
 
         UserDAO userDAO = new UserDAO();
 
@@ -57,14 +56,14 @@ public class Controller {
         TeacherDAO teacherDAO = new TeacherDAO();
 
         if (teacherDAO.registerTeacher(teacher.getID()) == true) {
-            return teacher;
+            return true;
         } else {
-            return null;
+            return false;
         }
 
     }
 
-    public static Student registStudent(String name, String surName, String DNI, String email, String userName, String pw) {
+    public static boolean registStudent(String name, String surName, String DNI, String email, String userName, String pw) {
 
         int i;
 
@@ -83,12 +82,12 @@ public class Controller {
             StudentDAO studentDAO = new StudentDAO();
             
             if (studentDAO.registerStudent(student.getID()) == true) {
-                return student;
+                return true;
             } else {
-                return null;
+                return false;
             }
         }
-        return null;
+        return false;
     }
 
     public User loginUser(String user, String pw) {

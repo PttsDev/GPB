@@ -68,7 +68,7 @@ public class StudentDAO extends DBConnection {
         return exists;
     }
 
-    public boolean studentLogIn(String StudentID, String pw) {
+    public boolean studentLogIn(String UserName, String pw) {
 
         boolean exists = false;
 
@@ -79,7 +79,7 @@ public class StudentDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("StudentID").equals(StudentID) && rs.getString("password").equals(pw)) {
+                if (rs.getString("UserName").equals(UserName) && rs.getString("password").equals(pw)) {
                     exists = true;
                 }
 

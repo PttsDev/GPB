@@ -40,7 +40,7 @@ public class TeacherDAO extends DBConnection {
         return true;
     }
 
-    public boolean teacherExist(String TeacherID) {
+    public boolean teacherExist(String teacherName) {
 
         boolean exists = false;
 
@@ -51,7 +51,7 @@ public class TeacherDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("TeacherID").equals(TeacherID)) {
+                if (rs.getString("TeacherName").equals(teacherName)) {
                     exists = true;
                 }
 
@@ -67,7 +67,7 @@ public class TeacherDAO extends DBConnection {
         return exists;
     }
 
-    public boolean teacherLogIn(String TeacherID, String pw) {
+    public boolean teacherLogIn(String teacherName, String pw) {
 
         boolean exists = false;
 
@@ -78,7 +78,7 @@ public class TeacherDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("TeacherID").equals(TeacherID) && rs.getString("password").equals(pw)) {
+                if (rs.getString("UserName").equals(teacherName) && rs.getString("password").equals(pw)) {
                     exists = true;
                 }
 

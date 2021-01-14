@@ -77,7 +77,7 @@ public class UserDAO extends DBConnection {
         return exists;
     }
 
-    public User getUser(String UserID) {
+    public User getUser(String UserName) {
 
         boolean exists = false;
         User user = new User();
@@ -89,12 +89,15 @@ public class UserDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("UserID").equals(UserID)) {
+                if (rs.getString("UserName").equals(UserName)) {
                     exists = true;
                     user.setName(rs.getString("Name"));
                     user.setSurName(rs.getString("SurName"));
                     user.setDNI(rs.getString("DNI"));
                     user.setEmail(rs.getString("Email"));
+                    user.setID(rs.getString("UserID"));
+                    user.setUserName(rs.getString("UserName"));
+
                 }
 
             }

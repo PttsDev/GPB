@@ -40,7 +40,7 @@ public class TeacherDAO extends DBConnection {
         return true;
     }
 
-    public boolean teacherExist(String teacherName) {
+    public boolean teacherExist(String ID) {
 
         boolean exists = false;
 
@@ -51,7 +51,7 @@ public class TeacherDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("TeacherName").equals(teacherName)) {
+                if (rs.getString("TeaID").equals(ID)) {
                     exists = true;
                 }
 

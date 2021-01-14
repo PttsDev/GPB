@@ -52,7 +52,7 @@ public class StudentDAO extends DBConnection {
 
             while (rs.next() && !exists) {
 
-                if (rs.getString("StudentID").equals(StudentID)) {
+                if (rs.getString("StuID").equals(StudentID)) {
                     exists = true;
                 }
 

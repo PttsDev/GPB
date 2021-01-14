@@ -32,7 +32,11 @@ public class Teacher extends User{
         this.subjects = new Subjects();
     }
 
-    /*
+    public Teacher(User user) {
+		super(user.getName(), user.getSurName(), user.getDNI(), user.getEmail(), user.getUserName());
+	}
+
+	/*
     * Metodos que gestionan las tutorship
     */
     public void addTutorship(Tutorship ts) {

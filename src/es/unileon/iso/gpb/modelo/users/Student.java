@@ -38,7 +38,11 @@ public class Student extends User {
 
 
 
-    /*
+    public Student(User user) {
+		super(user.getName(), user.getSurName(), user.getDNI(), user.getEmail(), user.getUserName());
+	}
+
+	/*
     * Metodos que gestionan las activity
      */
     public void addPersonalActivity(PersonalActivity pa) {

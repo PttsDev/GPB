@@ -103,9 +103,23 @@ public class Controller {
 		return false;
 	}
 
-	public User loginUser(String user, String pw) {
+	public static User loginUser(String user, String pw) {
 		UserDAO userDAO = new UserDAO();
-		// Llamar al DAO
+		StudentDAO studentDAO = new StudentDAO();
+		TeacherDAO teacherDAO = new TeacherDAO();
+		if(userDAO.userLogIn(user, pw)) {
+			
+			if(studentDAO.studentExist(user)) {
+				Student student = new Student(userDAO.getUser(user));
+				return student;
+			}else if(teacherDAO.teacherExist(user)){
+				Teacher teacher = new Teacher(userDAO.getUser(user));
+				return teacher;
+			}else {
+				return null;
+			}
+		}
+		
 		return null;
 	}
 

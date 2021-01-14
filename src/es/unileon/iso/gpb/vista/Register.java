@@ -361,19 +361,32 @@ public class Register extends JFrame {
     }
     
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
-        //Register method TODO
-        
-        //Take data from text fields
-        
-        //Call controller to create the user
-        
-        //Message of creation
-        
-        
-        
-        registerUser(nameTextField.getText().trim(), surnameTextField.getText().trim(), dniTextField.getText().trim(), emailTextField.getText().trim(), userTextField.getText().trim(),  passwordTextField.getText().trim(), String.valueOf(typeSelector.getSelectedItem()) );
 
+
+        if(nameTextField.getText().trim().length()>15     ||
+           surnameTextField.getText().trim().length()>20  ||     
+           dniTextField.getText().trim().length()>11      ||
+           emailTextField.getText().trim().length()>50    ||
+           userTextField.getText().trim().length()>25     ||
+           passwordTextField.getText().trim().length()<5  ||
+           nameTextField.getText().trim().length()<5      ||
+           surnameTextField.getText().trim().length()<5   ||     
+           dniTextField.getText().trim().length()<11      ||
+           emailTextField.getText().trim().length()<5     ||
+           userTextField.getText().trim().length()<5      ||
+           passwordTextField.getText().trim().length()<5 ){
+        javax.swing.JOptionPane.showMessageDialog(new JFrame(), "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+        if(registerUser(nameTextField.getText().trim(), surnameTextField.getText().trim(), dniTextField.getText().trim(), emailTextField.getText().trim(), userTextField.getText().trim(),  passwordTextField.getText().trim(), String.valueOf(typeSelector.getSelectedItem()) ))
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Registered", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        else
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
+        
         this.dispose();
+        }
+        
+        
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

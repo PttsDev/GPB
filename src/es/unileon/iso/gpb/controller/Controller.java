@@ -103,24 +103,31 @@ public class Controller {
 		return false;
 	}
 
-	public static User loginUser(String user, String pw) {
+	public static User loginUser(String userName, String pw) {
 		UserDAO userDAO = new UserDAO();
-		StudentDAO studentDAO = new StudentDAO();
-		TeacherDAO teacherDAO = new TeacherDAO();
-		if(userDAO.userLogIn(user, pw)) {
-			
-			if(studentDAO.studentExist(user)) {
-				Student student = new Student(userDAO.getUser(user));
-				return student;
-			}else if(teacherDAO.teacherExist(user)){
-				Teacher teacher = new Teacher(userDAO.getUser(user));
-				return teacher;
-			}else {
-				return null;
-			}
+		
+		if(userDAO.userLogIn(userName, pw) == true) {
+			User user = userDAO.getUser(userName);
+			return user;
 		}
 		
 		return null;
+	}
+	
+	public static String getTipo(String userName) {
+		TeacherDAO teacherDAO = new TeacherDAO();
+		UserDAO userDAO = new UserDAO();
+		User user = userDAO.getUser(userName);
+		String type;
+		
+		if(teacherDAO.teacherExist(user.getID())) {
+			type = "Teacher";
+		}else {
+			type = "Student";
+		}
+		
+		return type;
+		
 	}
 
 	// Visualizar calendario personal

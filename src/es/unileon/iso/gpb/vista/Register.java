@@ -1,5 +1,6 @@
 
 package es.unileon.iso.gpb.vista;
+import static es.unileon.iso.gpb.controller.Controller.registerUser;
 import javax.swing.JFrame;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -369,16 +370,9 @@ public class Register extends JFrame {
         //Message of creation
         
         
-        /* Send data to the controller for creating an user with:
-        nameTextField.getText().trim()
-        surnameTextField.getText().trim()
-        dniTextField.getText().trim()
-        userTextField.getText().trim()
-        emailTextField.getText().trim
-        passwordTextField.getText().trim()
-        confirmPasswordTextField.getText().trim()
-        Tipo: String.valueOf(typeSelector.getSelectedItem()) 
-        */
+        
+        registerUser(nameTextField.getText().trim(), surnameTextField.getText().trim(), dniTextField.getText().trim(), emailTextField.getText().trim(), userTextField.getText().trim(),  passwordTextField.getText().trim(), String.valueOf(typeSelector.getSelectedItem()) );
+
         this.dispose();
     }//GEN-LAST:event_createAccountButtonActionPerformed
 

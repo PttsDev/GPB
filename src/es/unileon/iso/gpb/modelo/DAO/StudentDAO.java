@@ -114,7 +114,7 @@ public class StudentDAO extends DBConnection {
                     student.setDNI(rs.getString("DNI"));
                     student.setEmail(rs.getString("Email"));
                     student.setID(rs.getString("ID"));
-                    student.setStudentName(rs.getString("StudentName"));
+                    student.setUserName(rs.getString("StudentName"));
                 }
 
             }
@@ -137,9 +137,10 @@ public class StudentDAO extends DBConnection {
         try {
 
             this.abrirConexion();
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StudentID) VALUES (?)");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO student (StuID) VALUES (?)");
 
-            stat.setString(6, id);
+            
+            stat.setString(1, id);
 
             stat.executeUpdate();
 

@@ -52,6 +52,8 @@ public class Controller {
 
         Teacher teacher = new Teacher(name, surName, DNI, email, userName);
 
+        teacher.setPw(pw);
+        
         TeacherDAO teacherDAO = new TeacherDAO();
 
         if (teacherDAO.registerTeacher(teacher) == true) {
@@ -69,6 +71,8 @@ public class Controller {
         UserDAO userDAO = new UserDAO();
 
         Student student = new Student(name, surName, DNI, email, userName);
+        
+        student.setPw(pw);
 
         i = userDAO.registerUser(student);
 

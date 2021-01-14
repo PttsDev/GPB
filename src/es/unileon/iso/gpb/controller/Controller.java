@@ -35,6 +35,10 @@ public class Controller {
 
     public static User registerUser(String name, String surName, String DNI, String email, String userName, String pw, String tipo){
 
+        //User user = new User(name, surName, DNI, email, userName, pw);
+
+        
+
         if(tipo == "Teacher"){
         
            return registTeacher(name, surName, DNI, email, userName, pw);
@@ -47,6 +51,9 @@ public class Controller {
     }
 
     public static Teacher registTeacher(String name, String surName, String DNI, String email, String userName, String pw){
+        
+        UserDAO userDAO = new UserDAO();
+        
         Teacher teacher = new Teacher(name, surName, DNI, email, userName);
 
         TeacherDAO teacherDAO = new TeacherDAO();
@@ -60,15 +67,27 @@ public class Controller {
     }
 
     public static Student registStudent(String name, String surName, String DNI, String email, String userName, String pw){
+        
+        int i;
+
+        UserDAO userDAO = new UserDAO();
+        
         Student student = new Student(name, surName, DNI, email, userName);
 
-        StudentDAO studentDAO = new StudentDAO();
+        i= userDAO.registerUser(student);
 
-        if(studentDAO.registerStudent(student)==true){
-            return student;
-        }else{
-            return null;
-        }
+        if(i!=0){
+
+            student.setID(String.valueOf(i));
+
+            StudentDAO studentDAO = new StudentDAO();
+
+            if(studentDAO.registerStudent(student.getID())==true){
+                return student;
+            }else{
+                return null;
+            }
+        }   
         
     }
 

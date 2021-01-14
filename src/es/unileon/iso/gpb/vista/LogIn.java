@@ -157,20 +157,21 @@ public class LogIn extends javax.swing.JFrame {
            userTextField.getText().trim().length()<5      ||
            passwordField.getText().trim().length()<5 ){
             javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong input", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-        
-        User user = loginUser(userTextField.getText().trim(), passwordField.getText().trim());
-        
-        if(user==null){
-            
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
-            
         }else{
+        
+            User user = loginUser(userTextField.getText().trim(), passwordField.getText().trim());
+        
+            if(user==null){
             
-            String type = getTipo(userTextField.getText().trim());
-            new Calendar(this, user, type).setVisible(true);
+                javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
             
-        }       
+            }else{
+            
+                String type = getTipo(userTextField.getText().trim());
+                new Calendar(this, user, type).setVisible(true);
+            
+            }  
+        }
 
     }//GEN-LAST:event_singInButtonActionPerformed
 

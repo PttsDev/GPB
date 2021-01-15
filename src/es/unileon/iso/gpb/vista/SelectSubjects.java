@@ -197,7 +197,4 @@ public class SelectSubjects extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> yourSubjectsBox;
     // End of variables declaration//GEN-END:variables
 
-    private void leaveSubject(String id, String subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

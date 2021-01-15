@@ -10,6 +10,8 @@ import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -199,6 +201,11 @@ public class Calendar extends javax.swing.JFrame {
         weekLabel.setText("Day x to x (modificar)");
 
         calendarOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General Calendar", "Personal Calendar" }));
+        calendarOptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calendarOptionsActionPerformed(evt);
+            }
+        });
 
         manageAccountsButton.setText("Manage Accounts");
         manageAccountsButton.setFocusable(false);
@@ -344,10 +351,11 @@ public class Calendar extends javax.swing.JFrame {
         
         initComponents();
         initListeners();
+        setActivities();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
-        
+        calendarioTable.setRowHeight(70);
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         
@@ -484,6 +492,67 @@ public class Calendar extends javax.swing.JFrame {
         new SelectSubjects(this.user).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void calendarOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarOptionsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calendarOptionsActionPerformed
+
+    private void setActivities(){
+        
+        String type = String.valueOf(calendarOptions.getSelectedItem());
+        
+        
+        if(type.equals("General Calendar")){
+            
+            
+            //LEER GENERAL CALENDAR PARA this.user.getID();
+            //AKA LISTA DE LECTURES
+            
+            //AL RECIBIR LISTA DE LECTURES:
+            
+            /*
+            
+            ArrayList<Lecture> lectures = metodoDAO();
+            
+            for(Lecture l : lectures){
+            
+                
+                int sHour = l.getStartTime().getHour();
+                int eHour = l.getEndTime().getHour();
+                int day = get(l.getDate().getDayOfWeek())-1;
+            
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                for(int i = sHour; i<= eHour; i++){
+                    model.setValueAt("Name: "+l.getName()+" Comments: "+l.getComments(), i, day);
+                }
+            }
+            
+            
+            */
+
+            
+
+
+        }else{
+            
+            if(userType.equals("Student")){
+                
+                
+                //LEER PERSONAL CALENDAR PARA STUDENT this.user.getID()
+                //AKA PERSONAL ACTIVITIES Y TUTORSHIPS
+                
+            }else{
+                
+                //LEER PERSONAL CALENDAR PARA TEACHER this.user.getID()
+                //AKA TUTORSHIPS Y MEETINGS
+                
+                
+            }
+            
+            
+        }
+        
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;

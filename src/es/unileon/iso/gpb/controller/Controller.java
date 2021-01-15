@@ -296,12 +296,12 @@ public class Controller {
     
     public static ArrayList<String> listStudents(){
     	UserDAO userDAO = new UserDAO();
-    	return userDAO.listStudents();
+    	return userDAO.listStudent();
     }
     
     public static ArrayList<String> listTeachers(){
-    	TeacherDAO teacherDAO = new TeacherDAO();
-    	return teacherDAO.listTeachers();
+    	UserDAO teacherDAO = new UserDAO();
+    	return teacherDAO.listTeacher();
     }
     
     public static ArrayList<String> listGroup(String teacherID){

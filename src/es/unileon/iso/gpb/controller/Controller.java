@@ -272,7 +272,14 @@ public class Controller {
     
     	return groupDAO.createGroup( subject,  number, type);
     	
-    }        
+    }  
+    
+    public static ArrayList<String> listGroups(String nameSubject){
+    	GroupDAO groupDAO = new GroupDAO();
+    	
+    	return GroupDAO.listGroups(nameSubject);
+    }
+    
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

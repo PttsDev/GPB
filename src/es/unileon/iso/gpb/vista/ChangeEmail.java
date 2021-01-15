@@ -1,6 +1,7 @@
 package es.unileon.iso.gpb.vista;
 
 import es.unileon.iso.gpb.modelo.users.User;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -37,7 +38,7 @@ public class ChangeEmail extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         changeEmailButton = new javax.swing.JButton();
-        newEmailField = new javax.swing.JPasswordField();
+        newEmailField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -68,22 +69,23 @@ public class ChangeEmail extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(changeEmailButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newEmailField))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(123, 123, 123)
-                        .addComponent(Title))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(changeEmailButton)
-                                .addGap(54, 54, 54)))))
-                .addContainerGap(128, Short.MAX_VALUE))
+                        .addComponent(Title)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,15 +156,22 @@ public class ChangeEmail extends javax.swing.JFrame {
         String email = newEmailField.getText().trim();
         
         if(email.length()<5 || email.length()>50){
-            javax.swing.JOptionPane.showMessageDialog(this, "Wrong email!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong email!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }else{
-            /*if(funcion(...){
-                javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-               }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
-               }
+            
+            if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to change your email to "+email+"?",
+                    "Change email?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+
+                /*if(funcion(...){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                    }else{
+                        javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
             */
+            
+            }
         }
         
     }//GEN-LAST:event_changeEmailButtonActionPerformed
@@ -174,6 +183,6 @@ public class ChangeEmail extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JButton changeEmailButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField newEmailField;
+    private javax.swing.JTextField newEmailField;
     // End of variables declaration//GEN-END:variables
 }

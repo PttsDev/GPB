@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.removeUser;
 import es.unileon.iso.gpb.modelo.users.User;
 
 /**
@@ -210,13 +211,15 @@ public class MyAccount extends javax.swing.JFrame {
        if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to delete "+user.getUserName()+"?",
                     "Delete email?",javax.swing.JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
            //Funcion de eliminar
-           /*if(funcion(...){
-                    javax.swing.JOptionPane.showMessageDialog(this, "Account deleted Successfully", "Account deleted!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           if(removeUser(user.getUserName())){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Account deleted Successfully", 
+                            "Account deleted!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
-                    }else{
-                        javax.swing.JOptionPane.showMessageDialog(this, "Account could not be deleted!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
-                    }
-            */
+            }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Account could not be deleted!", 
+                            "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+           }
+            
            
            if(user.getUserName().equals(myUser.getUserName()))
                System.exit(0);

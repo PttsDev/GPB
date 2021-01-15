@@ -241,4 +241,52 @@ public class UserDAO extends DBConnection {
         return lista;
     }
 
+    public ArrayList<String> listStudent() {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM student");
+            ResultSet rs1 = query1.executeQuery();
+
+            while (rs1.next()) {
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                query.setString(1, rs1.getString("StuID"));
+                ResultSet rs = query.executeQuery();
+                lista.add(rs.getString("UserName"));
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+
+    }
+    
+        public ArrayList<String> listTeacher() {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM teacher");
+            ResultSet rs1 = query1.executeQuery();
+
+            while (rs1.next()) {
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                query.setString(1, rs1.getString("TeaID"));
+                ResultSet rs = query.executeQuery();
+                lista.add(rs.getString("UserName"));
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+
+    }
+
 }

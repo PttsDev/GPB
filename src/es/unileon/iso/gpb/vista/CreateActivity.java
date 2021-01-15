@@ -298,6 +298,7 @@ public class CreateActivity extends javax.swing.JFrame {
         String comments = commentText.getText().trim();
         java.awt.Color color = colorChooser.getColor();
         String type = String.valueOf(typeSelector.getSelectedItem());
+        String place = classroomTextField.getText().trim();
         
         if(actName.length()<5 || actName.length()>50 ){
             javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 5 and 50!", 
@@ -315,6 +316,9 @@ public class CreateActivity extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Comments length must be at most 500!", 
                     "Too long input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
+        }else if(place.length()!=5){
+            javax.swing.JOptionPane.showMessageDialog(this, "Classroom name must be lenght 5!", 
+                    "Bad input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }else{
             
             LocalDate date = LocalDate.parse(dateS);

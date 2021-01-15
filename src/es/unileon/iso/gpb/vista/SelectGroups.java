@@ -134,7 +134,7 @@ public class SelectGroups extends javax.swing.JFrame {
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         
         String subject = String.valueOf(subjectsComboBox.getSelectedItem());
-        String group = String.valueOf(subjectsComboBox.getSelectedItem());
+        String group = String.valueOf(groupsComboBox.getSelectedItem());
         
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to select group "+group+" of subject "+subject+"?",
                     "Choose group?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){

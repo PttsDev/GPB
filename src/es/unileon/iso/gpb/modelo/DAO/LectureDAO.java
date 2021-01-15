@@ -21,7 +21,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.*;
 
-
 /**
  *
  * @author Roberto
@@ -43,24 +42,24 @@ public class LectureDAO extends DBConnection {
             if (rs.next()) {
                 PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
 
-                query.setString(1, rs.getString("SubjectID"));
-                query.setString(2, group);
+                query1.setString(1, rs.getString("SubjectID"));
+                query1.setString(2, group);
                 ResultSet rs1 = query1.executeQuery();
-
-                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?,?,?)");
-
-                stat.setString(1, String.valueOf(Id));
-                stat.setString(2, lecture.getClassroom());
                 if (rs1.next()) {
+                    PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?,?,?)");
+
+                    stat.setString(1, String.valueOf(Id));
+                    stat.setString(2, lecture.getClassroom());
+
                     stat.setString(3, rs1.getString("GroupID"));
+                    stat.executeUpdate();
                 }
 
-                stat.executeUpdate();
             }
 
             this.closeC();
         } catch (Exception e) {
-                        System.out.println("lecture");
+            System.out.println("lecture");
 
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
@@ -98,11 +97,10 @@ public class LectureDAO extends DBConnection {
 
                     ResultSet rs1 = query1.executeQuery();
                     if (rs1.next()) {
-    
-                       Lecture lecture = new Lecture(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(), rs.getTime("enTime").toLocalTime() , rs.getTime("startTime").toLocalTime(),  Color.getColor(rs1.getString("Color")), rs1.getString("Classroom"));
-                       lista.add(lecture);
-                    }
 
+                        Lecture lecture = new Lecture(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(), rs.getTime("enTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), Color.getColor(rs1.getString("Color")), rs1.getString("Classroom"));
+                        lista.add(lecture);
+                    }
 
                 }
             }

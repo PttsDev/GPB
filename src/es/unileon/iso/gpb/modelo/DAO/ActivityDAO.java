@@ -44,7 +44,7 @@ public class ActivityDAO extends DBConnection {
                 }
             }
             if (activity.getComments() != null) {
-                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO user (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
+                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
 
                 stat.setInt(1, id);
                 stat.setString(2, activity.getName());
@@ -56,7 +56,7 @@ public class ActivityDAO extends DBConnection {
 
                 stat.executeUpdate();
             } else {
-                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO user (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
+                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Colour) VALUES (?,?,?,?,?,?)");
 
                 stat.setInt(1, id);
                 stat.setString(2, activity.getName());

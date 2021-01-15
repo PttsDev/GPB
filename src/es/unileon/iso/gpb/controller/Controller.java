@@ -256,7 +256,7 @@ public class Controller {
         }
     }
     
-        public static void leaveSubject(String ID, String subjectName) {
+    public static void leaveSubject(String ID, String subjectName) {
         StudentDAO userDAO = new StudentDAO();
         SubjectDAO subDAO = new SubjectDAO();
         if (userDAO.studentExist(ID)) {
@@ -266,6 +266,15 @@ public class Controller {
         }
     }
 
+    public static boolean createGroup(int number, String type) {
+    	
+    	Group group = new Group(number, type);
+    	
+    	GroupDAO groupDAO = new GroupDAO();
+    
+    	return groupDAO.createGroup(group);
+    	
+    }        
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

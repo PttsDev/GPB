@@ -205,7 +205,17 @@ public class MyAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_changeEmailButtonActionPerformed
 
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
-       
+       if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to delete "+user.getUserName()+"?",
+                    "Change email?",javax.swing.JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+           //Funcion de eliminar
+           /*if(funcion(...){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Account deleted Successfully", "Account deleted!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                    }else{
+                        javax.swing.JOptionPane.showMessageDialog(this, "Account could not be deleted!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+            */
+       }
     }//GEN-LAST:event_deleteAccountButtonActionPerformed
     
     private void init(){

@@ -20,8 +20,6 @@ import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
 
-    
-
 /**
  *
  * @author Roberto
@@ -54,7 +52,7 @@ public class ActivityDAO extends DBConnection {
                 stat.setTime(4, Time.valueOf(activity.getEndTime()));
                 stat.setTime(5, Time.valueOf(activity.getStartTime()));
                 stat.setString(6, activity.getComments());
-                stat.setString(7,String.valueOf(activity.getColor().getRGB()));
+                stat.setString(7, String.valueOf(activity.getColor().getRGB()));
 
                 stat.executeUpdate();
             } else {
@@ -65,7 +63,7 @@ public class ActivityDAO extends DBConnection {
                 stat.setDate(3, Date.valueOf(activity.getDate()));
                 stat.setTime(4, Time.valueOf(activity.getEndTime()));
                 stat.setTime(5, Time.valueOf(activity.getStartTime()));
-                stat.setString(6,String.valueOf(activity.getColor().getRGB()));
+                stat.setString(6, String.valueOf(activity.getColor().getRGB()));
 
                 stat.executeUpdate();
 
@@ -74,13 +72,13 @@ public class ActivityDAO extends DBConnection {
             this.closeC();
             return id;
         } catch (Exception e) {
+            System.out.println("activity");
+
             System.out.println(e);
-             return 0;
+            return 0;
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         //Llamar a controlador para sacar mensaje por vista TODO
     }
 
 }
-
-

@@ -8,13 +8,19 @@ package es.unileon.iso.gpb.modelo.DAO;
 import es.unileon.iso.gpb.modelo.activities.Activity;
 import es.unileon.iso.gpb.modelo.activities.Lecture;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
+import java.awt.Color;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.*;
+
 
 /**
  *
@@ -34,34 +40,37 @@ public class LectureDAO extends DBConnection {
 
             ResultSet rs = query.executeQuery();
 
-            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+            if (rs.next()) {
+                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
 
-            query.setString(1, rs.getString("SubjectID"));
-            query.setString(2, group);
+                query.setString(1, rs.getString("SubjectID"));
+                query.setString(2, group);
+                ResultSet rs1 = query1.executeQuery();
 
-            ResultSet rs1 = query1.executeQuery();
+                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?,?,?)");
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?,?,?,?)");
+                stat.setString(1, String.valueOf(Id));
+                stat.setString(2, lecture.getClassroom());
+                if (rs1.next()) {
+                    stat.setString(3, rs1.getString("GroupID"));
+                }
 
-            stat.setString(1, String.valueOf(Id));
-            stat.setString(2, lecture.getClassroom());
-            if (rs1.next()) {
-                stat.setString(3, rs1.getString("GroupID"));
+                stat.executeUpdate();
             }
-
-            stat.executeUpdate();
 
             this.closeC();
         } catch (Exception e) {
+                        System.out.println("lecture");
+
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         return true;
     }
 
-    public ArrayList<String> listLectures(String stuID) {
+    public ArrayList<Lecture> listLectures(String stuID) {
 
-        ArrayList<String> lista = new <String>ArrayList();
+        ArrayList<Lecture> lista = new <String>ArrayList();
         String temp = "";
 
         try {
@@ -81,7 +90,7 @@ public class LectureDAO extends DBConnection {
 
                 ResultSet rs = query.executeQuery();
 
-               while(rs.next()) {
+                while (rs.next()) {
 
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
 
@@ -89,8 +98,11 @@ public class LectureDAO extends DBConnection {
 
                     ResultSet rs1 = query1.executeQuery();
                     if (rs1.next()) {
-                        lista.add(rs1.getString("Name"));
+    
+                       Lecture lecture = new Lecture(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(), rs.getTime("enTime").toLocalTime() , rs.getTime("startTime").toLocalTime(),  Color.getColor(rs1.getString("Color")), rs1.getString("Classroom"));
+                       lista.add(lecture);
                     }
+
 
                 }
             }

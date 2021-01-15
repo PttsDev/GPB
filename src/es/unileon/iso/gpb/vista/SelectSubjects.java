@@ -142,7 +142,7 @@ public class SelectSubjects extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void leaveSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveSubjectActionPerformed
-        String subject = String.valueOf(notChoosenSubjectsBox.getSelectedItem());
+        String subject = String.valueOf(yourSubjectsBox.getSelectedItem());
         
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to leave "+subject+"?",
                     "Leave subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
@@ -154,8 +154,8 @@ public class SelectSubjects extends javax.swing.JFrame {
     }//GEN-LAST:event_leaveSubjectActionPerformed
 
     private void joinSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinSubjectActionPerformed
-        String subject = String.valueOf(yourSubjectsBox.getSelectedItem());
-        
+        String subject = String.valueOf(notChoosenSubjectsBox.getSelectedItem());
+
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to join "+subject+"?",
                     "Join subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
             joinSubject(this.user.getID(),subject);

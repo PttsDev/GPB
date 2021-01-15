@@ -398,10 +398,10 @@ public class Controller {
     	if(type == "Meeting") {
     		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
     	
-    		return meetingDAO.createMeeting(meeting, id, userID);
+    		return meetingDAO.createMeeting(meeting, id, userID, name);
     	}else if(type == "Tutorship") {
     		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, id, userID);
+    		return tutorshipDAO.createTutorship(tutorship, userID, id, name);
     	}
     	return false;
     }
@@ -418,10 +418,10 @@ public class Controller {
     	
     	if(type == "Meeting") {
     		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
-    		return meetingDAO.createMeeting(meeting, id, userID);
+    		return meetingDAO.createMeeting(meeting, id, userID, name);
     	}else if(type == "Tutorship") {
     		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, id, userID);
+    		return tutorshipDAO.createTutorship(tutorship, userID, id, name);
     	}
     	return false;
     }

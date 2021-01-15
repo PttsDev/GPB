@@ -59,30 +59,40 @@ public class LectureDAO extends DBConnection {
         return true;
     }
 
-    public ArrayList<String> listLectures(String teacherID) {
+    public ArrayList<String> listLectures(String stuID) {
 
         ArrayList<String> lista = new <String>ArrayList();
         String temp = "";
 
         try {
             this.abrirConexion();
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lectures WHERE TeaID=(?)");
 
-            query.setString(1, teacherID);
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE StuID=(?)");
 
-            ResultSet rs = query.executeQuery();
+            query0.setString(1, stuID);
 
-            while (rs.next()) {
+            ResultSet rs0 = query0.executeQuery();
 
-                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
+            while (rs0.next()) {
 
-                query1.setString(1, rs.getString("ActivityID"));
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lectures WHERE GroupID=(?)");
 
-                ResultSet rs1 = query1.executeQuery();
-                if (rs1.next()) {
-                    lista.add(rs1.getString("Name"));
+                query.setString(1, rs0.getString("GroupID"));
+
+                ResultSet rs = query.executeQuery();
+
+                if (rs.next()) {
+
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
+
+                    query1.setString(1, rs.getString("ActivityID"));
+
+                    ResultSet rs1 = query1.executeQuery();
+                    if (rs1.next()) {
+                        lista.add(rs1.getString("Name"));
+                    }
+
                 }
-
             }
             this.closeC();
 

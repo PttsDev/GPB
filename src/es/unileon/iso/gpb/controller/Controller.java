@@ -223,7 +223,6 @@ public class Controller {
 
     public static ArrayList<String> listSubjectHaveTea(String ID) {
         SubjectDAO subjectDAO = new SubjectDAO();
-        System.out.println(subjectDAO.listTeaSubSubjects(ID).toString());
 
         return subjectDAO.listTeaSubSubjects(ID);
     }

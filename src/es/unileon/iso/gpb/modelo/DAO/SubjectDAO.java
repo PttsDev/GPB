@@ -212,16 +212,25 @@ public class SubjectDAO extends DBConnection {
 
         try {
             this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+            boolean exist=false;
+            String SubjectID = "";
+            while (rs.next() && !exist) {
 
+                if (rs.getString("Name").equals(Subject)) {
+                    exist = true;
+                    SubjectID = rs.getString("SubjectID");
+                }
+            }
             PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM stusub WHERE StuID=? AND SubjectID=?");
 
             stat.setString(1, userID);
-            stat.setString(2, Subject);
+            stat.setString(2, SubjectID);
 
             stat.executeUpdate();
 
             this.closeC();
-
 
         } catch (Exception e) {
             System.out.println(e);
@@ -229,21 +238,32 @@ public class SubjectDAO extends DBConnection {
         }
 
     }
-    
-        public void leaveTeaSubject(String userID, String Subject) {
+
+    public void leaveTeaSubject(String userID, String Subject) {
 
         try {
             this.abrirConexion();
+            
+                       PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+            boolean exist=false;
+            String SubjectID = "";
+            while (rs.next() && !exist) {
+
+                if (rs.getString("Name").equals(Subject)) {
+                    exist = true;
+                    SubjectID = rs.getString("SubjectID");
+                }
+            }
 
             PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM teasub WHERE TeaID=? AND SubjectID=?");
 
             stat.setString(1, userID);
-            stat.setString(2, Subject);
+            stat.setString(2, SubjectID);
 
             stat.executeUpdate();
 
             this.closeC();
-
 
         } catch (Exception e) {
             System.out.println(e);

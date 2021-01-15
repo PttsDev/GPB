@@ -51,7 +51,7 @@ public class Controller {
 
     public static boolean registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
 
-        int i=0;
+        int i = 0;
 
         UserDAO userDAO = new UserDAO();
 
@@ -139,70 +139,112 @@ public class Controller {
         }
         return false;
     }
-    
+
     public static boolean changePassword(String userName, String newPw) {
         UserDAO userDAO = new UserDAO();
 
         userDAO.changePassword(userName, newPw);
         return true;
     }
-    
+
     public static boolean changeEmail(String userName, String newEmail) {
         UserDAO userDAO = new UserDAO();
-        
+
         return userDAO.changeEmail(userName, newEmail);
 
     }
-    
-    public static ArrayList<String> listUser(){
-    	UserDAO userDAO = new UserDAO();
-    	return userDAO.listUser();
+
+    public static ArrayList<String> listUser() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.listUser();
     }
-    
+
     public static boolean removeUser(String ID) {
-    	UserDAO userDAO = new UserDAO();
-    	StudentDAO studentDAO = new StudentDAO();
-    	TeacherDAO teacherDAO = new TeacherDAO();
-    	
-    	if(studentDAO.studentExist(ID)) {
-    		studentDAO.deleteStudent(ID);
-    	}else {
-    		teacherDAO.deleteTeacher(ID);
-    	}
-    	
-    	return userDAO.deleteUser(ID);
-    	
+        UserDAO userDAO = new UserDAO();
+        StudentDAO studentDAO = new StudentDAO();
+        TeacherDAO teacherDAO = new TeacherDAO();
+
+        if (studentDAO.studentExist(ID)) {
+            studentDAO.deleteStudent(ID);
+        } else {
+            teacherDAO.deleteTeacher(ID);
+        }
+
+        return userDAO.deleteUser(ID);
+
     }
-    
+
     public static User getUser(String userName) {
-    	UserDAO userDAO = new UserDAO();
-    	return userDAO.getUser(userName);
+        UserDAO userDAO = new UserDAO();
+        return userDAO.getUser(userName);
+    }
+
+    public static ArrayList<String> listSubjectHave(String ID) {
+        UserDAO userDAO = new UserDAO();
+        if (userDAO.userExist(ID)) {
+            return listSubjectHaveStu(ID);
+        } else {
+            return listSubjectHaveTea(ID);
+        }
+    }
+        public static ArrayList<String> listSubjectNotHave(String ID) {
+        UserDAO userDAO = new UserDAO();
+        if (userDAO.userExist(ID)) {
+            return listSubjectNotHaveStu(ID);
+        } else {
+            return listSubjectNotHaveTea(ID);
+        }
     }
     
-    public static ArrayList<String> listSubjectHave(String ID){
-    	SubjectDAO subjectDAO = new SubjectDAO();
-    	return subjectDAO.listStuSubSubjects(ID);
+
+    public static ArrayList<String> listSubjectHaveStu(String ID) {
+        SubjectDAO subjectDAO = new SubjectDAO();
+        return subjectDAO.listStuSubSubjects(ID);
     }
-    
-    public static ArrayList<String> listSubjectNotHave(String ID){
-    	SubjectDAO subjectDAO = new SubjectDAO();
-    	
-    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
-    	
-    	haveSubjects = subjectDAO.listStuSubSubjects(ID);
-    	allSubjects = subjectDAO.listAllSubjects();
-    	notHaveSubjects = allSubjects;
-    	
-    	for(int i=0; i<allSubjects.size(); i++) {
-    		for(int j=0; j<haveSubjects.size(); j++) {
-    		if(allSubjects.get(i).compareTo(haveSubjects.get(j))==0) {
-    			notHaveSubjects.remove(haveSubjects.get(j));
-    		}
-    		}	
-    	}
-    	return notHaveSubjects;
+
+    public static ArrayList<String> listSubjectNotHaveStu(String ID) {
+        SubjectDAO subjectDAO = new SubjectDAO();
+
+        ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
+
+        haveSubjects = subjectDAO.listStuSubSubjects(ID);
+        allSubjects = subjectDAO.listAllSubjects();
+        notHaveSubjects = allSubjects;
+
+        for (int i = 0; i < allSubjects.size(); i++) {
+            for (int j = 0; j < haveSubjects.size(); j++) {
+                if (allSubjects.get(i).compareTo(haveSubjects.get(j)) == 0) {
+                    notHaveSubjects.remove(haveSubjects.get(j));
+                }
+            }
+        }
+        return notHaveSubjects;
     }
-    
+
+    public static ArrayList<String> listSubjectHaveTea(String ID) {
+        SubjectDAO subjectDAO = new SubjectDAO();
+        return subjectDAO.listTeaSubSubjects(ID);
+    }
+
+    public static ArrayList<String> listSubjectNotHaveTea(String ID) {
+        SubjectDAO subjectDAO = new SubjectDAO();
+
+        ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
+
+        haveSubjects = subjectDAO.listTeaSubSubjects(ID);
+        allSubjects = subjectDAO.listAllSubjects();
+        notHaveSubjects = allSubjects;
+
+        for (int i = 0; i < allSubjects.size(); i++) {
+            for (int j = 0; j < haveSubjects.size(); j++) {
+                if (allSubjects.get(i).compareTo(haveSubjects.get(j)) == 0) {
+                    notHaveSubjects.remove(haveSubjects.get(j));
+                }
+            }
+        }
+        return notHaveSubjects;
+    }
+
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

@@ -27,11 +27,24 @@ public class LectureDAO extends DBConnection {
 
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?)");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+
+            query.setString(1, sub);
+
+            ResultSet rs = query.executeQuery();
+
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+
+            query.setString(1, rs.getString("SubjectID"));
+            query.setString(2, group);
+
+            ResultSet rs1 = query1.executeQuery();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Classroom, GroupID) VALUES (?,?,?,?)");
 
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, lecture.getClassroom());
-            stat.setString(3,);
+            stat.setString(3,rs1.getString("GroupID"));
 
             stat.executeUpdate();
 

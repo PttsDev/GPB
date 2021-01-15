@@ -30,7 +30,11 @@
               <Component id="backButton" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="currentGroupLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <Component id="subjectsComboBox" max="32767" attributes="0"/>
                   <Component id="Title" max="32767" attributes="0"/>
@@ -60,7 +64,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="subjectsComboBox" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="currentGroupLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="groupsComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,6 +137,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="currentGroupLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(Current: )"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

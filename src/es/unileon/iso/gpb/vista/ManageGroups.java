@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.listGroups;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
@@ -160,6 +161,9 @@ public class ManageGroups extends javax.swing.JFrame {
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
         subjectsComboBox.setModel(model2);
+        
+        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem())).toArray(new String[0]) );
+        groupsComboBox.setModel(model1);
     }
     
     private void initListers(){
@@ -168,7 +172,9 @@ public class ManageGroups extends javax.swing.JFrame {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 String subject = String.valueOf(subjectsComboBox.getSelectedItem());
-                //Set lista de grupos      
+                
+                DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(subject).toArray(new String[0]) );
+                groupsComboBox.setModel(model1);      
             }
         });
         

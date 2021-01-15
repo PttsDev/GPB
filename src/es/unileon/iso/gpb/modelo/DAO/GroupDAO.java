@@ -22,18 +22,18 @@ public class GroupDAO extends DBConnection {
     public boolean createGroup(String subject, String number, String type) {
 
         int id = 1;
-  
+
         int subjectID = 0;
 
         try {
 
             this.abrirConexion();
-            
+
             PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
             ResultSet rs1 = query1.executeQuery();
             boolean exist = false;
             while (rs1.next() && !exist) {
-
+                System.out.println("hola" + rs1.getString("Name")+" "+(subject));
                 if (rs1.getString("Name").equals(subject)) {
                     exist = true;
                     subjectID = rs1.getInt("SubjectID");
@@ -45,7 +45,7 @@ public class GroupDAO extends DBConnection {
 
             while (rs.next()) {
 
-                if (rs.getInt("SubjectID")==subjectID && rs.getString("Num").equals(number)) {
+                if (rs.getInt("SubjectID") == subjectID && rs.getString("Num").equals(number)) {
                     return false;
                 }
 
@@ -54,6 +54,7 @@ public class GroupDAO extends DBConnection {
                 }
             }
 
+            System.out.println("SubID " + subjectID);
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO grups (GroupID, Num, Type, SubjectID ) VALUES (?,?,?,?)");
 
             stat.setString(1, String.valueOf(id));

@@ -1,6 +1,8 @@
 package es.unileon.iso.gpb.vista;
 
 import es.unileon.iso.gpb.modelo.users.User;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -43,15 +45,14 @@ public class CreateActivity extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         horaFinTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        comentariosTextField = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         typeSelector = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        duracionTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         createActivityButton = new javax.swing.JButton();
         colorChooser = new javax.swing.JColorChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        commentText = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GPB Create Activity");
@@ -65,7 +66,7 @@ public class CreateActivity extends javax.swing.JFrame {
 
         jLabel2.setText("Name:");
 
-        jLabel3.setText("Fecha");
+        jLabel3.setText("Date (yyyy-MM-dd)");
 
         fechaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +74,7 @@ public class CreateActivity extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Hora inicio:");
+        jLabel4.setText("Start hour: (hh:mm:ss)");
 
         horaInicioTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,15 +82,9 @@ public class CreateActivity extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Hora fin:");
+        jLabel5.setText("End hour: (hh:mm:ss)");
 
-        jLabel6.setText("Comentarios:");
-
-        comentariosTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comentariosTextFieldActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Comments (500char):");
 
         jLabel7.setText("Color:");
 
@@ -110,8 +105,6 @@ public class CreateActivity extends javax.swing.JFrame {
 
         jLabel8.setText("Type:");
 
-        jLabel9.setText("Duración:");
-
         createActivityButton.setText("Create activity");
         createActivityButton.setFocusable(false);
         createActivityButton.addActionListener(new java.awt.event.ActionListener() {
@@ -120,40 +113,47 @@ public class CreateActivity extends javax.swing.JFrame {
             }
         });
 
+        commentText.setColumns(20);
+        commentText.setRows(5);
+        jScrollPane1.setViewportView(commentText);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(fechaTextField)
-                        .addComponent(horaInicioTextField)
-                        .addComponent(nameTextField)
-                        .addComponent(comentariosTextField))
-                    .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(duracionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(createActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
+                        .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                .addComponent(fechaTextField)
+                                .addComponent(horaInicioTextField)
+                                .addComponent(nameTextField))
+                            .addComponent(jLabel8)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(createActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel7)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,21 +183,17 @@ public class CreateActivity extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(duracionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comentariosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(createActivityButton)
-                .addGap(54, 54, 54))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,9 +207,10 @@ public class CreateActivity extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -222,10 +219,6 @@ public class CreateActivity extends javax.swing.JFrame {
     private void fechaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaTextFieldActionPerformed
-
-    private void comentariosTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comentariosTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comentariosTextFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -236,25 +229,53 @@ public class CreateActivity extends javax.swing.JFrame {
     }//GEN-LAST:event_typeSelectorActionPerformed
 
     private void createActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActivityButtonActionPerformed
-        //Register method TODO
+        
+        String actName= nameTextField.getText().trim();
+        String dateS = fechaTextField.getText().trim();
+        String sHourS = horaInicioTextField.getText().trim();
+        String eHourS = horaFinTextField.getText().trim();
+        String comments = commentText.getText().trim();
+        java.awt.Color color = colorChooser.getColor();
+        String type = String.valueOf(typeSelector.getSelectedItem());
+        
+        if(actName.length()<5 || actName.length()>50 ){
+            javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 5 and 50!", 
+                    "Wrong name!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(!dateS.matches("\\d{4}-\\d{2}-\\d{2}")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Date format must follow (yyyy-MM-dd)!", 
+                    "Wrong date format!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(!sHourS.matches("\\d{2}:\\d{2}:\\d{2}") || !eHourS.matches("\\d{2}:\\d{2}:\\d{2}")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Time format must follow (hh:mm:ss)!", 
+                    "Wrong time format!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        
+        }else if(comments.length()>500){
+            javax.swing.JOptionPane.showMessageDialog(this, "Comments length must be at most 500!", 
+                    "Too long input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            
+            LocalDate date = LocalDate.parse(dateS);
+            LocalTime sHour = LocalTime.parse(sHourS);
+            LocalTime eHour = LocalTime.parse(eHourS);
+            
+            if(sHour.compareTo(eHour) >= 0){
+                javax.swing.JOptionPane.showMessageDialog(this, "End time must be after Start time!", 
+                    "Wrong time!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                
+            }else if(LocalDate.now().isAfter(date)){
+                javax.swing.JOptionPane.showMessageDialog(this, "You can't create activities in the past!", 
+                    "Wrong date!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }else{
+                //Llamar a la funcion con los datos
+                this.dispose();
+            }
 
-        //Take data from text fields
+            
 
-        //Call controller to create the user
-
-        //Message of creation
-
-        /* Send data to the controller for creating an user with:
-        nameTextField.getText().trim()
-        fechaTextField.getText().trim()
-        horaInicioTextField.getText().trim()
-        horaFinTextField.getText().trim()
-        duracionTextField.getText().trim
-        comentariosTextField.getText().trim()
-        confirmPasswordTextField.getText().trim()
-        Tipo: String.valueOf(typeSelector.getSelectedItem())
-        */
-        this.dispose();
+            
+        }
     }//GEN-LAST:event_createActivityButtonActionPerformed
 
     private void horaInicioTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horaInicioTextFieldActionPerformed
@@ -282,9 +303,8 @@ public class CreateActivity extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JColorChooser colorChooser;
-    private javax.swing.JPasswordField comentariosTextField;
+    private javax.swing.JTextArea commentText;
     private javax.swing.JButton createActivityButton;
-    private javax.swing.JTextField duracionTextField;
     private javax.swing.JTextField fechaTextField;
     private javax.swing.JTextField horaFinTextField;
     private javax.swing.JTextField horaInicioTextField;
@@ -297,8 +317,8 @@ public class CreateActivity extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JComboBox<String> typeSelector;
     // End of variables declaration//GEN-END:variables

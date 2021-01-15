@@ -272,6 +272,12 @@ public class Controller {
     	return groupDAO.listGroups(nameSubject);
     }
     
+    public static String findGroup(String userID, String subjectName) {
+    	GroupDAO groupDAO = new GroupDAO();
+    	
+    	return groupDAO.findGroup(userID, subjectName);
+    }
+    
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

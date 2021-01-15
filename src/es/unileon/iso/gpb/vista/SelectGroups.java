@@ -167,7 +167,7 @@ public class SelectGroups extends javax.swing.JFrame {
         groupsComboBox.setModel(model1);
         
         String subject = String.valueOf(subjectsComboBox.getSelectedItem());
-        currentGroupLabel.setText("(Current: )"+findGroup(user.getID(), subject));
+        currentGroupLabel.setText("(Current: "+findGroup(user.getID(), subject)+")");
     }
     
     private void initListeners(){

@@ -254,7 +254,9 @@ public class UserDAO extends DBConnection {
                 PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
                 query.setString(1, rs1.getString("StuID"));
                 ResultSet rs = query.executeQuery();
-                lista.add(rs.getString("UserName"));
+                if (rs.next()) {
+                    lista.add(rs.getString("UserName"));
+                }
             }
             this.closeC();
 
@@ -264,8 +266,8 @@ public class UserDAO extends DBConnection {
         return lista;
 
     }
-    
-        public ArrayList<String> listTeacher() {
+
+    public ArrayList<String> listTeacher() {
 
         ArrayList<String> lista = new <String>ArrayList();
         try {
@@ -278,7 +280,9 @@ public class UserDAO extends DBConnection {
                 PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
                 query.setString(1, rs1.getString("TeaID"));
                 ResultSet rs = query.executeQuery();
-                lista.add(rs.getString("UserName"));
+                if (rs.next()) {
+                    lista.add(rs.getString("UserName"));
+                }
             }
             this.closeC();
 

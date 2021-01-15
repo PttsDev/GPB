@@ -198,8 +198,26 @@ public class UserDAO extends DBConnection {
 
     }
 
-    public boolean deleteEmail() {
-        return false;
+    public boolean deleteEmail(String userID) {
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE UserID=?");
+
+            stat.setString(1, userID);
+
+            stat.executeUpdate();
+
+            this.close();
+
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
 
     }
 

@@ -209,15 +209,27 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
         
-        if( currentPasswordField.getText().trim().length() <5 || currentPasswordField.getText().trim().length()>25 ||
-           newPasswordField.getText().trim().length()<5 || newPasswordField.getText().trim().length()>25){
-            javax.swing.JOptionPane.showMessageDialog(this, "Wrong input!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+        String cPw = currentPasswordField.getText().trim();
+        String nPw = newPasswordField.getText().trim();
         
-        boolean ret = changePassword(this.user.getUserName(), currentPasswordField.getText().trim(), newPasswordField.getText().trim());
-        if(!ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
-        else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();}
+        if( cPw.length()<5 || cPw.length()>25 ) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if ( nPw.length()<5 || nPw.length()>25 ){
+            javax.swing.JOptionPane.showMessageDialog(this, "Password lenght has to be between 5 and 25!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if( cPw.equals(nPw) ){
+          javax.swing.JOptionPane.showMessageDialog(this, "Passwords can't be the same!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+          
+        }else{
+            
+            if(changePassword(this.user.getUserName(), cPw, nPw)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
 

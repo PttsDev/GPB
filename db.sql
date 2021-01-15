@@ -72,7 +72,7 @@ ActivityID varchar(15),
 Name varchar(50) not null,
 ActDate date not null,
 endTime time(6) not null,
-Duration decimal(4,3) not null,
+startTime time(6) not null,
 Comment varchar(500) null,
 Colour varchar(11) not null, 	#En codigo rgb: 255.255.255
 CONSTRAINT PK_Activity_ActivityID PRIMARY KEY (ActivityID)

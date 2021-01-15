@@ -169,11 +169,12 @@ public class SubjectDAO extends DBConnection {
             this.closeC();
 
         } catch (Exception e) {
+            System.out.println(e);
 
         }
     }
-    
-     public void joinSubjectStu(String userID, String Subject) {
+
+    public void joinSubjectStu(String userID, String Subject) {
 
         boolean exist = false;
         String SubjectID = "";
@@ -201,6 +202,7 @@ public class SubjectDAO extends DBConnection {
             this.closeC();
 
         } catch (Exception e) {
+            System.out.println(e);
 
         }
     }

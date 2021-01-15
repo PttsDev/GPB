@@ -136,7 +136,7 @@ public class TeacherDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE TEaID=?");
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM teacher WHERE TEaID=?");
 
             stat.setString(1, userID);
 

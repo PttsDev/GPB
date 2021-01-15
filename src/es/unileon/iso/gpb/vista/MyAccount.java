@@ -22,8 +22,8 @@ public class MyAccount extends javax.swing.JFrame {
         this.user = user;
         this.myUser = myUser;
         init();
-        
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -211,7 +211,7 @@ public class MyAccount extends javax.swing.JFrame {
        if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to delete "+user.getUserName()+"?",
                     "Delete email?",javax.swing.JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
            //Funcion de eliminar
-           if(removeUser(user.getUserName())){
+           if(removeUser(user.getID())){
                     javax.swing.JOptionPane.showMessageDialog(this, "Account deleted Successfully", 
                             "Account deleted!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();

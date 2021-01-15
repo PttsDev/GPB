@@ -428,9 +428,17 @@ public class Controller {
     }
     
 
-    public static ArrayList<Lecture> listLectures(String teacherID){
+    public static ArrayList<Lecture> listLectures(String teacherID, LocalDate minD, LocalDate maxD){
 
     	LectureDAO lectureDAO = new LectureDAO();
-    	return lectureDAO.listLectures(teacherID);
+    	ArrayList<Lecture> lista =  lectureDAO.listLectures(teacherID);
+        
+        for(Lecture l:lista){
+            if(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD) ){
+                lista.remove(l);
+            }
+        }
+        
+        return lista;
     }
 }

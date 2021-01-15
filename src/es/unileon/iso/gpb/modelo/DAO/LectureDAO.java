@@ -83,7 +83,7 @@ public class LectureDAO extends DBConnection {
 
             while (rs0.next()) {
 
-                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lectures WHERE GroupID=(?)");
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lecture WHERE GroupID=(?)");
 
                 query.setString(1, rs0.getString("GroupID"));
 
@@ -91,14 +91,14 @@ public class LectureDAO extends DBConnection {
 
                 while (rs.next()) {
 
-                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE ActivityID=(?)");
 
                     query1.setString(1, rs.getString("ActivityID"));
 
                     ResultSet rs1 = query1.executeQuery();
                     if (rs1.next()) {
 
-                        Lecture lecture = new Lecture(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(), rs.getTime("enTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), Color.getColor(rs1.getString("Color")), rs1.getString("Classroom"));
+                        Lecture lecture = new Lecture(Long.valueOf(rs1.getString("ActivityID")), rs1.getString("Name"), rs1.getDate("ActDate").toLocalDate(), rs1.getTime("endTime").toLocalTime(), rs1.getTime("startTime").toLocalTime(), Color.getColor(rs1.getString("Colour")), rs.getString("Classroom"));
                         lista.add(lecture);
                     }
 
@@ -107,6 +107,8 @@ public class LectureDAO extends DBConnection {
             this.closeC();
 
         } catch (Exception e) {
+            System.out.println("listLectures");
+
             System.out.println(e);
         }
         return lista;

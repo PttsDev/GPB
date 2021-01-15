@@ -15,6 +15,7 @@ import es.unileon.iso.gpb.modelo.DAO.TutorshipDAO;
 import es.unileon.iso.gpb.modelo.DAO.UserDAO;
 import es.unileon.iso.gpb.modelo.activities.Activity;
 import es.unileon.iso.gpb.modelo.activities.Lecture;
+import es.unileon.iso.gpb.modelo.activities.Lectures;
 import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
@@ -426,9 +427,8 @@ public class Controller {
     	return false;
     }
     
-    public static ArrayList<String> listLectures(String userID){
+    public static ArrayList<Lectures> listLectures(String userID){
     	LectureDAO lectureDAO = new LectureDAO();
-    	//return lectureDAO.listLectures(userID);
-    	return null;
+    	return lectureDAO.listLectures(userID);
     }
 }

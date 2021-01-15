@@ -198,12 +198,12 @@ public class UserDAO extends DBConnection {
 
     }
 
-    public boolean deleteEmail(String userID) {
+    public boolean deleteUser(String userID) {
 
         try {
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE UserID=?");
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE UserName=?");
 
             stat.setString(1, userID);
 

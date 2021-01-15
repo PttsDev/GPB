@@ -203,7 +203,7 @@ public class UserDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE UserName=?");
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM user WHERE UserID=?");
 
             stat.setString(1, userID);
 

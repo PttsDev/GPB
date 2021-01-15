@@ -278,10 +278,10 @@ public class Controller {
     	return groupDAO.findGroup(userID, subjectName);
     }
     
-    public static boolean assignStuGroup(String userID, String subject) {
+    public static boolean assignStuGroup(String userID, String subject, String nameGroup) {
     	GroupDAO groupDAO = new GroupDAO();
-    	
-    	return groupDAO.assignStuGroup(userID, subject);
+    	String part[] = nameGroup.split(" ");
+    	return groupDAO.assignStuGroup(userID, subject, part[0]);
     }
     
     // Visualizar calendario personal

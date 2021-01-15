@@ -12,19 +12,28 @@ import javax.swing.event.DocumentListener;
 public class ChangePassword extends javax.swing.JFrame {
 
     private User user;
+    private boolean admin;
     /**
      * Creates new form ChangePassword
      */
     public ChangePassword() {
         this.user=null;
+        this.admin = false;
         init();
     }
     
     public ChangePassword(User user) {
-        init();
+        this.admin = false;
         this.user = user;
+        init();  
     }
 
+    public ChangePassword(User user, boolean admin) {
+        this.admin = admin;
+        this.user = user;
+        init();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,6 +154,11 @@ public class ChangePassword extends javax.swing.JFrame {
         
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        
+        if(admin){
+            currentPasswordField.setEnabled(false);
+            currentPasswordField.setText("ADMIN MODE");
+        }
     }
     
     private void initListeners(){
@@ -226,17 +240,28 @@ public class ChangePassword extends javax.swing.JFrame {
           
         }else{
             
-            if(changePassword(this.user.getUserName(), cPw, nPw)){
-                javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", 
-                        "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
+            if(admin){
+                if(changePassword(this.user.getUserName(), nPw)){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", 
+                            "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", 
+                            "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+                
             }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", 
-                        "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                if(changePassword(this.user.getUserName(), cPw, nPw)){
+                    javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", 
+                            "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", 
+                            "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_changePasswordButtonActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

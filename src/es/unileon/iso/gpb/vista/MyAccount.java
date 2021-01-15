@@ -196,7 +196,13 @@ public class MyAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
-        new ChangePassword(user).setVisible(true);
+        
+        if(this.user.getUserName().equals(myUser.getUserName())){
+            new ChangePassword(user).setVisible(true);
+        }
+        else{
+            new ChangePassword(user, true).setVisible(true);
+        }
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

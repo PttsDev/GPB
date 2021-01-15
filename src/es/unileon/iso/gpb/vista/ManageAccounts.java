@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.getUser;
 import static es.unileon.iso.gpb.controller.Controller.listUser;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
@@ -113,7 +114,9 @@ public class ManageAccounts extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void manageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountActionPerformed
-        new MyAccount(new User(), this.user).setVisible(true);
+        
+        new MyAccount(getUser(String.valueOf(usersComboBox.getSelectedItem())), 
+                this.user).setVisible(true);
     }//GEN-LAST:event_manageAccountActionPerformed
     
     private void init(){

@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.changeEmail;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -152,7 +153,7 @@ public class ChangeEmail extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void changeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailButtonActionPerformed
-       
+        
         String email = newEmailField.getText().trim();
         
         if(email.length()<5 || email.length()>50){
@@ -163,13 +164,13 @@ public class ChangeEmail extends javax.swing.JFrame {
             if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to change your email to "+email+"?",
                     "Change email?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
 
-                /*if(funcion(...){
+                if(changeEmail(this.user.getUserName(), email)){
                     javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
-                    }else{
+                }else{
                         javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
-                    }
-            */
+                }
+            
             
             }
         }

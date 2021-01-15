@@ -137,6 +137,13 @@ public class Controller {
         }
         return false;
     }
+    
+    public static boolean changeEmail(String userName, String newEmail) {
+        UserDAO userDAO = new UserDAO();
+        
+        return userDAO.changeEmail(userName, newEmail);
+
+    }
 
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,

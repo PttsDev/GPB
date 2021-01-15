@@ -472,12 +472,14 @@ public class Calendar extends javax.swing.JFrame {
         this.sActual = sActual.minusDays(7);
         this.eActual = eActual.minusDays(7);
         weekLabel.setText("From: "+sActual+" To: "+eActual);
+        setActivities();
     }//GEN-LAST:event_previusButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         this.sActual = sActual.plusDays(7);
         this.eActual = eActual.plusDays(7);
         weekLabel.setText("From: "+sActual+" To: "+eActual);
+        setActivities();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void HelpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpMenuActionPerformed
@@ -523,7 +525,7 @@ public class Calendar extends javax.swing.JFrame {
         
         if(type.equals("General Calendar")){
 
-           ArrayList<Lecture> lectures = listLectures(this.user.getID());
+           ArrayList<Lecture> lectures = listLectures(this.user.getID(), sActual, eActual);
             
             for(Lecture l : lectures){
             

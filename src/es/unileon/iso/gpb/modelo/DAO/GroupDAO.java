@@ -23,7 +23,7 @@ public class GroupDAO extends DBConnection {
 
         int id = 1;
   
-        String subjectID = "";
+        int subjectID = 0;
 
         try {
 
@@ -36,7 +36,7 @@ public class GroupDAO extends DBConnection {
 
                 if (rs1.getString("Name").equals(subject)) {
                     exist = true;
-                    subjectID = rs1.getString("SubjectID");
+                    subjectID = rs1.getInt("SubjectID");
                 }
             }
 
@@ -45,7 +45,7 @@ public class GroupDAO extends DBConnection {
 
             while (rs.next()) {
 
-                if (rs.getString("SubjectID").equals(subjectID) && rs.getString("Num").equals(number)) {
+                if (rs.getInt("SubjectID")==subjectID && rs.getString("Num").equals(number)) {
                     return false;
                 }
 
@@ -59,7 +59,7 @@ public class GroupDAO extends DBConnection {
             stat.setString(1, String.valueOf(id));
             stat.setString(2, number);
             stat.setString(3, type);
-            stat.setString(4, subjectID);
+            stat.setInt(4, subjectID);
 
             stat.executeUpdate();
 

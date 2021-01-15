@@ -13,7 +13,7 @@ public class Activity {
     private String name;
     private LocalDate date;
     private LocalTime endTime;
-    private long duration;
+    private LocalTime startTime;
     private String comments;
     private Color color;
     
@@ -21,39 +21,39 @@ public class Activity {
     /*
     * FALTAN MAS CONSTRUCTORES SOBRECARGADOS QUITANDO DATOS QUE NO SEAN NECESARIOS
     */
-    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime){
         this.ID=ID;
         this.name=name;
         this.date=date;
         this.endTime=endTime;
-        this.duration=duration;
+        this.startTime = startTime;
         this.comments="";
     }
         
-    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments, Color color){
         this.ID=ID;
         this.name=name;
         this.date=date;
         this.endTime=endTime;
-        this.duration=duration;
+        this.startTime=startTime;
         this.comments=comments;
         this.color=color; 
     }
-    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, Color color){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, Color color){
         this.ID=ID;
         this.name=name;
         this.date=date;
         this.endTime=endTime;
-        this.duration=duration;
+        this.startTime=startTime;
         this.comments="";
         this.color=color; 
     }
-    public Activity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments){
+    public Activity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments){
         this.ID=ID;
         this.name=name;
         this.date=date;
         this.endTime=endTime;
-        this.duration=duration;
+        this.startTime=startTime;
         this.comments=comments; 
     }
         
@@ -73,8 +73,8 @@ public class Activity {
        
     }
     
-    public void setDuration(long duration){
-        this.duration=duration;
+    public void setStartTime(long duration){
+        this.startTime=startTime;
         
     }
     
@@ -103,8 +103,8 @@ public class Activity {
         return this.endTime;
     }
     
-    public long getDuration(){
-        return this.duration;
+    public LocalTime getStartTime(){
+        return this.startTime;
     }
     
     public String getComments(){

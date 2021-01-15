@@ -145,10 +145,18 @@ public class Controller {
 
     }
     
-    public static boolean removeUser(String userName) {
+    public static boolean removeUser(String ID) {
     	UserDAO userDAO = new UserDAO();
+    	StudentDAO studentDAO = new StudentDAO();
+    	TeacherDAO teacherDAO = new TeacherDAO();
     	
-    	return userDAO.deleteUser(userName);
+    	if(studentDAO.studentExist(ID)) {
+    		studentDAO.deleteStudent(ID);
+    	}else {
+    		teacherDAO.deteTeacher(ID);
+    	}
+    	
+    	return userDAO.deleteUser(ID);
     	
     }
 

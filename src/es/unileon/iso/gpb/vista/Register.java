@@ -398,9 +398,11 @@ public class Register extends JFrame {
         }else{
         
         if(registerUser(name, surname, DNI, email, username, password, type))
-            javax.swing.JOptionPane.showMessageDialog(this, username+" Registered successfully!", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, username+" Registered successfully!", 
+                    "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         else
-            javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", 
+                    "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
         
         this.dispose();
         }

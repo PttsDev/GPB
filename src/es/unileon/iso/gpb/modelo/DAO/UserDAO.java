@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
 import es.unileon.iso.gpb.modelo.users.User;
 import es.unileon.iso.gpb.modelo.users.User;
+import java.awt.List;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -219,6 +220,24 @@ public class UserDAO extends DBConnection {
             //Llamar a controlador para sacar mensaje por vista TODO
         }
 
+    }
+
+    public ArrayList<String> listUser() {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        try {
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
+            ResultSet rs = query.executeQuery();
+            
+            while(rs.next()){
+                lista.add(rs.getString("UserName"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
     }
 
 }

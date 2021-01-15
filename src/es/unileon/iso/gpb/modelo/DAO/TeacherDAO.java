@@ -132,7 +132,6 @@ public class TeacherDAO extends DBConnection {
     }
 
     public boolean deleteTeacher(String userID) {
-
         try {
             this.abrirConexion();
 

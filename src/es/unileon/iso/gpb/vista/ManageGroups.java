@@ -146,8 +146,8 @@ public class ManageGroups extends javax.swing.JFrame {
     }//GEN-LAST:event_removeGroupButtonActionPerformed
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGroupButtonActionPerformed
-        Subject subject = new Subject("Subj", 1234);//buscar subject
-        new CreateGroup(subject).setVisible(true);
+        String type = String.valueOf(subjectsComboBox.getSelectedItem());
+        new CreateGroup(type).setVisible(true);
     }//GEN-LAST:event_createGroupButtonActionPerformed
     
     private void init(){

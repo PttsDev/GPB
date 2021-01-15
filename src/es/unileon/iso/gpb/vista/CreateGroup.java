@@ -13,16 +13,19 @@ import javax.swing.event.DocumentListener;
 public class CreateGroup extends javax.swing.JFrame {
 
     private String subjName;
+    private User user;
     /**
      * Creates new form ChangePassword
      */
     public CreateGroup() {
         this.subjName=null;
+        this.user = null;
         init();
     }
     
-    public CreateGroup(String subjName) {
+    public CreateGroup(String subjName, User user) {
         init();
+        this.user = user;
         this.subjName = subjName;
     }
 
@@ -163,7 +166,7 @@ public class CreateGroup extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 1 and 5!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }else{
-            if(createGroup(subjName, number, type)){
+            if(createGroup(subjName, number, type, user.getID())){
                 javax.swing.JOptionPane.showMessageDialog(this, "Group "+number+"-"+type+" created successfully!", 
                     "Sucessful creation!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             }else{

@@ -148,7 +148,7 @@ public class ManageGroups extends javax.swing.JFrame {
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGroupButtonActionPerformed
         String type = String.valueOf(subjectsComboBox.getSelectedItem());
-        new CreateGroup(type).setVisible(true);
+        new CreateGroup(type, this.user).setVisible(true);
     }//GEN-LAST:event_createGroupButtonActionPerformed
     
     private void init(){

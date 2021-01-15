@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class MeetingDAO extends DBConnection{
     
-    public boolean createMeeting(Meeting mt, int Id){
+    public boolean createMeeting(Meeting mt, int Id, String tId){
         
                   
         try {
@@ -28,7 +28,7 @@ public class MeetingDAO extends DBConnection{
 
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, mt.getPlace());
-            stat.setString(3, );
+            stat.setString(3, tId);
             stat.setString(4, );
 
             stat.executeUpdate();

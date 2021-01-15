@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class TutorshipDAO extends DBConnection{
     
-    public boolean createTutorship(Tutorship ts, int Id){
+    public boolean createTutorship(Tutorship ts, int Id, String tId){
                 
         try {
 
@@ -28,7 +28,7 @@ public class TutorshipDAO extends DBConnection{
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, ts.getPlace());
             stat.setString(3, );
-            stat.setString(4, );
+            stat.setString(4, tId);
 
             stat.executeUpdate();
 

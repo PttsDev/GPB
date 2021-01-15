@@ -165,10 +165,12 @@ public class ChangeEmail extends javax.swing.JFrame {
                     "Change email?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
 
                 if(changeEmail(this.user.getUserName(), email)){
-                    javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", 
+                            "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                 }else{
-                        javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", 
+                                "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
             
             

@@ -161,14 +161,6 @@ public class Controller {
 
     public static boolean removeUser(String ID) {
         UserDAO userDAO = new UserDAO();
-        StudentDAO studentDAO = new StudentDAO();
-        TeacherDAO teacherDAO = new TeacherDAO();
-
-        if (studentDAO.studentExist(ID)) {
-            studentDAO.deleteStudent(ID);
-        } else {
-            teacherDAO.deleteTeacher(ID);
-        }
 
         return userDAO.deleteUser(ID);
 
@@ -277,7 +269,7 @@ public class Controller {
     public static ArrayList<String> listGroups(String nameSubject){
     	GroupDAO groupDAO = new GroupDAO();
     	
-    	return GroupDAO.listGroups(nameSubject);
+    	return groupDAO.listGroups(nameSubject);
     }
     
     // Visualizar calendario personal

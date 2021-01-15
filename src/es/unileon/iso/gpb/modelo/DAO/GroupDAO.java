@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +34,6 @@ public class GroupDAO extends DBConnection {
             ResultSet rs1 = query1.executeQuery();
             boolean exist = false;
             while (rs1.next() && !exist) {
-                System.out.println("hola" + rs1.getString("Name")+" "+(subject));
                 if (rs1.getString("Name").equals(subject)) {
                     exist = true;
                     subjectID = rs1.getInt("SubjectID");
@@ -54,7 +54,6 @@ public class GroupDAO extends DBConnection {
                 }
             }
 
-            System.out.println("SubID " + subjectID);
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO grups (GroupID, Num, Type, SubjectID ) VALUES (?,?,?,?)");
 
             stat.setString(1, String.valueOf(id));
@@ -71,6 +70,42 @@ public class GroupDAO extends DBConnection {
         }
         return true;
 
+    }
+
+    public ArrayList<String> listGroups(String subject) {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        boolean exists = false;
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+
+                if (rs.getString("Name").equals(subject)) {
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
+                    ResultSet rs1 = query1.executeQuery();
+                    exists = false;
+                    while (rs1.next() && !exists) {
+
+                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+                            exists = true;
+                            lista.add(rs1.getString("Num").concat(" ").concat(rs1.getString("Type")));
+
+                        }
+
+                    }
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
     }
     //TODO
 }

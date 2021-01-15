@@ -17,7 +17,7 @@ import java.sql.Statement;
  */
 public class PersonalActivityDAO extends DBConnection{
     
-    public boolean createPersonalActivity(PersonalActivity pa, int Id){
+    public boolean createPersonalActivity(PersonalActivity pa, int aId, String uId){
         
                 
         try {
@@ -26,8 +26,8 @@ public class PersonalActivityDAO extends DBConnection{
 
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, StuID) VALUES (?,?)");
 
-            stat.setString(1, String.valueOf(Id));
-            stat.setString(2, );
+            stat.setString(1, String.valueOf(aId));
+            stat.setString(2, uId);
 
 
             stat.executeUpdate();

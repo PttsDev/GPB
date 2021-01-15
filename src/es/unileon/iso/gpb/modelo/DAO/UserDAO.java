@@ -175,7 +175,7 @@ public class UserDAO extends DBConnection {
         }
     }
     
-      public void changeEmail(String UserName, String email) {
+      public boolean changeEmail(String UserName, String email) {
         try {
             this.abrirConexion();
 
@@ -187,11 +187,16 @@ public class UserDAO extends DBConnection {
             stat.executeUpdate();
 
             this.close();
+            
+            return true;
+
 
         } catch (Exception e) {
             System.out.println(e);
+            return false;
             //Llamar a controlador para sacar mensaje por vista TODO
         }
+
     }
 
 }

@@ -229,10 +229,11 @@ public class UserDAO extends DBConnection {
             this.abrirConexion();
             PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM user");
             ResultSet rs = query.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 lista.add(rs.getString("UserName"));
             }
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);

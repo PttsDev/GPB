@@ -215,8 +215,9 @@ public class ChangePassword extends javax.swing.JFrame {
         }
         
         boolean ret = changePassword(this.user.getUserName(), currentPasswordField.getText().trim(), newPasswordField.getText().trim());
-        if(ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
-        else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfuly", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);}
+        if(!ret){javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", "Wrong password!", javax.swing.JOptionPane.ERROR_MESSAGE);}
+        else{javax.swing.JOptionPane.showMessageDialog(this, "Password Changed Successfully", "Password Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();}
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
 

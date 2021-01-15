@@ -144,6 +144,8 @@ public class ManageGroups extends javax.swing.JFrame {
             if(deleteGroup(subject, group)){
             javax.swing.JOptionPane.showMessageDialog(this, "Group "+subject+":"+group+" removed successfully!", 
                     "Delete success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem())).toArray(new String[0]) );
+                groupsComboBox.setModel(model1);
             }
             else{
             javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", 

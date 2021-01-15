@@ -111,7 +111,7 @@ public class ManageAccounts extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void manageAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountActionPerformed
-        new MyAccount(new User()).setVisible(true);
+        new MyAccount(new User(), this.user).setVisible(true);
     }//GEN-LAST:event_manageAccountActionPerformed
     
     private void init(){

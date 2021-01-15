@@ -464,7 +464,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_manageAccountsButtonActionPerformed
 
     private void myAccountMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountMenuActionPerformed
-        new MyAccount(this.user).setVisible(true);
+        new MyAccount(this.user, this.user).setVisible(true);
     }//GEN-LAST:event_myAccountMenuActionPerformed
 
     private void manageGroupsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageGroupsButtonActionPerformed

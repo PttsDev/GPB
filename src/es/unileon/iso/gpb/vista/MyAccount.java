@@ -9,6 +9,7 @@ import es.unileon.iso.gpb.modelo.users.User;
 public class MyAccount extends javax.swing.JFrame {
 
     private User user;
+    private User myUser;
     /**
      * Creates new form MyAccount
      */
@@ -16,8 +17,9 @@ public class MyAccount extends javax.swing.JFrame {
         this.user=null;
         init();
     }
-    public MyAccount(User user){
-        this.user=user;
+    public MyAccount(User user, User myUser){
+        this.user = user;
+        this.myUser = myUser;
         init();
         
     }
@@ -206,7 +208,7 @@ public class MyAccount extends javax.swing.JFrame {
 
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
        if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to delete "+user.getUserName()+"?",
-                    "Change email?",javax.swing.JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+                    "Delete email?",javax.swing.JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
            //Funcion de eliminar
            /*if(funcion(...){
                     javax.swing.JOptionPane.showMessageDialog(this, "Account deleted Successfully", "Account deleted!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -215,6 +217,9 @@ public class MyAccount extends javax.swing.JFrame {
                         javax.swing.JOptionPane.showMessageDialog(this, "Account could not be deleted!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
                     }
             */
+           
+           if(user.getUserName().equals(myUser.getUserName()))
+               System.exit(0);
        }
     }//GEN-LAST:event_deleteAccountButtonActionPerformed
     

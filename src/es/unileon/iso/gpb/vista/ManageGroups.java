@@ -2,6 +2,7 @@ package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.listGroups;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
+import static es.unileon.iso.gpb.controller.Controller.deleteGroup;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.DefaultComboBoxModel;
@@ -140,9 +141,16 @@ public class ManageGroups extends javax.swing.JFrame {
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to change remove group "+group+"?",
                     "Delete group?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
             
+            if(deleteGroup(subject, group)){
+            javax.swing.JOptionPane.showMessageDialog(this, "Group "+subject+":"+group+" removed successfully!", 
+                    "Delete success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+            javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", 
+                    "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
             
-            //
-            //deleteGroup(subject, nombre)
+            //deleteGroup(subject, grupo)*/
         }
     }//GEN-LAST:event_removeGroupButtonActionPerformed
 

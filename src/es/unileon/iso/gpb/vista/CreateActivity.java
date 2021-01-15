@@ -481,7 +481,7 @@ public class CreateActivity extends javax.swing.JFrame {
                 String place = classroomTextField.getText().trim();
                 
                 if(actName.equals("")){
-                    
+                    createActivityButton.setEnabled(false);
                 }else if(dateS.equals("")){
                     createActivityButton.setEnabled(false);
                     

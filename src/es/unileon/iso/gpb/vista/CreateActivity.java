@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.createActivity;
 import es.unileon.iso.gpb.modelo.users.User;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -303,6 +304,7 @@ public class CreateActivity extends javax.swing.JFrame {
         String type = String.valueOf(typeSelector.getSelectedItem());
         String place = classroomTextField.getText().trim();
         
+        
         if(actName.length()<5 || actName.length()>50 ){
             javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 5 and 50!", 
                     "Wrong name!", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -343,6 +345,51 @@ public class CreateActivity extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "You can't create lectures in sunday!", 
                     "Wrong time!", javax.swing.JOptionPane.ERROR_MESSAGE);
             }else{
+                boolean created = false;
+                        
+                       
+                if(type.equals("Personal Activity")){
+                    
+                    if(comments.equals(""))
+                        created = createActivity(actName, date, sHour, eHour, color, type, this.user.getID());
+                    else
+                        created = createActivity(actName, date, sHour, eHour, color, type, comments, this.user.getID());
+                    
+                }else if(type.equals("Lecture")){
+                    
+                    String nameGroup = String.valueOf(groupComboBox.getSelectedItem()); 
+                    
+                    if(comments.equals(""))
+                        created = createActivity(actName, date, sHour, eHour, color, type, place, nameGroup, this.user.getID());
+                    else
+                        created = createActivity(actName, date, sHour, eHour, color, type, comments, place, nameGroup, this.user.getID());
+                    
+                }else if(type.equals("Meeting")){
+                    
+                    String nameTeacher = String.valueOf(teachersComboBox.getSelectedItem()); 
+                    
+                    if(comments.equals(""))
+                        created = createActivity(actName, date, sHour, eHour, color, type, place, nameTeacher, this.user.getID() ,2);
+                    else
+                        created = createActivity(actName, date, sHour, eHour, color, type, comments, place, nameTeacher, this.user.getID(), 2);
+                    
+                }else if(type.equals("Tutorship")){
+                    
+                    String nameStudent = String.valueOf(studentsComboBox.getSelectedItem());
+                    
+                    if(comments.equals(""))
+                        created = createActivity(actName, date, sHour, eHour, color, type, place, nameStudent, this.user.getID(), 2);
+                    else
+                        created = createActivity(actName, date, sHour, eHour, color, type, comments, place, nameStudent, this.user.getID());
+                }
+                
+                if(created){
+                    javax.swing.JOptionPane.showMessageDialog(this, actName+" Created successfully!", 
+                        "Created successfully", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", 
+                        "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
                 //Llamar a la funcion con los datos
                 this.dispose();
             }

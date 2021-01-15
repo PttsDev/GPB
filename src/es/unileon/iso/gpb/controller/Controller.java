@@ -315,7 +315,7 @@ public class Controller {
     	long ID = (long) (Math.random()*100+1);
     	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
     	if(type == "Personal") {
-    		
+
     	}
     }
 
@@ -332,6 +332,9 @@ public class Controller {
     	
     	if(type == "Lecture") {
     		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+            String grpYsub[] = nameGroup.split(" ");
+            String asignatura = grpYsub[0];
+            String numero = grpYsub[1];
     	}
     }
     
@@ -340,27 +343,29 @@ public class Controller {
     	
     	if(type == "Lecture") {
     		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, "1");
-   	
+            String grpYsub[] = nameGroup.split(" ");
+            String asignatura = grpYsub[0];
+            String numero = grpYsub[1];
     	}
     } 
     
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String name,String name2, String userID, int aux) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String name, String userID, int aux) {
     	long ID = (long) (Math.random()*100+1);
     	
     	if(type == "Meeting") {
     		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
     	}else if(type == "Tutorship") {
-    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, name2);
+    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
     	}
     }
     
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String name,String name2, String userID,int aux) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String name, String userID, int aux) {
     	long ID = (long) (Math.random()*100+1);
     	
     	if(type == "Meeting") {
     		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
     	}else if(type == "Tutorship") {
-    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, name2);
+    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, userID);
     	}
     }
 }

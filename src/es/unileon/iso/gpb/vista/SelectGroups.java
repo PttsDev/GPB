@@ -142,7 +142,7 @@ public class SelectGroups extends javax.swing.JFrame {
             if(assignStuGroup(this.user.getID(), subject, group)){
                 javax.swing.JOptionPane.showMessageDialog(this, "Joined " +subject+":"+group+" successfully!", 
                     "Join success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                currentGroupLabel.setText("(Current: )"+findGroup(user.getID(), subject));
+                currentGroupLabel.setText("(Current: "+findGroup(user.getID(), subject)+")");
             }else{
                 javax.swing.JOptionPane.showMessageDialog(this, "There was an error joining the group!", 
                     "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
@@ -178,7 +178,7 @@ public class SelectGroups extends javax.swing.JFrame {
 
                 DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(subject).toArray(new String[0]) );
                 groupsComboBox.setModel(model1); 
-                currentGroupLabel.setText("(Current: )"+findGroup(user.getID(), subject));
+                currentGroupLabel.setText("(Current: "+findGroup(user.getID(), subject)+")");
                     
             }
         });

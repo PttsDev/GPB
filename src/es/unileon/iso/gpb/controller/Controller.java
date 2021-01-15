@@ -20,6 +20,7 @@ import es.unileon.iso.gpb.modelo.users.Student;
 import es.unileon.iso.gpb.modelo.users.Teacher;
 import es.unileon.iso.gpb.modelo.users.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Time;
 import java.awt.Color;
@@ -152,7 +153,10 @@ public class Controller {
 
     }
     
-    
+    public static ArrayList<String> listUser(){
+    	UserDAO userDAO = new UserDAO();
+    	return userDAO.listUser();
+    }
     
     public static boolean removeUser(String ID) {
     	UserDAO userDAO = new UserDAO();

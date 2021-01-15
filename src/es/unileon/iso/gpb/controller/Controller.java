@@ -180,22 +180,25 @@ public class Controller {
     }
 
     public static ArrayList<String> listSubjectHave(String ID) {
-        UserDAO userDAO = new UserDAO();
-        if (userDAO.userExist(ID)) {
+        StudentDAO userDAO = new StudentDAO();
+        if (userDAO.studentExist(ID)) {
+            System.out.println("Stu");
+
             return listSubjectHaveStu(ID);
         } else {
+            System.out.println("Tea");
             return listSubjectHaveTea(ID);
         }
     }
-        public static ArrayList<String> listSubjectNotHave(String ID) {
-        UserDAO userDAO = new UserDAO();
-        if (userDAO.userExist(ID)) {
+
+    public static ArrayList<String> listSubjectNotHave(String ID) {
+        StudentDAO userDAO = new StudentDAO();
+        if (userDAO.studentExist(ID)) {
             return listSubjectNotHaveStu(ID);
         } else {
             return listSubjectNotHaveTea(ID);
         }
     }
-    
 
     public static ArrayList<String> listSubjectHaveStu(String ID) {
         SubjectDAO subjectDAO = new SubjectDAO();

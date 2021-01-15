@@ -1,7 +1,11 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
+import static es.unileon.iso.gpb.controller.Controller.listSubjectNotHave;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -137,11 +141,27 @@ public class SelectSubjects extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void leaveSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveSubjectActionPerformed
-        // TODO add your handling code here:
+        String subject = String.valueOf(notChoosenSubjectsBox.getSelectedItem());
+        
+        if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to leave "+subject+"?",
+                    "Leave subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+            
+            
+        }
+
+
     }//GEN-LAST:event_leaveSubjectActionPerformed
 
     private void joinSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinSubjectActionPerformed
-        // TODO add your handling code here:
+        String subject = String.valueOf(yourSubjectsBox.getSelectedItem());
+        
+        if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to join "+subject+"?",
+                    "Join subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+            
+            
+        }
+        
+        
     }//GEN-LAST:event_joinSubjectActionPerformed
     
     private void init(){
@@ -151,8 +171,15 @@ public class SelectSubjects extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
+        
+        
+        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listSubjectNotHave(this.user.getID()).toArray(new String[0]) );
+        notChoosenSubjectsBox.setModel(model1);
+        
+        DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
+        yourSubjectsBox.setModel(model2);
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JButton backButton;

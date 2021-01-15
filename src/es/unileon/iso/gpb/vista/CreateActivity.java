@@ -376,6 +376,9 @@ public class CreateActivity extends javax.swing.JFrame {
             teachersComboBox.setEnabled(false);
             teachersComboBox.setVisible(false);
             
+            DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>(  listGroup(this.user.getID()).toArray(new String[0]) );
+            groupComboBox.setModel(model2);
+            
         }
         //If account type Student
         if(userType.equals("Student")){

@@ -372,27 +372,27 @@ public class Register extends JFrame {
                 
 
         if(name.length()<3 || name.length()>15){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Name length must be between 3 and 15!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 3 and 15!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else if(surname.length()<3 || surname.length()>20 ){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Surame length must be between 3 and 20!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Surame length must be between 3 and 20!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else if(DNI.length()<9 || DNI.length()>9){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "DNI length must be 9!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "DNI length must be 9!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else if(email.length()<5 || email.length()>50){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Email length must be between 5 and 50!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Email length must be between 5 and 50!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else if(username.length()<5 || username.length()>25){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Username length must be between 5 and 25!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Username length must be between 5 and 25!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else if(password.length()<5 || password.length()>25){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Password length must be between 5 and 25!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Password length must be between 5 and 25!", 
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else{

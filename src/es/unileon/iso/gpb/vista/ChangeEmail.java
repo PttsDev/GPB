@@ -160,7 +160,7 @@ public class ChangeEmail extends javax.swing.JFrame {
                     "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }else{
             
-            if(javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to change your email to "+email+"?",
+            if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to change your email to "+email+"?",
                     "Change email?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
 
                 /*if(funcion(...){

@@ -147,11 +147,11 @@ public class LogIn extends javax.swing.JFrame {
         String pw = passwordField.getText().trim();
         
         if(username.length()<5 || username.length()>25){
-           javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong username!", 
+           javax.swing.JOptionPane.showMessageDialog(this, "Wrong username!", 
                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
            
         }else if(pw.length()<5 || pw.length()>25){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong password!", 
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong password!", 
                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
         }else{

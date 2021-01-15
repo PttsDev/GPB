@@ -8,6 +8,7 @@ import es.unileon.iso.gpb.modelo.DAO.LectureDAO;
 import es.unileon.iso.gpb.modelo.DAO.MeetingDAO;
 import es.unileon.iso.gpb.modelo.DAO.PersonalActivityDAO;
 import es.unileon.iso.gpb.modelo.DAO.StudentDAO;
+import es.unileon.iso.gpb.modelo.DAO.SubjectDAO;
 import es.unileon.iso.gpb.modelo.DAO.TeacherDAO;
 import es.unileon.iso.gpb.modelo.DAO.TutorshipDAO;
 import es.unileon.iso.gpb.modelo.DAO.UserDAO;
@@ -179,17 +180,17 @@ public class Controller {
     }
     
     public static ArrayList<String> listSubjectHave(String ID){
-    	UserDAO userDAO = new UserDAO();
-    	return userDAO.listStuSubSubjects(ID);
+    	SubjectDAO subjectDAO = new SubjectDAO();
+    	return subjectDAO.listStuSubSubjects(ID);
     }
     
     public static ArrayList<String> listSubjectNotHave(String ID){
-    	UserDAO userDAO = new UserDAO();
+    	SubjectDAO subjectDAO = new SubjectDAO();
     	
-    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
+    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects = null;
     	
-    	haveSubjects = userDAO.listStuSubSubjects(ID);
-    	allSubjects = userDAO.listAllSubjects(ID);
+    	haveSubjects = subjectDAO.listStuSubSubjects(ID);
+    	allSubjects = subjectDAO.listAllSubjects();
     	
     	for(int i=0; i<allSubjects.size(); i++) {
     		for(int j=0; j<haveSubjects.size(); j++) {

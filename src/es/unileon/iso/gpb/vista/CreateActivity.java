@@ -332,6 +332,13 @@ public class CreateActivity extends javax.swing.JFrame {
             }else if(LocalDate.now().isAfter(date)){
                 javax.swing.JOptionPane.showMessageDialog(this, "You can't create activities in the past!", 
                     "Wrong date!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }else if( type.equals("Lecture") && ( sHour.isBefore(LocalTime.parse("06:00:00")) || eHour.isBefore(LocalTime.parse("06:00:00")) ) ){
+                 javax.swing.JOptionPane.showMessageDialog(this, "You can't create lectures before 6AM!", 
+                    "Wrong time!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+            }else if(type.equals("Lecture") && date.getDayOfWeek().equals("SUNDAY")){
+                javax.swing.JOptionPane.showMessageDialog(this, "You can't create lectures in sunday!", 
+                    "Wrong time!", javax.swing.JOptionPane.ERROR_MESSAGE);
             }else{
                 //Llamar a la funcion con los datos
                 this.dispose();

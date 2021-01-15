@@ -79,7 +79,7 @@ public class GroupDAO extends DBConnection {
 
         try {
             this.abrirConexion();
-          PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
 
             query.setString(1, subject);
 
@@ -127,7 +127,6 @@ public class GroupDAO extends DBConnection {
                     PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE StuID=(?) AND GroupID=(?)");
                     query2.setString(1, UserID);
                     query2.setString(2, rs1.getString("GroupID"));
-                    
 
                     ResultSet rs2 = query2.executeQuery();
 
@@ -241,6 +240,43 @@ public class GroupDAO extends DBConnection {
 
         }
         return false;
+    }
+
+    public boolean deleteGroup(String subject, String Number) {
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+
+            query.setString(1, subject);
+
+            ResultSet rs = query.executeQuery();
+
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+            if (rs.next()) {
+                query1.setString(1, rs.getString("SubjectID"));
+                query1.setString(2, Number);
+
+                ResultSet rs1 = query1.executeQuery();
+
+                PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM group WHERE GroupID=(?) ");
+
+                stat.setString(1, rs1.getString("GroupID"));
+
+                stat.executeUpdate();
+            }
+
+            this.closeC();
+
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
+
     }
 
 }

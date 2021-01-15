@@ -81,7 +81,7 @@ public class LectureDAO extends DBConnection {
 
                 ResultSet rs = query.executeQuery();
 
-                if (rs.next()) {
+               while(rs.next()) {
 
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
 

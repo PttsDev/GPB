@@ -286,7 +286,7 @@ public class Controller {
     	return groupDAO.assignStuGroup(userID, subject, part[0]);
     }
     
-    public static boolean removeGroup(String subject, String nameGroup) {
+    public static boolean deleteGroup(String subject, String nameGroup) {
     	
     	GroupDAO groupDAO = new GroupDAO();
     	String part[] = nameGroup.split(" ");

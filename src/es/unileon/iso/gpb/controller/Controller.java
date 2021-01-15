@@ -144,6 +144,13 @@ public class Controller {
         return userDAO.changeEmail(userName, newEmail);
 
     }
+    
+    public static boolean removeUser(String userName) {
+    	UserDAO userDAO = new UserDAO();
+    	
+    	return userDAO.deleteUser(userName);
+    	
+    }
 
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,

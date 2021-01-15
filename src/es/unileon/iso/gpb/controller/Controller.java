@@ -187,15 +187,16 @@ public class Controller {
     public static ArrayList<String> listSubjectNotHave(String ID){
     	SubjectDAO subjectDAO = new SubjectDAO();
     	
-    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects = null;
+    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
     	
     	haveSubjects = subjectDAO.listStuSubSubjects(ID);
     	allSubjects = subjectDAO.listAllSubjects();
+    	notHaveSubjects = allSubjects;
     	
     	for(int i=0; i<allSubjects.size(); i++) {
     		for(int j=0; j<haveSubjects.size(); j++) {
-    		if(allSubjects.get(i).compareTo(haveSubjects.get(j))!=0) {
-    			notHaveSubjects.add(allSubjects.get(i));
+    		if(allSubjects.get(i).compareTo(haveSubjects.get(j))==0) {
+    			notHaveSubjects.remove(haveSubjects.get(j));
     		}
     		}	
     	}

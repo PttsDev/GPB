@@ -105,6 +105,41 @@ public class SubjectDAO extends DBConnection {
         }
         return lista;
     }
+    
+       public ArrayList<String> listTeaSubSubjects(String userID) {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        boolean exists = false;
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM teasub");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+  
+                if ( rs.getString("TeaID").equals(userID)) {
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
+                    ResultSet rs1 = query1.executeQuery();
+                    while (rs1.next() && !exists) {
+
+                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+                            exists = true;
+                            lista.add(rs1.getString("Name"));
+
+                        }
+
+                    }
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+    }
 
     //TODO
 }

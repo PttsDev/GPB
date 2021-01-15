@@ -1,7 +1,9 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.listUser;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -121,6 +123,9 @@ public class ManageAccounts extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
+        
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( listUser().toArray(new String[0]) );
+        usersComboBox.setModel(model);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

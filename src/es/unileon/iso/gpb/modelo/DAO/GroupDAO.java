@@ -131,8 +131,8 @@ public class GroupDAO extends DBConnection {
 
                             while (rs2.next()) {
                             }
-                            if(rs2.getString("GroupID").equals(rs1.getString("GroupID"))){
-                            return (rs2.getString("Num").concat(" ").concat(rs2.getString("Type")));
+                            if (rs2.getString("GroupID").equals(rs1.getString("GroupID"))) {
+                                return (rs2.getString("Num").concat(" ").concat(rs2.getString("Type")));
                             }
 
                         }
@@ -147,5 +147,55 @@ public class GroupDAO extends DBConnection {
         }
         return null;
     }
-    //TODO
+
+    public boolean assignStuGroup(String UserID, String subject, String number) {
+        boolean exist = false;
+        String groupID = "";
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+
+                if (rs.getString("Name").equals(subject)) {
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
+                    ResultSet rs1 = query1.executeQuery();
+
+                    while (rs1.next()) {
+
+                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+
+                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro");
+                            ResultSet rs2 = query2.executeQuery();
+
+                            while (rs2.next()) {
+                            }
+                            if (rs1.getString("GroupID").equals(number) && rs2.getString("StuID").equals(number)) {
+                               return false;
+                            }else{
+                               PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
+
+                                stat.setString(1, UserID);
+                                stat.setString(2, number);
+
+                                stat.executeUpdate();
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+        return false;
+    }
+
 }

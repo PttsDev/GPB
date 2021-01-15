@@ -24,6 +24,8 @@ import es.unileon.iso.gpb.modelo.users.User;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.awt.Color;
 
 /**
@@ -308,5 +310,40 @@ public class Controller {
     	GroupDAO groupDAO = new GroupDAO();
     	return groupDAO.listGroup(teacherID);
     }
+    
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type) {
+    	long ID = (long) (Math.random()*100+1);
+    	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
+    	if(type == "Personal") {
+    		
+    	}
+    }
 
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String comments, String type) {
+    	long ID = (long) (Math.random()*100+1);
+    	Activity activity = new Activity(ID, actName, date, eHour, sHour, comments);
+    	if(type == "Personal") {
+    		
+    	}
+    }
+    
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup) {
+    	long ID = (long) (Math.random()*100+1);
+    	Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+    	if(type == "Lecture") {
+    		
+    	}
+    }
+    
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup) {
+    	long ID = (long) (Math.random()*100+1);
+    	Lecture lecture = new Lecture(ID, actName, date, eHour, comments, sHour, color, "1");
+    	if(type == "Lecture") {
+    		
+    	}
+    }
+    
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup) {
+    
+    
 }

@@ -150,7 +150,21 @@ public class ChangeEmail extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void changeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailButtonActionPerformed
-        // TODO add your handling code here:
+       
+        String email = newEmailField.getText().trim();
+        
+        if(email.length()<5 || email.length()>50){
+            javax.swing.JOptionPane.showMessageDialog(this, "Wrong email!", "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }else{
+            /*if(funcion(...){
+                javax.swing.JOptionPane.showMessageDialog(this, "Email Changed Successfully", "Email Changed!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+               }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Email could not be changed!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+               }
+            */
+        }
+        
     }//GEN-LAST:event_changeEmailButtonActionPerformed
 
 

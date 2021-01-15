@@ -105,6 +105,49 @@ public class GroupDAO extends DBConnection {
         return lista;
     }
 
+    public ArrayList<String> listGroup(String teacherID) {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        String temp = "";
+
+        try {
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM teagro WHERE Name=(?)");
+
+            query.setString(1, teacherID);
+
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+
+                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?)");
+
+                query1.setString(1, rs.getString("GroupID"));
+
+                ResultSet rs1 = query1.executeQuery();
+
+                if (rs1.next()) {
+
+                    temp = (rs1.getString("Num").concat(" ").concat(rs1.getString("Type")));
+
+                    PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM subject WHERE SubjectID=(?)");
+
+                    query2.setString(1, rs1.getString("SubjectID"));
+
+                    ResultSet rs2 = query2.executeQuery();
+                    
+                    lista.add(rs2.getString("Name").concat(" ").concat(temp));
+
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+    }
+
     public String findGroup(String UserID, String subject) {
 
         try {

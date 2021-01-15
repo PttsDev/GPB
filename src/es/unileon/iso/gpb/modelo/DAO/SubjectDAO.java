@@ -87,6 +87,7 @@ public class SubjectDAO extends DBConnection {
                 if (rs.getString("StuID").equals(userID)) {
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
                     ResultSet rs1 = query1.executeQuery();
+                    exists = false;
                     while (rs1.next() && !exists) {
 
                         if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
@@ -118,10 +119,10 @@ public class SubjectDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-
                 if (rs.getString("TeaID").equals(userID)) {
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
                     ResultSet rs1 = query1.executeQuery();
+                    exists = false;
                     while (rs1.next() && !exists) {
 
                         if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {

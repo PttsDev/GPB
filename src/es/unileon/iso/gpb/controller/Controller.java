@@ -223,6 +223,8 @@ public class Controller {
 
     public static ArrayList<String> listSubjectHaveTea(String ID) {
         SubjectDAO subjectDAO = new SubjectDAO();
+        System.out.println(subjectDAO.listTeaSubSubjects(ID).toString());
+
         return subjectDAO.listTeaSubSubjects(ID);
     }
 
@@ -244,8 +246,8 @@ public class Controller {
         }
         return notHaveSubjects;
     }
-    
-        public static void joinSubject(String ID, String subjectName) {
+
+    public static void joinSubject(String ID, String subjectName) {
         StudentDAO userDAO = new StudentDAO();
         SubjectDAO subDAO = new SubjectDAO();
         if (userDAO.studentExist(ID)) {

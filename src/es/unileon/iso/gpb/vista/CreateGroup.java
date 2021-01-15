@@ -17,7 +17,7 @@ public class CreateGroup extends javax.swing.JFrame {
      * Creates new form ChangePassword
      */
     public CreateGroup() {
-        this.subject=null;
+        this.subjName=null;
         init();
     }
     

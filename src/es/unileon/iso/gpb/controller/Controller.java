@@ -173,6 +173,34 @@ public class Controller {
     	
     }
     
+    public static User getUser(String userName) {
+    	UserDAO userDAO = new UserDAO();
+    	return userDAO.getUser(userName);
+    }
+    
+    public static ArrayList<String> listSubjectHave(String ID){
+    	UserDAO userDAO = new UserDAO();
+    	return userDAO.listStuSubSubjects(ID);
+    }
+    
+    public static ArrayList<String> listSubjectNotHave(String ID){
+    	UserDAO userDAO = new UserDAO();
+    	
+    	ArrayList<String> allSubjects, haveSubjects, notHaveSubjects;
+    	
+    	haveSubjects = userDAO.listStuSubSubjects(ID);
+    	allSubjects = userDAO.listAllSubjects(ID);
+    	
+    	for(int i=0; i<allSubjects.size(); i++) {
+    		for(int j=0; j<haveSubjects.size(); j++) {
+    		if(allSubjects.get(i).compareTo(haveSubjects.get(j))!=0) {
+    			notHaveSubjects.add(allSubjects.get(i));
+    		}
+    		}	
+    	}
+    	return notHaveSubjects;
+    }
+    
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

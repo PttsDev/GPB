@@ -98,6 +98,7 @@ public class Calendar extends javax.swing.JFrame {
         EditActivityMenu = new javax.swing.JMenuItem();
         RemoveActivityMenu = new javax.swing.JMenuItem();
         manageGroupsButton = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         SelectGroupMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -277,7 +278,15 @@ public class Calendar extends javax.swing.JFrame {
         });
         EditMenu.add(manageGroupsButton);
 
-        SelectGroupMenu.setText("Select Group");
+        jMenuItem1.setText("Select Subjects");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        EditMenu.add(jMenuItem1);
+
+        SelectGroupMenu.setText("Select Groups");
         SelectGroupMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectGroupMenuActionPerformed(evt);
@@ -460,7 +469,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_HelpMenuActionPerformed
 
     private void manageAccountsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAccountsButtonActionPerformed
-        new ManageAccounts().setVisible(true);
+        new ManageAccounts(this.user).setVisible(true);
     }//GEN-LAST:event_manageAccountsButtonActionPerformed
 
     private void myAccountMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myAccountMenuActionPerformed
@@ -483,6 +492,10 @@ public class Calendar extends javax.swing.JFrame {
         new SelectGroups(this.user).setVisible(true);
     }//GEN-LAST:event_SelectGroupMenuActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new SelectSubjects(this.user).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;
@@ -499,6 +512,7 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxSubjects;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logOutButton;

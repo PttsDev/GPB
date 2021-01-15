@@ -329,21 +329,25 @@ public class Controller {
     
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup) {
     	long ID = (long) (Math.random()*100+1);
-    	Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+    	
     	if(type == "Lecture") {
+    		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+    	}else if(type == "Meeting") {
+    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
+    	}else if(type == "Tutorship") {
     		
     	}
     }
     
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup) {
     	long ID = (long) (Math.random()*100+1);
-    	Lecture lecture = new Lecture(ID, actName, date, eHour, comments, sHour, color, "1");
+    	
     	if(type == "Lecture") {
+    		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, "1");
     		
+    	}else if(type == "Meeting") {
+    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
     	}
-    }
-    
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup) {
-    
+    } 
     
 }

@@ -17,33 +17,40 @@ import java.time.*;
 public class Tutorship extends Activity{
     
     private String place;
-    private Teacher teacher;
-    private Student student;
+    private String teacher;
+    private String student;
     
     //TODO
     /*
     * Añadir constructores sobrecargados
     */
-    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color, Student student, Teacher teacher) {
-        super(ID, name, date, endTime, duration, comments, color);
+    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments, Color color, String student, String teacher) {
+        super(ID, name, date, endTime, startTime, comments, color);
+        this.place = place;
+        this.student = student;
+        this.teacher = teacher;
+    }
+    
+    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, Color color, String student, String teacher) {
+        super(ID, name, date, endTime, startTime, color);
         this.place = place;
         this.student = student;
         this.teacher = teacher;
     }
 
-    public Teacher getTeacher() {
+    public String getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
 
-    public Student getStudent() {
+    public String getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(String student) {
         this.student = student;
     }
     

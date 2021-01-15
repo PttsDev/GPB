@@ -294,81 +294,19 @@ public class Controller {
     	
     }
     
-    // Visualizar calendario personal
-    public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
-            String comments, Color color) {
-        // eeeeeee
-        // Activity activity = new Activity(ID, name, date, endTime, duration, comments,
-        // color);
-        PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
-        // Llamar al DAO.
-        return null;
+    public static ArrayList<String> listStudents(){
+    	UserDAO userDAO = new UserDAO();
+    	return userDAO.listStudents();
     }
-
-    /*
-	 * Crear una activity personal por cada tipo que puede modificar?
-     */
-    public boolean removePersonalActivity(long ID, User user) {// boolean o user?
-
-        UserDAO userDAO = new UserDAO();
-        // Llamar a borrarActividad de Dao
-        return false;
-
+    
+    public static ArrayList<String> listTeachers(){
+    	TeacherDAO teacherDAO = new TeacherDAO();
+    	return teacherDAO.listTeachers();
     }
-
-    /*
-	 * Mostrar Actividades?
-     */
-    public Activity showActivity(User user) {
-        return null;
-    }
-
-    public boolean selectGroup(User user, Group group) {// boolean o group?
-        GroupDAO groupDAO = new GroupDAO();// El grupo ya tiene que estar creado
-        return false;
-    }
-
-    public Lecture showLectures(User user) {
-        LectureDAO lectureDAO = new LectureDAO();
-        return null;
-    }
-
-    public Tutorship showTutorship(User user) {
-        TutorshipDAO tutorshipDAO = new TutorshipDAO();
-        return null;
-    }
-
-    // Haria falta un ClaseDao?
-    public Group createGroup(Teacher teacher, int number, String type) {
-        Group group = new Group(number, type);
-        GroupDAO groupDAO = new GroupDAO();
-        // comprobar el grupo del profesor
-        return null;
-    }
-
-    public Group modifyGroup(Teacher teacher, Group group) {
-        GroupDAO groupDAO = new GroupDAO();
-        return null;
-    }
-
-    public boolean removeGroup(Teacher teacher, Group group) {
-        GroupDAO groupDAO = new GroupDAO();
-        return false;
-    }
-
-    public Meeting createMeeting(Teacher teacher) {// Al elegir quienes son, se le pasa por atributo la lista de
-        // alumnos?
-        return null;
-    }
-
-    public Meeting modifyMeeting(Teacher teacher, Meeting meeting) {
-        MeetingDAO meetingDAO = new MeetingDAO();
-        return null;
-    }
-
-    public boolean removeMeeting(Teacher teacher, Meeting meeting) {
-        MeetingDAO meetingDAO = new MeetingDAO();
-        return false;
+    
+    public static ArrayList<String> listGroups(String teacherName){
+    	GroupDAO groupDAO = new GroupDAO();
+    	return groupDAO.listGroup(teacherName);
     }
 
 }

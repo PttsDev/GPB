@@ -53,6 +53,14 @@ public class CreateActivity extends javax.swing.JFrame {
         colorChooser = new javax.swing.JColorChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         commentText = new javax.swing.JTextArea();
+        groupLabel = new javax.swing.JLabel();
+        groupComboBox = new javax.swing.JComboBox<>();
+        classroomLabel = new javax.swing.JLabel();
+        classroomTextField = new javax.swing.JTextField();
+        studentLabel = new javax.swing.JLabel();
+        studentsComboBox = new javax.swing.JComboBox<>();
+        teacherLabel = new javax.swing.JLabel();
+        teachersComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("GPB Create Activity");
@@ -96,7 +104,7 @@ public class CreateActivity extends javax.swing.JFrame {
             }
         });
 
-        typeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal Activity", "Tutorship", "Meeting", "Lecture" }));
+        typeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal Activity", "Lecture", "Tutorship", "Meeting" }));
         typeSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeSelectorActionPerformed(evt);
@@ -117,6 +125,20 @@ public class CreateActivity extends javax.swing.JFrame {
         commentText.setRows(5);
         jScrollPane1.setViewportView(commentText);
 
+        groupLabel.setText("Group:");
+
+        groupComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Groups" }));
+
+        classroomLabel.setText("Classroom:");
+
+        studentLabel.setText("Student:");
+
+        studentsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Students" }));
+
+        teacherLabel.setText("Teacher:");
+
+        teachersComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teachers" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,7 +148,7 @@ public class CreateActivity extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(classroomLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,37 +161,55 @@ public class CreateActivity extends javax.swing.JFrame {
                                 .addComponent(fechaTextField)
                                 .addComponent(horaInicioTextField)
                                 .addComponent(nameTextField))
-                            .addComponent(jLabel8)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(horaFinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(createActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                            .addComponent(jLabel6))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(colorChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))
+                                .addComponent(classroomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92)
+                                .addComponent(createActivityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel7)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(groupLabel)
+                                    .addComponent(groupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(studentLabel)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(studentsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(teachersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(teacherLabel))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton1))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(5, 5, 5)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
@@ -187,13 +227,32 @@ public class CreateActivity extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(colorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(teacherLabel)
+                        .addGap(2, 2, 2)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(groupLabel)
+                    .addComponent(studentLabel))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(groupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(teachersComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(classroomLabel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(createActivityButton)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(typeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(createActivityButton)
-                .addGap(48, 48, 48))
+                        .addComponent(classroomTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,8 +267,8 @@ public class CreateActivity extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -271,10 +330,7 @@ public class CreateActivity extends javax.swing.JFrame {
                 //Llamar a la funcion con los datos
                 this.dispose();
             }
-
-            
-
-            
+  
         }
     }//GEN-LAST:event_createActivityButtonActionPerformed
 
@@ -284,28 +340,126 @@ public class CreateActivity extends javax.swing.JFrame {
     
     private void init() {
         initComponents();
+        initListeners();
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         
         if(userType.equals("Teacher")){
-            String[] ops = {"Tutorship", "Meeting", "Lecture"};
+            String[] ops = {"Lecture", "Meeting", "Tutorship"};
             DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
             typeSelector.setModel(model);
+            
+            studentLabel.setVisible(false);
+            studentsComboBox.setEnabled(false);
+            studentsComboBox.setVisible(false);
+                    
+            teacherLabel.setVisible(false);
+            teachersComboBox.setEnabled(false);
+            teachersComboBox.setVisible(false);
+            
         }
         //If account type Student
         if(userType.equals("Student")){
             String[] ops = {"Personal Activity"};
             DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
             typeSelector.setModel(model);
+            
+            groupLabel.setVisible(false);
+            groupComboBox.setEnabled(false);
+            groupComboBox.setVisible(false);
+                    
+            studentLabel.setVisible(false);
+            studentsComboBox.setEnabled(false);
+            studentsComboBox.setVisible(false);
+              
+            teacherLabel.setVisible(false);
+            teachersComboBox.setEnabled(false);
+            teachersComboBox.setVisible(false);
+              
+            classroomLabel.setVisible(false);
+            classroomTextField.setEnabled(false);
+            classroomTextField.setVisible(false);
+            
         }
     }
+    
+    private void initListeners(){
+         typeSelector.addItemListener(new java.awt.event.ItemListener() {
+            
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                String type = String.valueOf(typeSelector.getSelectedItem());
+                
+                if(type.equals("Tutorship")){
+                   
+                    groupLabel.setVisible(false);
+                    groupComboBox.setEnabled(false);
+                    groupComboBox.setVisible(false);
+                    
+                    classroomLabel.setVisible(true);
+                    classroomTextField.setEnabled(true);
+                    classroomTextField.setVisible(true);
+                    
+                    studentLabel.setVisible(true);
+                    studentsComboBox.setEnabled(true);
+                    studentsComboBox.setVisible(true);
+                    
+                    teacherLabel.setVisible(false);
+                    teachersComboBox.setEnabled(false);
+                    teachersComboBox.setVisible(false);
+                    
+                }else if(type.equals("Meeting")){
+                   
+                    groupLabel.setVisible(false);
+                    groupComboBox.setEnabled(false);
+                    groupComboBox.setVisible(false);
+                    
+                    classroomLabel.setVisible(true);
+                    classroomTextField.setEnabled(true);
+                    classroomTextField.setVisible(true);
+                    
+                    studentLabel.setVisible(false);
+                    studentsComboBox.setEnabled(false);
+                    studentsComboBox.setVisible(false);
+                    
+                    teacherLabel.setVisible(true);
+                    teachersComboBox.setEnabled(true);
+                    teachersComboBox.setVisible(true);
+                    
+                }else if(type.equals("Lecture")){
+                    
+                    groupLabel.setVisible(true);
+                    groupComboBox.setEnabled(true);
+                    groupComboBox.setVisible(true);
+                    
+                    classroomLabel.setVisible(true);
+                    classroomTextField.setEnabled(true);
+                    classroomTextField.setVisible(true);
+                    
+                    studentLabel.setVisible(false);
+                    studentsComboBox.setEnabled(false);
+                    studentsComboBox.setVisible(false);
+                    
+                    teacherLabel.setVisible(false);
+                    teachersComboBox.setEnabled(false);
+                    teachersComboBox.setVisible(false);
+
+                }
+                    
+            }
+        });
+         
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel classroomLabel;
+    private javax.swing.JTextField classroomTextField;
     private javax.swing.JColorChooser colorChooser;
     private javax.swing.JTextArea commentText;
     private javax.swing.JButton createActivityButton;
     private javax.swing.JTextField fechaTextField;
+    private javax.swing.JComboBox<String> groupComboBox;
+    private javax.swing.JLabel groupLabel;
     private javax.swing.JTextField horaFinTextField;
     private javax.swing.JTextField horaInicioTextField;
     private javax.swing.JButton jButton1;
@@ -320,6 +474,10 @@ public class CreateActivity extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel studentLabel;
+    private javax.swing.JComboBox<String> studentsComboBox;
+    private javax.swing.JLabel teacherLabel;
+    private javax.swing.JComboBox<String> teachersComboBox;
     private javax.swing.JComboBox<String> typeSelector;
     // End of variables declaration//GEN-END:variables
 }

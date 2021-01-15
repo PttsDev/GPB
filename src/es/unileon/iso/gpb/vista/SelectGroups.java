@@ -1,7 +1,9 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.listGroups;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -137,6 +139,8 @@ public class SelectGroups extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
+        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem())).toArray(new String[0]) );
+        groupsComboBox.setModel(model1);
     }
     
     private void initListeners(){
@@ -144,8 +148,10 @@ public class SelectGroups extends javax.swing.JFrame {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 String subject = String.valueOf(subjectsComboBox.getSelectedItem());
-                
-                //Set lista de grupos
+
+                DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(subject).toArray(new String[0]) );
+                groupsComboBox.setModel(model1); 
+                //String group = function() currentGroupLabel.setText("(Current: )")
                     
             }
         });

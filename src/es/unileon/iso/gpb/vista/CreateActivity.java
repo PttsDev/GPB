@@ -6,6 +6,9 @@ import java.time.LocalTime;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import static es.unileon.iso.gpb.controller.Controller.listStudents;
+import static es.unileon.iso.gpb.controller.Controller.listTeachers;
+import static es.unileon.iso.gpb.controller.Controller.listGroup;
 
 /**
  *
@@ -424,6 +427,10 @@ public class CreateActivity extends javax.swing.JFrame {
                     teachersComboBox.setEnabled(false);
                     teachersComboBox.setVisible(false);
                     
+                    //
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( listStudents().toArray(new String[0]) );
+                    studentsComboBox.setModel(model);
+                    
                 }else if(type.equals("Meeting")){
                    
                     groupLabel.setVisible(false);
@@ -442,6 +449,8 @@ public class CreateActivity extends javax.swing.JFrame {
                     teachersComboBox.setEnabled(true);
                     teachersComboBox.setVisible(true);
                     
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( listTeachers().toArray(new String[0]) );
+                    teachersComboBox.setModel(model);
                 }else if(type.equals("Lecture")){
                     
                     groupLabel.setVisible(true);
@@ -459,6 +468,9 @@ public class CreateActivity extends javax.swing.JFrame {
                     teacherLabel.setVisible(false);
                     teachersComboBox.setEnabled(false);
                     teachersComboBox.setVisible(false);
+                    
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(  listGroup(this.user.getID()).toArray(new String[0]) );
+                    groupComboBox.setModel(model);
 
                 }
                     

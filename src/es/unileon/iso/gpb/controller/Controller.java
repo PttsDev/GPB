@@ -256,6 +256,16 @@ public class Controller {
             subDAO.joinSubjectTea(ID, subjectName);
         }
     }
+    
+        public static void leaveSubject(String ID, String subjectName) {
+        StudentDAO userDAO = new StudentDAO();
+        SubjectDAO subDAO = new SubjectDAO();
+        if (userDAO.studentExist(ID)) {
+            subDAO.leaveStuSubject(ID, subjectName);
+        } else {
+            subDAO.leaveTeaSubject(ID, subjectName);
+        }
+    }
 
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,

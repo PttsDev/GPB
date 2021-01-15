@@ -207,6 +207,50 @@ public class SubjectDAO extends DBConnection {
 
         }
     }
+
+    public void leaveStuSubject(String userID, String Subject) {
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM stusub WHERE StuID=? AND SubjectID=?");
+
+            stat.setString(1, userID);
+            stat.setString(2, Subject);
+
+            stat.executeUpdate();
+
+            this.closeC();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
+
+    }
+    
+        public void leaveTeaSubject(String userID, String Subject) {
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM teasub WHERE TeaID=? AND SubjectID=?");
+
+            stat.setString(1, userID);
+            stat.setString(2, Subject);
+
+            stat.executeUpdate();
+
+            this.closeC();
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
+
+    }
 }
 
 //TODO}

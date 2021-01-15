@@ -1,6 +1,7 @@
 package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.joinSubject;
+import static es.unileon.iso.gpb.controller.Controller.leaveSubject;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectNotHave;
 import es.unileon.iso.gpb.modelo.sets.Subject;

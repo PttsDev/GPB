@@ -172,12 +172,13 @@ public class SelectSubjects extends javax.swing.JFrame {
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
         
+        DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
+        yourSubjectsBox.setModel(model2);
         
         DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listSubjectNotHave(this.user.getID()).toArray(new String[0]) );
         notChoosenSubjectsBox.setModel(model1);
         
-        DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
-        yourSubjectsBox.setModel(model2);
+       
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -125,8 +125,8 @@ public class UserDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-                
-                 if (rs.getString("UserName").equals(user.getUserName())) {
+
+                if (rs.getString("UserName").equals(user.getUserName())) {
                     return 0;
                 }
 
@@ -174,12 +174,12 @@ public class UserDAO extends DBConnection {
             //Llamar a controlador para sacar mensaje por vista TODO
         }
     }
-    
-      public boolean changeEmail(String UserName, String email) {
+
+    public boolean changeEmail(String UserName, String email) {
         try {
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("UPDATE user SET password = (?) WHERE UserName = (?)");
+            PreparedStatement stat = this.getConnection().prepareStatement("UPDATE user SET Email = (?) WHERE UserName = (?)");
 
             stat.setString(1, email);
             stat.setString(2, UserName);
@@ -187,15 +187,19 @@ public class UserDAO extends DBConnection {
             stat.executeUpdate();
 
             this.close();
-            
-            return true;
 
+            return true;
 
         } catch (Exception e) {
             System.out.println(e);
             return false;
             //Llamar a controlador para sacar mensaje por vista TODO
         }
+
+    }
+
+    public boolean deleteEmail() {
+        return false;
 
     }
 

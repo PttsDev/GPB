@@ -140,9 +140,9 @@ public class ManageGroups extends javax.swing.JFrame {
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to change remove group "+group+"?",
                     "Delete group?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
             
-            String[] grp = group.split("-");
+            
             //
-            //deleteGroup(subject, grp[0], grp[1])
+            //deleteGroup(subject, nombre)
         }
     }//GEN-LAST:event_removeGroupButtonActionPerformed
 

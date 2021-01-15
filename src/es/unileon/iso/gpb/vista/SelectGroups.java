@@ -1,9 +1,13 @@
 package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.listGroups;
+import static es.unileon.iso.gpb.controller.Controller.findGroup;
+import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
+import static es.unileon.iso.gpb.controller.Controller.assignStuGroup;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -128,7 +132,21 @@ public class SelectGroups extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
-        // TODO add your handling code here:
+        
+        String subject = String.valueOf(subjectsComboBox.getSelectedItem());
+        String group = String.valueOf(subjectsComboBox.getSelectedItem());
+        
+        if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to select group "+group+" of subject "+subject+"?",
+                    "Choose group?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+        
+            if(assignStuGroup(this.user.getID(), subject, group)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Joined " +subject+":"+group+" successfully!", 
+                    "Join success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "There was an error joining the group!", 
+                    "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_selectButtonActionPerformed
     
     private void init(){
@@ -138,8 +156,12 @@ public class SelectGroups extends javax.swing.JFrame {
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-        setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
-        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem())).toArray(new String[0]) );
+        setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        
+        DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
+        subjectsComboBox.setModel(model2);
+        
+        DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem()) ).toArray(new String[0]) );
         groupsComboBox.setModel(model1);
     }
     
@@ -151,7 +173,7 @@ public class SelectGroups extends javax.swing.JFrame {
 
                 DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(subject).toArray(new String[0]) );
                 groupsComboBox.setModel(model1); 
-                //String group = function() currentGroupLabel.setText("(Current: )")
+                currentGroupLabel.setText("(Current: )"+findGroup(user.getID(), subject));
                     
             }
         });

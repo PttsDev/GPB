@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.joinSubject;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
 import static es.unileon.iso.gpb.controller.Controller.listSubjectNotHave;
 import es.unileon.iso.gpb.modelo.sets.Subject;
@@ -145,8 +146,8 @@ public class SelectSubjects extends javax.swing.JFrame {
         
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to leave "+subject+"?",
                     "Leave subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
-            
-            
+            leaveSubject(this.user.getID(),subject);
+            loadLists();
         }
 
 
@@ -157,8 +158,8 @@ public class SelectSubjects extends javax.swing.JFrame {
         
         if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to join "+subject+"?",
                     "Join subject?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
-            
-            
+            joinSubject(this.user.getID(),subject);
+            loadLists();
         }
         
         
@@ -171,14 +172,18 @@ public class SelectSubjects extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png"))); 
+        loadLists();
+
         
+       
+    }
+    
+    private void loadLists(){
         DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
         yourSubjectsBox.setModel(model2);
         
         DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listSubjectNotHave(this.user.getID()).toArray(new String[0]) );
-        notChoosenSubjectsBox.setModel(model1);
-        
-       
+        notChoosenSubjectsBox.setModel(model1);  
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,4 +196,8 @@ public class SelectSubjects extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> notChoosenSubjectsBox;
     private javax.swing.JComboBox<String> yourSubjectsBox;
     // End of variables declaration//GEN-END:variables
+
+    private void leaveSubject(String id, String subject) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -86,8 +86,6 @@ public class Calendar extends javax.swing.JFrame {
         weekLabel = new javax.swing.JLabel();
         calendarOptions = new javax.swing.JComboBox<>();
         manageAccountsButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        comboBoxSubjects = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         AccountMenu = new javax.swing.JMenu();
         myAccountMenu = new javax.swing.JMenuItem();
@@ -210,10 +208,6 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("My Subjects:");
-
-        comboBoxSubjects.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Subjects" }));
-
         AccountMenu.setText("Account");
 
         myAccountMenu.setText("My Account");
@@ -316,9 +310,7 @@ public class Calendar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageAccountsButton)
-                    .addComponent(jLabel1)
-                    .addComponent(comboBoxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(manageAccountsButton))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -339,11 +331,7 @@ public class Calendar extends javax.swing.JFrame {
                         .addGap(0, 10, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBoxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(139, 139, 139)
                         .addComponent(manageAccountsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -509,8 +497,6 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> calendarOptions;
     private javax.swing.JTable calendarioTable;
-    private javax.swing.JComboBox<String> comboBoxSubjects;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;

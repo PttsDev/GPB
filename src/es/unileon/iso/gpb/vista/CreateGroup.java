@@ -1,5 +1,6 @@
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.createGroup;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.event.DocumentEvent;
@@ -37,7 +38,7 @@ public class CreateGroup extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         createGroupButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        typeBox = new javax.swing.JComboBox<>();
         name = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -64,9 +65,9 @@ public class CreateGroup extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B1", "B3" }));
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B1", "B3" }));
 
-        jLabel1.setText("Name:");
+        jLabel1.setText("Number:");
 
         jLabel2.setText("Type:");
 
@@ -86,7 +87,7 @@ public class CreateGroup extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))))
                 .addContainerGap(177, Short.MAX_VALUE))
@@ -106,7 +107,7 @@ public class CreateGroup extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(createGroupButton)
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -155,7 +156,23 @@ public class CreateGroup extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGroupButtonActionPerformed
-        // TODO add your handling code here:
+        String number = name.getText().trim();
+        String type = String.valueOf(typeBox.getSelectedItem());
+        
+        if(number.length()<1 || number.length()>5){
+            javax.swing.JOptionPane.showMessageDialog(this, "Name length must be between 1 and 5!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }else{
+            if(createGroup(subject.getName(), number, type)){
+                javax.swing.JOptionPane.showMessageDialog(this, "Group "+number+"-"+type+" created successfully!", 
+                    "Sucessful creation!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "Error creating the group!", 
+                    "Error!", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+
+                
+        }
     }//GEN-LAST:event_createGroupButtonActionPerformed
 
 
@@ -164,9 +181,9 @@ public class CreateGroup extends javax.swing.JFrame {
     private javax.swing.JLabel Title;
     private javax.swing.JButton backButton;
     private javax.swing.JButton createGroupButton;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField name;
+    private javax.swing.JComboBox<String> typeBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@ import static es.unileon.iso.gpb.controller.Controller.listSubjectHave;
 import es.unileon.iso.gpb.modelo.sets.Subject;
 import es.unileon.iso.gpb.modelo.users.User;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -133,7 +134,15 @@ public class ManageGroups extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void removeGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeGroupButtonActionPerformed
-        // TODO add your handling code here:
+        String group = String.valueOf(groupsComboBox.getSelectedItem());
+        String subject = String.valueOf(subjectsComboBox.getSelectedItem());
+        if(javax.swing.JOptionPane.showConfirmDialog(this, "Are you sure you want to change remove group "+group+"?",
+                    "Delete group?",JOptionPane.INFORMATION_MESSAGE) == javax.swing.JOptionPane.YES_OPTION){
+            
+            String[] grp = group.split("-");
+            //
+            //deleteGroup(subject, grp[0], grp[1])
+        }
     }//GEN-LAST:event_removeGroupButtonActionPerformed
 
     private void createGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGroupButtonActionPerformed

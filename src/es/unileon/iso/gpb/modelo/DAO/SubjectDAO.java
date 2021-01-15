@@ -244,9 +244,9 @@ public class SubjectDAO extends DBConnection {
         try {
             this.abrirConexion();
             
-                       PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
             ResultSet rs = query.executeQuery();
-            boolean exist=false;
+            boolean exist = false;
             String SubjectID = "";
             while (rs.next() && !exist) {
 

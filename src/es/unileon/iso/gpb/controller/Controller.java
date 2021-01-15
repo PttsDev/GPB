@@ -266,13 +266,11 @@ public class Controller {
         }
     }
 
-    public static boolean createGroup(int number, String type) {
-    	
-    	Group group = new Group(number, type);
-    	
+    public static boolean createGroup(String subject, String number, String type) {
+    	    	
     	GroupDAO groupDAO = new GroupDAO();
     
-    	return groupDAO.createGroup(group);
+    	return groupDAO.createGroup( subject,  number, type);
     	
     }        
     // Visualizar calendario personal

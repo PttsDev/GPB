@@ -173,6 +173,11 @@ public class Controller {
     	
     }
     
+    public static User getUser(String userName) {
+    	UserDAO userDAO = new UserDAO();
+    	return userDAO.getUser(userName);
+    }
+    
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,
             String comments, Color color) {

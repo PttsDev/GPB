@@ -33,7 +33,7 @@ public class StudentDAO extends DBConnection {
 
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
         } catch (Exception e) {
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
@@ -58,7 +58,7 @@ public class StudentDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -85,7 +85,7 @@ public class StudentDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -119,7 +119,7 @@ public class StudentDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -143,7 +143,7 @@ public class StudentDAO extends DBConnection {
 
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
 
             return true;
 

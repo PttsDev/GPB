@@ -149,6 +149,53 @@ public class GroupDAO extends DBConnection {
     }
 
     public boolean assignStuGroup(String UserID, String subject, String number) {
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("Name").equals(subject)) {
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
+                    ResultSet rs1 = query1.executeQuery();
+                    while (rs1.next()) {
+                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+
+                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro");
+                            ResultSet rs2 = query2.executeQuery();
+
+                            while (rs2.next()) {
+
+                                if (rs1.getString("GroupID").equals(number) && rs2.getString("StuID").equals(number)) {
+                                    this.closeC();
+                                    return false;
+                                }
+                            }
+
+                            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
+
+                            stat.setString(1, UserID);
+                            stat.setString(2, number);
+
+                            stat.executeUpdate();
+                            this.closeC();
+                            return true;
+                        }
+
+                    }
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+        return false;
+    }
+    
+       public boolean assignTeaGroup(String UserID, String subject, String number) {
         boolean exist = false;
         String groupID = "";
 
@@ -159,31 +206,31 @@ public class GroupDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-
                 if (rs.getString("Name").equals(subject)) {
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
                     ResultSet rs1 = query1.executeQuery();
-
                     while (rs1.next()) {
-
                         if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
 
-                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro");
+                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM teagro");
                             ResultSet rs2 = query2.executeQuery();
 
                             while (rs2.next()) {
-                            }
-                            if (rs1.getString("GroupID").equals(number) && rs2.getString("StuID").equals(number)) {
-                               return false;
-                            }else{
-                               PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
 
-                                stat.setString(1, UserID);
-                                stat.setString(2, number);
-
-                                stat.executeUpdate();
+                                if (rs1.getString("GroupID").equals(number) && rs2.getString("TeaID").equals(number)) {
+                                    this.closeC();
+                                    return false;
+                                }
                             }
 
+                            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teagro (TeaID, GroupID) VALUES (?,?)");
+
+                            stat.setString(1, UserID);
+                            stat.setString(2, number);
+
+                            stat.executeUpdate();
+                            this.closeC();
+                            return true;
                         }
 
                     }

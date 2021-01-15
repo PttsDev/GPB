@@ -258,11 +258,13 @@ public class Controller {
         }
     }
 
-    public static boolean createGroup(String subject, String number, String type) {
+    public static boolean createGroup(String subject, String number, String type, String userID) {
     	    	
     	GroupDAO groupDAO = new GroupDAO();
     
-    	return groupDAO.createGroup( subject,  number, type);
+    	boolean sol = groupDAO.createGroup( subject,  number, type);
+        groupDAO.assignTeaGroup(userID, subject, number);
+        return sol;
     	
     }  
     

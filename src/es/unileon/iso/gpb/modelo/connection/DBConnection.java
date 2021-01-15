@@ -42,8 +42,13 @@ public class DBConnection {
         return this.connection;
     }
 
-    public void close() {
-        this.connection = null;
+    public void closeC() {
+        try {
+            this.connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
     public void abrirConexion() throws Exception {

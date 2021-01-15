@@ -39,7 +39,7 @@ public class UserDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -66,7 +66,7 @@ public class UserDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -101,7 +101,7 @@ public class UserDAO extends DBConnection {
 
             }
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -147,7 +147,7 @@ public class UserDAO extends DBConnection {
             stat.setString(7, user.getUserName());
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
         } catch (Exception e) {
             System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
@@ -168,7 +168,7 @@ public class UserDAO extends DBConnection {
 
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
 
         } catch (Exception e) {
             System.out.println(e);
@@ -187,7 +187,7 @@ public class UserDAO extends DBConnection {
 
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
 
             return true;
 
@@ -210,7 +210,7 @@ public class UserDAO extends DBConnection {
 
             stat.executeUpdate();
 
-            this.close();
+            this.closeC();
 
             return true;
 

@@ -23,9 +23,7 @@ public class MeetingDAO {
         try {
             Statement stat = connect.getConnection().createStatement();
             stat.executeUpdate("INSERT INTO user VALUES \\VALUES MEETING//");//TODO
-            
-            stat.close();
-            connect.close();
+          
         }catch (SQLException e){
             System.out.println(e.getMessage());
             //Llamar a controlador para sacar mensaje por vista TODO

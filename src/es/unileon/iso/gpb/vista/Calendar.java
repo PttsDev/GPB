@@ -530,7 +530,7 @@ public class Calendar extends javax.swing.JFrame {
                 
                 int sHour = l.getStartTime().getHour();
                 int eHour = l.getEndTime().getHour();
-                int day = (l.getDate().getDayOfWeek().getValue())-1;
+                int day = (l.getDate().getDayOfWeek().getValue());
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){

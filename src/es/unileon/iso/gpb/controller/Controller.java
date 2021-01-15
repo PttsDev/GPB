@@ -426,8 +426,9 @@ public class Controller {
     	return false;
     }
     
-    public static ArrayList<String> listLectures(String teacherID){
+    public static ArrayList<String> listLectures(String userID){
     	LectureDAO lectureDAO = new LectureDAO();
-    	return lectureDAO.listLectures(teacherID);
+    	//return lectureDAO.listLectures(userID);
+    	return null;
     }
 }

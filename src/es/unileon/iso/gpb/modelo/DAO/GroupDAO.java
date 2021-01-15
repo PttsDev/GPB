@@ -201,14 +201,29 @@ public class GroupDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+            PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?)");
+
             if (rs.next()) {
                 query1.setString(1, rs.getString("SubjectID"));
                 query1.setString(2, number);
+                query3.setString(1, rs.getString("SubjectID"));
+
+                ResultSet rs3 = query3.executeQuery();
 
                 ResultSet rs1 = query1.executeQuery();
+
+                while (rs3.next()) {
+                    PreparedStatement stat1 = this.getConnection().prepareStatement("DELETE FROM stugro WHERE StuID=(?) AND GroupID=(?)");
+
+                    stat1.setString(1, UserID);
+                    stat1.setString(2, rs3.getString("GroupID"));
+
+                    stat1.executeUpdate();
+                }
+
                 if (rs1.next()) {
                     PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
-                    
+
                     stat.setString(1, UserID);
 
                     stat.setString(2, rs1.getString("GroupID"));
@@ -216,8 +231,9 @@ public class GroupDAO extends DBConnection {
                     stat.executeUpdate();
                 }
             }
-            this.closeC();
 
+            this.closeC();
+            return true;
         } catch (Exception e) {
             System.out.println(e);
 
@@ -246,7 +262,7 @@ public class GroupDAO extends DBConnection {
                 ResultSet rs1 = query1.executeQuery();
                 if (rs1.next()) {
                     PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teagro (TeaID, GroupID) VALUES (?,?)");
-                    
+
                     stat.setString(1, UserID);
 
                     stat.setString(2, rs1.getString("GroupID"));
@@ -255,6 +271,7 @@ public class GroupDAO extends DBConnection {
                 }
             }
             this.closeC();
+            return true;
 
         } catch (Exception e) {
             System.out.println(e);

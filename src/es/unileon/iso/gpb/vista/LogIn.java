@@ -143,34 +143,30 @@ public class LogIn extends javax.swing.JFrame {
     
     private void singInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singInButtonActionPerformed
         //Check fields TODO
+        String username = userTextField.getText().trim();
+        String pw = passwordField.getText().trim();
         
-        /*
-        * Send to controller to check
-        * userTextField.getText().trim();
-        * passwordField.getText().trim();
-        */
-        /*
-        * Receive user from controler
-        */
-        if( userTextField.getText().trim().length()>25    ||
-           passwordField.getText().trim().length()<5      ||
-           userTextField.getText().trim().length()<5      ||
-           passwordField.getText().trim().length()<5 ){
-            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong input", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
+        if(username.length()<5 || username.length()>25){
+           javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong username!", 
+                   "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+           
+        }else if(pw.length()<5 || pw.length()>25){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Wrong password!", 
+                   "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
         }else{
         
             User user = loginUser(userTextField.getText().trim(), passwordField.getText().trim());
         
-            if(user==null){
-            
-                javax.swing.JOptionPane.showMessageDialog(this, "Account not found", "Bad login", javax.swing.JOptionPane.ERROR_MESSAGE);
-            
-            }else{
+            if(user!=null){
             
                 String type = getTipo(user.getID());
                 this.setVisible(false);
                 new Calendar(this, user, type).setVisible(true);
             
+            }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "We couldn't recognize this account!", 
+                        "Bad login!", javax.swing.JOptionPane.ERROR_MESSAGE);
             }  
         }
 

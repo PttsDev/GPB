@@ -7,6 +7,7 @@ package es.unileon.iso.gpb.modelo.DAO;
 
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,22 +15,29 @@ import java.sql.Statement;
  *
  * @author Roberto
  */
-public class PersonalActivityDAO {
+public class PersonalActivityDAO extends DBConnection{
     
-    public void createPersonalActivity(PersonalActivity pa){
+    public boolean createPersonalActivity(PersonalActivity pa, int Id){
         
-        DBConnection connect = new DBConnection();
-        
+                
         try {
-            Statement stat = connect.getConnection().createStatement();
-            stat.executeUpdate("INSERT INTO user VALUES \\VALUES PERSONAL ACTIVTY//");//TODO
-            
-     
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
+
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, StuID) VALUES (?,?)");
+
+            stat.setString(1, String.valueOf(Id));
+            stat.setString(2, );
+
+
+            stat.executeUpdate();
+
+            this.closeC();
+        } catch (Exception e) {
+            System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
-        
+        return true;
     }
     //TODO
 }

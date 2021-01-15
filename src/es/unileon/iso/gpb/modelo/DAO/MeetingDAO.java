@@ -7,6 +7,7 @@ package es.unileon.iso.gpb.modelo.DAO;
 
 import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,20 +15,30 @@ import java.sql.Statement;
  *
  * @author Roberto
  */
-public class MeetingDAO {
+public class MeetingDAO extends DBConnection{
     
-    public void createMeeting(Meeting mt){
+    public boolean createMeeting(Meeting mt, int Id){
         
-        DBConnection connect = new DBConnection();
-        
+                  
         try {
-            Statement stat = connect.getConnection().createStatement();
-            stat.executeUpdate("INSERT INTO user VALUES \\VALUES MEETING//");//TODO
-          
-        }catch (SQLException e){
-            System.out.println(e.getMessage());
+
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Place, TeaID, TeaID2) VALUES (?,?,?,?)");
+
+            stat.setString(1, String.valueOf(Id));
+            stat.setString(2, mt.getPlace());
+            stat.setString(3, );
+            stat.setString(4, );
+
+            stat.executeUpdate();
+
+            this.closeC();
+        } catch (Exception e) {
+            System.out.println(e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
+        return true;
         
     }
     //TODO

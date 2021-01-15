@@ -83,8 +83,8 @@ public class SubjectDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-  
-                if ( rs.getString("StuID").equals(userID)) {
+
+                if (rs.getString("StuID").equals(userID)) {
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
                     ResultSet rs1 = query1.executeQuery();
                     while (rs1.next() && !exists) {
@@ -105,8 +105,8 @@ public class SubjectDAO extends DBConnection {
         }
         return lista;
     }
-    
-       public ArrayList<String> listTeaSubSubjects(String userID) {
+
+    public ArrayList<String> listTeaSubSubjects(String userID) {
 
         ArrayList<String> lista = new <String>ArrayList();
         boolean exists = false;
@@ -118,8 +118,8 @@ public class SubjectDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
-  
-                if ( rs.getString("TeaID").equals(userID)) {
+
+                if (rs.getString("TeaID").equals(userID)) {
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM subject");
                     ResultSet rs1 = query1.executeQuery();
                     while (rs1.next() && !exists) {
@@ -141,5 +141,69 @@ public class SubjectDAO extends DBConnection {
         return lista;
     }
 
-    //TODO
+    public void joinSubjectTea(String userID, String Subject) {
+
+        boolean exist = false;
+        String SubjectID = "";
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+            while (rs.next() && !exist) {
+
+                if (rs.getString("Name").equals(Subject)) {
+                    exist = true;
+                    SubjectID = rs.getString("SubjectID");
+                }
+            }
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teasub (TeaID, SubjectID) VALUES (?,?)");
+
+            stat.setString(1, userID);
+            stat.setString(2, SubjectID);
+
+            stat.executeUpdate();
+
+            this.closeC();
+
+        } catch (Exception e) {
+
+        }
+    }
+    
+     public void joinSubjectStu(String userID, String Subject) {
+
+        boolean exist = false;
+        String SubjectID = "";
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            ResultSet rs = query.executeQuery();
+            while (rs.next() && !exist) {
+
+                if (rs.getString("Name").equals(Subject)) {
+                    exist = true;
+                    SubjectID = rs.getString("SubjectID");
+                }
+            }
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stusub (StuID, SubjectID) VALUES (?,?)");
+
+            stat.setString(1, userID);
+            stat.setString(2, SubjectID);
+
+            stat.executeUpdate();
+
+            this.closeC();
+
+        } catch (Exception e) {
+
+        }
+    }
 }
+
+//TODO}

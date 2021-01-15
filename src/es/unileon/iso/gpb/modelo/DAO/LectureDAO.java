@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -44,7 +45,9 @@ public class LectureDAO extends DBConnection {
 
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, lecture.getClassroom());
-            stat.setString(3,rs1.getString("GroupID"));
+            if (rs1.next()) {
+                stat.setString(3, rs1.getString("GroupID"));
+            }
 
             stat.executeUpdate();
 
@@ -54,6 +57,39 @@ public class LectureDAO extends DBConnection {
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         return true;
+    }
+
+    public ArrayList<String> listLectures(String teacherID) {
+
+        ArrayList<String> lista = new <String>ArrayList();
+        String temp = "";
+
+        try {
+            this.abrirConexion();
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lectures WHERE TeaID=(?)");
+
+            query.setString(1, teacherID);
+
+            ResultSet rs = query.executeQuery();
+
+            while (rs.next()) {
+
+                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE AtivityID=(?)");
+
+                query1.setString(1, rs.getString("ActivityID"));
+
+                ResultSet rs1 = query1.executeQuery();
+                if (rs1.next()) {
+                    lista.add(rs1.getString("Name"));
+                }
+
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
     }
 
 }

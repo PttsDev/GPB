@@ -182,11 +182,8 @@ public class Controller {
     public static ArrayList<String> listSubjectHave(String ID) {
         StudentDAO userDAO = new StudentDAO();
         if (userDAO.studentExist(ID)) {
-            System.out.println("Stu");
-
             return listSubjectHaveStu(ID);
         } else {
-            System.out.println("Tea");
             return listSubjectHaveTea(ID);
         }
     }

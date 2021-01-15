@@ -401,7 +401,7 @@ public class Controller {
     		return meetingDAO.createMeeting(meeting, id, userID, name);
     	}else if(type == "Tutorship") {
     		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, userID, id, name);
+    		return tutorshipDAO.createTutorship(tutorship, name, id, userID);
     	}
     	return false;
     }
@@ -421,7 +421,7 @@ public class Controller {
     		return meetingDAO.createMeeting(meeting, id, userID, name);
     	}else if(type == "Tutorship") {
     		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, userID, id, name);
+    		return tutorshipDAO.createTutorship(tutorship, name, id, userID);
     	}
     	return false;
     }

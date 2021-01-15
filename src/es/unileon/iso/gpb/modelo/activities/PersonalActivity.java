@@ -18,8 +18,12 @@ public class PersonalActivity extends Activity{
     /*
     * Añadir constructores sobrecargados
     */
-    public PersonalActivity(long ID, String name, LocalDate date, LocalTime endTime, long duration, String comments, Color color) {
-        super(ID, name, date, endTime, duration, comments, color);
+    public PersonalActivity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments, Color color) {
+        super(ID, name, date, endTime, startTime, comments, color);
+    }
+    
+    public PersonalActivity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, Color color) {
+        super(ID, name, date, endTime, startTime, color);
     }
     
     @Override

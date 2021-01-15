@@ -174,5 +174,24 @@ public class UserDAO extends DBConnection {
             //Llamar a controlador para sacar mensaje por vista TODO
         }
     }
+    
+      public void changeEmail(String UserName, String email) {
+        try {
+            this.abrirConexion();
+
+            PreparedStatement stat = this.getConnection().prepareStatement("UPDATE user SET password = (?) WHERE UserName = (?)");
+
+            stat.setString(1, email);
+            stat.setString(2, UserName);
+
+            stat.executeUpdate();
+
+            this.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            //Llamar a controlador para sacar mensaje por vista TODO
+        }
+    }
 
 }

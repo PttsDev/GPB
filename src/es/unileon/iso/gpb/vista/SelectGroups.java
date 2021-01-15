@@ -159,11 +159,15 @@ public class SelectGroups extends javax.swing.JFrame {
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         
+        
         DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
         subjectsComboBox.setModel(model2);
         
         DefaultComboBoxModel<String> model1 = new DefaultComboBoxModel<>( listGroups(String.valueOf(subjectsComboBox.getSelectedItem()) ).toArray(new String[0]) );
         groupsComboBox.setModel(model1);
+        
+        String subject = String.valueOf(subjectsComboBox.getSelectedItem());
+        currentGroupLabel.setText("(Current: )"+findGroup(user.getID(), subject));
     }
     
     private void initListeners(){

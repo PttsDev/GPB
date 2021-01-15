@@ -108,6 +108,7 @@ CREATE TABLE IF NOT EXISTS MEETING(
 ActivityID varchar(15),
 Place varchar(50),
 TeaID varchar(11) not null,
+Tea2ID varchar(11) not null UNIQUE,
 CONSTRAINT FK_Meeting_TeaID FOREIGN KEY (TeaID) references TEACHER(TeaID) ON DELETE CASCADE,
 CONSTRAINT PK_Meeting_ActivityID PRIMARY KEY (ActivityID)
 );

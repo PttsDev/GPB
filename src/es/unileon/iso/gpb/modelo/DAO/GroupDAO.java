@@ -79,25 +79,22 @@ public class GroupDAO extends DBConnection {
 
         try {
             this.abrirConexion();
+          PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            query.setString(1, subject);
+
             ResultSet rs = query.executeQuery();
 
-            while (rs.next()) {
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?)");
+            if (rs.next()) {
+                query1.setString(1, rs.getString("SubjectID"));
 
-                if (rs.getString("Name").equals(subject)) {
-                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
-                    ResultSet rs1 = query1.executeQuery();
-                    exists = false;
-                    while (rs1.next() && !exists) {
+                ResultSet rs1 = query1.executeQuery();
 
-                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
-                            exists = true;
-                            lista.add(rs1.getString("Num").concat(" ").concat(rs1.getString("Type")));
+                while (rs1.next()) {
 
-                        }
+                    lista.add(rs1.getString("Num").concat(" ").concat(rs1.getString("Type")));
 
-                    }
                 }
             }
             this.closeC();
@@ -113,33 +110,34 @@ public class GroupDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+
+            query.setString(1, subject);
+
             ResultSet rs = query.executeQuery();
 
-            while (rs.next()) {
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?)");
+            if (rs.next()) {
+                query1.setString(1, rs.getString("SubjectID"));
 
-                if (rs.getString("Name").equals(subject)) {
-                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM stugro");
-                    ResultSet rs1 = query1.executeQuery();
+                ResultSet rs1 = query1.executeQuery();
 
-                    while (rs1.next()) {
+                while (rs1.next()) {
 
-                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID")) && rs1.getString("StuID").equals(UserID)) {
+                    PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE StuID=(?) AND GroupID=(?)");
+                    query2.setString(1, UserID);
+                    query2.setString(2, rs1.getString("GroupID"));
+                    
 
-                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM grups");
-                            ResultSet rs2 = query2.executeQuery();
+                    ResultSet rs2 = query2.executeQuery();
 
-                            while (rs2.next()) {
-                            }
-                            if (rs2.getString("GroupID").equals(rs1.getString("GroupID"))) {
-                                return (rs2.getString("Num").concat(" ").concat(rs2.getString("Type")));
-                            }
-
-                        }
-
+                    if (rs2.next()) {
+                        return rs1.getString("Num").concat(" ").concat(rs1.getString("Type"));
                     }
+
                 }
             }
+
             this.closeC();
 
         } catch (Exception e) {
@@ -194,8 +192,8 @@ public class GroupDAO extends DBConnection {
         }
         return false;
     }
-    
-       public boolean assignTeaGroup(String UserID, String subject, String number) {
+
+    public boolean assignTeaGroup(String UserID, String subject, String number) {
         boolean exist = false;
         String groupID = "";
 

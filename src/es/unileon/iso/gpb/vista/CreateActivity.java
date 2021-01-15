@@ -4,6 +4,8 @@ import es.unileon.iso.gpb.modelo.users.User;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -341,6 +343,7 @@ public class CreateActivity extends javax.swing.JFrame {
     private void init() {
         initComponents();
         initListeners();
+        createActivityButton.setEnabled(false);
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -386,6 +389,7 @@ public class CreateActivity extends javax.swing.JFrame {
     }
     
     private void initListeners(){
+        
          typeSelector.addItemListener(new java.awt.event.ItemListener() {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -450,6 +454,57 @@ public class CreateActivity extends javax.swing.JFrame {
             }
         });
          
+         
+         DocumentListener l = new DocumentListener(){
+            public void changedUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                modified();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                modified();
+            }
+
+            public void modified() {
+                
+                String actName= nameTextField.getText().trim();
+                String dateS = fechaTextField.getText().trim();
+                String sHourS = horaInicioTextField.getText().trim();
+                String eHourS = horaFinTextField.getText().trim();
+                String type = String.valueOf(typeSelector.getSelectedItem());
+                
+                String place = classroomTextField.getText().trim();
+                
+                if(actName.equals("")){
+                    
+                }else if(dateS.equals("")){
+                    createActivityButton.setEnabled(false);
+                    
+                }else if(sHourS.equals("")){
+                    createActivityButton.setEnabled(false);
+                    
+                }else if(eHourS.equals("")){
+                    createActivityButton.setEnabled(false);
+                    
+                }else{
+                    
+                    if(!type.equals("Personal Activity") && place.equals("")){
+                        createActivityButton.setEnabled(false);
+                    }else{
+                        createActivityButton.setEnabled(true);
+                    }
+                    
+                }
+                
+            }
+        };
+         
+        nameTextField.getDocument().addDocumentListener(l);
+        fechaTextField.getDocument().addDocumentListener(l);
+        horaInicioTextField.getDocument().addDocumentListener(l);
+        horaFinTextField.getDocument().addDocumentListener(l);
+        classroomTextField.getDocument().addDocumentListener(l);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel classroomLabel;

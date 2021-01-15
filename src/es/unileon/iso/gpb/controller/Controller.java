@@ -153,7 +153,7 @@ public class Controller {
     	if(studentDAO.studentExist(ID)) {
     		studentDAO.deleteStudent(ID);
     	}else {
-    		teacherDAO.deteTeacher(ID);
+    		teacherDAO.deleteTeacher(ID);
     	}
     	
     	return userDAO.deleteUser(ID);

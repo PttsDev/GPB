@@ -28,7 +28,7 @@ import java.time.LocalTime;
  */
 public class ActivityDAO extends DBConnection {
 
-    public boolean createActivity(Activity activity) {
+    public int createActivity(Activity activity) {
 
         int id = 1;
 
@@ -72,10 +72,10 @@ public class ActivityDAO extends DBConnection {
             }
 
             this.closeC();
-            return true;
+            return id;
         } catch (Exception e) {
             System.out.println(e);
-             return false;
+             return 0;
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         //Llamar a controlador para sacar mensaje por vista TODO

@@ -1,6 +1,11 @@
 
 package es.unileon.iso.gpb.vista;
 
+import static es.unileon.iso.gpb.controller.Controller.listLectures;
+import es.unileon.iso.gpb.modelo.activities.Lecture;
+import es.unileon.iso.gpb.modelo.activities.Meeting;
+import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
+import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.users.User;
 import java.time.DayOfWeek;
 import javax.swing.JFrame;
@@ -8,6 +13,7 @@ import javax.swing.JOptionPane;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -420,6 +426,20 @@ public class Calendar extends javax.swing.JFrame {
     
         });
         
+            calendarOptions.addItemListener(new java.awt.event.ItemListener() {
+            
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                for(int i = 0 ; i<24;i++){
+                    for(int j = 0; j<7; i++){
+                        
+                        DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                        model.setValueAt("aa", j, i);
+                    }
+                }
+                    
+            }
+        });
+        
         
         
     }
@@ -502,52 +522,99 @@ public class Calendar extends javax.swing.JFrame {
         
         
         if(type.equals("General Calendar")){
-            
-            
-            //LEER GENERAL CALENDAR PARA this.user.getID();
-            //AKA LISTA DE LECTURES
-            
-            //AL RECIBIR LISTA DE LECTURES:
-            
-            /*
-            
-            ArrayList<Lecture> lectures = metodoDAO();
+
+           /* ArrayList<Lecture> lectures = listLectures(this.user.getID());
             
             for(Lecture l : lectures){
             
                 
                 int sHour = l.getStartTime().getHour();
                 int eHour = l.getEndTime().getHour();
-                int day = get(l.getDate().getDayOfWeek())-1;
+                int day = (l.getDate().getDayOfWeek().getValue())-1;
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
                     model.setValueAt("Name: "+l.getName()+" Comments: "+l.getComments(), i, day);
                 }
             }
-            
-            
             */
 
-            
-
-
         }else{
-            
+            /*
             if(userType.equals("Student")){
                 
                 
                 //LEER PERSONAL CALENDAR PARA STUDENT this.user.getID()
                 //AKA PERSONAL ACTIVITIES Y TUTORSHIPS
                 
+
+            
+            ArrayList<PersonalActivity> pers=listLectures(this.user.getID());
+            ArrayList<Tutorship> tutor= listLectures(this.user.getID());
+                
+            for(PersonalActivity p : pers){
+            
+                
+                int sHour = p.getStartTime().getHour();
+                int eHour = p.getEndTime().getHour();
+                int day = p.getDate().getDayOfWeek().getValue()-1;
+            
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                for(int i = sHour; i<= eHour; i++){
+                    model.setValueAt("Name: "+p.getName()+" Comments: "+p.getComments(), i, day);
+                }
+            }
+            
+            for(Tutorship t : tutor){                
+                int sHour = t.getStartTime().getHour();
+                int eHour = t.getEndTime().getHour();
+                int day = (t.getDate().getDayOfWeek().getValue())-1;
+            
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                for(int i = sHour; i<= eHour; i++){
+                    model.setValueAt("Name: "+t.getName()+" Comments: "+t.getComments(), i, day);
+                }
+            }
+            
+
+                
             }else{
                 
                 //LEER PERSONAL CALENDAR PARA TEACHER this.user.getID()
                 //AKA TUTORSHIPS Y MEETINGS
                 
+
+            
+            ArrayList<Meeting> meet = listLectures(this.user.getID());
+            ArrayList<Tutorship> tutor= listLectures(this.user.getID());
                 
+            for(Meeting m : meet){
+            
+                
+                int sHour =  m.getStartTime().getHour();
+                int eHour =  m.getEndTime().getHour();
+                int day =  (m.getDate().getDayOfWeek().getValue())-1;
+            
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                for(int i = sHour; i<= eHour; i++){
+                    model.setValueAt("Name: "+ m.getName()+" Comments: "+ m.getComments(), i, day);
+                }
             }
             
+            for(Tutorship t : tutor){                
+                int sHour = t.getStartTime().getHour();
+                int eHour = t.getEndTime().getHour();
+                int day = (t.getDate().getDayOfWeek().getValue())-1;
+            
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                for(int i = sHour; i<= eHour; i++){
+                    model.setValueAt("Name: "+t.getName()+" Comments: "+t.getComments(), i, day);
+                }
+            }
+            
+   
+            }
+            */
             
         }
         

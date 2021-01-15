@@ -125,6 +125,10 @@ public class UserDAO extends DBConnection {
             ResultSet rs = query.executeQuery();
 
             while (rs.next()) {
+                
+                 if (rs.getString("UserName").equals(user.getUserName())) {
+                    return 0;
+                }
 
                 if (id <= Integer.parseInt(rs.getString("userID"))) {
                     id = Integer.parseInt(rs.getString("userID")) + 1;

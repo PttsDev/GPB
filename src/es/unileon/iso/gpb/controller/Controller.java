@@ -49,7 +49,7 @@ public class Controller {
 
     public static boolean registTeacher(String name, String surName, String DNI, String email, String userName, String pw) {
 
-        int i;
+        int i=0;
 
         UserDAO userDAO = new UserDAO();
 

@@ -304,9 +304,9 @@ public class Controller {
     	return teacherDAO.listTeachers();
     }
     
-    public static ArrayList<String> listGroups(String teacherName){
+    public static ArrayList<String> listGroup(String teacherID){
     	GroupDAO groupDAO = new GroupDAO();
-    	return groupDAO.listGroup(teacherName);
+    	return groupDAO.listGroup(teacherID);
     }
 
 }

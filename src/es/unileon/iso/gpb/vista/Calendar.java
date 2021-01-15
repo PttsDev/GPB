@@ -429,14 +429,14 @@ public class Calendar extends javax.swing.JFrame {
             calendarOptions.addItemListener(new java.awt.event.ItemListener() {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                for(int i = 0 ; i<24;i++){
-                    for(int j = 0; j<7; i++){
-                        
+                
+                for(int i = 1; i<8; i++){
+                    for(int j = 0; j<24; j++){
                         DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                        model.setValueAt("aa", j, i);
+                        model.setValueAt("", j, i);
                     }
                 }
-                    
+                setActivities();
             }
         });
         
@@ -523,7 +523,7 @@ public class Calendar extends javax.swing.JFrame {
         
         if(type.equals("General Calendar")){
 
-           /* ArrayList<Lecture> lectures = listLectures(this.user.getID());
+           ArrayList<Lecture> lectures = listLectures(this.user.getID());
             
             for(Lecture l : lectures){
             
@@ -537,7 +537,7 @@ public class Calendar extends javax.swing.JFrame {
                     model.setValueAt("Name: "+l.getName()+" Comments: "+l.getComments(), i, day);
                 }
             }
-            */
+            
 
         }else{
             /*

@@ -247,6 +247,16 @@ public class Controller {
         }
         return notHaveSubjects;
     }
+    
+        public static void joinSubject(String ID, String subjectName) {
+        StudentDAO userDAO = new StudentDAO();
+        SubjectDAO subDAO = new SubjectDAO();
+        if (userDAO.studentExist(ID)) {
+            subDAO.joinSubjectStu(ID, subjectName);
+        } else {
+            subDAO.joinSubjectTea(ID, subjectName);
+        }
+    }
 
     // Visualizar calendario personal
     public Activity createPersonalActivity(long ID, String name, Date date, Time endTime, long duration,

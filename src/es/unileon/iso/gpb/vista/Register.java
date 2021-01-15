@@ -361,27 +361,46 @@ public class Register extends JFrame {
     }
     
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
+        
+        String name = nameTextField.getText().trim();
+        String surname = surnameTextField.getText().trim();
+        String DNI = dniTextField.getText().trim();
+        String email = emailTextField.getText().trim();
+        String username = userTextField.getText().trim();
+        String password = passwordTextField.getText().trim();
+        String type = String.valueOf(typeSelector.getSelectedItem());
+                
 
-
-        if(nameTextField.getText().trim().length()>15     ||
-           surnameTextField.getText().trim().length()>20  ||     
-           dniTextField.getText().trim().length()>9       ||
-           emailTextField.getText().trim().length()>50    ||
-           userTextField.getText().trim().length()>25     ||
-           passwordTextField.getText().trim().length()<5  ||
-           nameTextField.getText().trim().length()<3      ||
-           surnameTextField.getText().trim().length()<5   ||     
-           dniTextField.getText().trim().length()<9       ||
-           emailTextField.getText().trim().length()<5     ||
-           userTextField.getText().trim().length()<5      ||
-           passwordTextField.getText().trim().length()<5 ){
-        javax.swing.JOptionPane.showMessageDialog(new JFrame(), "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
+        if(name.length()<3 || name.length()>15){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Name length must be between 3 and 15!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(surname.length()<3 || surname.length()>20 ){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Surame length must be between 3 and 20!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(DNI.length()<9 || DNI.length()>9){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "DNI length must be 9!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(email.length()<5 || email.length()>50){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Email length must be between 5 and 50!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(username.length()<5 || username.length()>25){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Username length must be between 5 and 25!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        }else if(password.length()<5 || password.length()>25){
+            javax.swing.JOptionPane.showMessageDialog(new JFrame(), "Password length must be between 5 and 25!", 
+                    "Wrong input!", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
         }else{
         
-        if(registerUser(nameTextField.getText().trim(), surnameTextField.getText().trim(), dniTextField.getText().trim(), emailTextField.getText().trim(), userTextField.getText().trim(),  passwordTextField.getText().trim(), String.valueOf(typeSelector.getSelectedItem()) ))
-            javax.swing.JOptionPane.showMessageDialog(this, "Registered", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if(registerUser(name, surname, DNI, email, username, password, type))
+            javax.swing.JOptionPane.showMessageDialog(this, username+" Registered successfully!", "Register success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         else
-            javax.swing.JOptionPane.showMessageDialog(this, "An error happened", "Bad register", javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Something Went Wrong!", "Error!", javax.swing.JOptionPane.ERROR_MESSAGE);
         
         this.dispose();
         }

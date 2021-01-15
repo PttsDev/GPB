@@ -311,7 +311,7 @@ public class Controller {
     	return groupDAO.listGroup(teacherID);
     }
     
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String userID) {
     	long ID = (long) (Math.random()*100+1);
     	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
     	if(type == "Personal") {
@@ -319,7 +319,7 @@ public class Controller {
     	}
     }
 
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String comments, String type) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String comments, String type, String userID) {
     	long ID = (long) (Math.random()*100+1);
     	Activity activity = new Activity(ID, actName, date, eHour, sHour, comments);
     	if(type == "Personal") {
@@ -327,27 +327,40 @@ public class Controller {
     	}
     }
     
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup, String userID) {
     	long ID = (long) (Math.random()*100+1);
     	
     	if(type == "Lecture") {
     		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
-    	}else if(type == "Meeting") {
-    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
-    	}else if(type == "Tutorship") {
-    		
     	}
     }
     
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup, String userID) {
     	long ID = (long) (Math.random()*100+1);
     	
     	if(type == "Lecture") {
     		Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, "1");
-    		
-    	}else if(type == "Meeting") {
-    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
+   	
     	}
     } 
     
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String name,String name2, String userID, int aux) {
+    	long ID = (long) (Math.random()*100+1);
+    	
+    	if(type == "Meeting") {
+    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
+    	}else if(type == "Tutorship") {
+    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, name2);
+    	}
+    }
+    
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String name,String name2, String userID,int aux) {
+    	long ID = (long) (Math.random()*100+1);
+    	
+    	if(type == "Meeting") {
+    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
+    	}else if(type == "Tutorship") {
+    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, name2);
+    	}
+    }
 }

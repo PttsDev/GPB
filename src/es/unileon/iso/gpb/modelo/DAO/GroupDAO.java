@@ -112,7 +112,7 @@ public class GroupDAO extends DBConnection {
 
         try {
             this.abrirConexion();
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM teagro WHERE Name=(?)");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM teagro WHERE TeaID=(?)");
 
             query.setString(1, teacherID);
 
@@ -120,7 +120,7 @@ public class GroupDAO extends DBConnection {
 
             while (rs.next()) {
 
-                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?)");
+                PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE GroupID=(?)");
 
                 query1.setString(1, rs.getString("GroupID"));
 
@@ -135,8 +135,10 @@ public class GroupDAO extends DBConnection {
                     query2.setString(1, rs1.getString("SubjectID"));
 
                     ResultSet rs2 = query2.executeQuery();
-                    
-                    lista.add(rs2.getString("Name").concat(" ").concat(temp));
+                    if (rs2.next()) {
+
+                        lista.add(rs2.getString("Name").concat(" ").concat(temp));
+                    }
 
                 }
             }
@@ -192,38 +194,26 @@ public class GroupDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+
+            query.setString(1, subject);
+
             ResultSet rs = query.executeQuery();
 
-            while (rs.next()) {
-                if (rs.getString("Name").equals(subject)) {
-                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
-                    ResultSet rs1 = query1.executeQuery();
-                    while (rs1.next()) {
-                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+            if (rs.next()) {
+                query1.setString(1, rs.getString("SubjectID"));
+                query1.setString(2, number);
 
-                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM stugro");
-                            ResultSet rs2 = query2.executeQuery();
+                ResultSet rs1 = query1.executeQuery();
+                if (rs1.next()) {
+                    PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
+                    
+                    stat.setString(1, UserID);
 
-                            while (rs2.next()) {
+                    stat.setString(2, rs1.getString("GroupID"));
 
-                                if (rs1.getString("GroupID").equals(number) && rs2.getString("StuID").equals(number)) {
-                                    this.closeC();
-                                    return false;
-                                }
-                            }
-
-                            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO stugro (StuID, GroupID) VALUES (?,?)");
-
-                            stat.setString(1, UserID);
-                            stat.setString(2, number);
-
-                            stat.executeUpdate();
-                            this.closeC();
-                            return true;
-                        }
-
-                    }
+                    stat.executeUpdate();
                 }
             }
             this.closeC();
@@ -242,38 +232,26 @@ public class GroupDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject");
+            PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM subject WHERE Name=(?)");
+
+            query.setString(1, subject);
+
             ResultSet rs = query.executeQuery();
 
-            while (rs.next()) {
-                if (rs.getString("Name").equals(subject)) {
-                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups");
-                    ResultSet rs1 = query1.executeQuery();
-                    while (rs1.next()) {
-                        if (rs1.getString("SubjectID").equals(rs.getString("SubjectID"))) {
+            PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM grups WHERE SubjectID=(?) AND Num=(?)");
+            if (rs.next()) {
+                query1.setString(1, rs.getString("SubjectID"));
+                query1.setString(2, number);
 
-                            PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM teagro");
-                            ResultSet rs2 = query2.executeQuery();
+                ResultSet rs1 = query1.executeQuery();
+                if (rs1.next()) {
+                    PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teagro (TeaID, GroupID) VALUES (?,?)");
+                    
+                    stat.setString(1, UserID);
 
-                            while (rs2.next()) {
+                    stat.setString(2, rs1.getString("GroupID"));
 
-                                if (rs1.getString("GroupID").equals(number) && rs2.getString("TeaID").equals(number)) {
-                                    this.closeC();
-                                    return false;
-                                }
-                            }
-
-                            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO teagro (TeaID, GroupID) VALUES (?,?)");
-
-                            stat.setString(1, UserID);
-                            stat.setString(2, number);
-
-                            stat.executeUpdate();
-                            this.closeC();
-                            return true;
-                        }
-
-                    }
+                    stat.executeUpdate();
                 }
             }
             this.closeC();

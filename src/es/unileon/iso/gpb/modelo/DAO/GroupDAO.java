@@ -259,12 +259,13 @@ public class GroupDAO extends DBConnection {
                 query1.setString(2, Number);
 
                 ResultSet rs1 = query1.executeQuery();
+                if (rs1.next()) {
+                    PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM grups WHERE GroupID=(?) ");
 
-                PreparedStatement stat = this.getConnection().prepareStatement("DELETE FROM group WHERE GroupID=(?) ");
+                    stat.setString(1, rs1.getString("GroupID"));
 
-                stat.setString(1, rs1.getString("GroupID"));
-
-                stat.executeUpdate();
+                    stat.executeUpdate();
+                }
             }
 
             this.closeC();

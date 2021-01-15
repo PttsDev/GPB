@@ -403,7 +403,7 @@ public class CreateActivity extends javax.swing.JFrame {
     }
     
     private void initListeners(){
-        
+            User u = this.user;
          typeSelector.addItemListener(new java.awt.event.ItemListener() {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -469,7 +469,7 @@ public class CreateActivity extends javax.swing.JFrame {
                     teachersComboBox.setEnabled(false);
                     teachersComboBox.setVisible(false);
                     
-                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(  listGroup(this.user.getID()).toArray(new String[0]) );
+                    DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(  listGroup(u.getID()).toArray(new String[0]) );
                     groupComboBox.setModel(model);
 
                 }

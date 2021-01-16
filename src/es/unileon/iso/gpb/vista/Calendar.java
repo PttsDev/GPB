@@ -1,4 +1,3 @@
-
 package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.listLectures;
@@ -10,6 +9,8 @@ import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.users.User;
+import java.awt.Color;
+import java.awt.Component;
 import java.time.DayOfWeek;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,8 +19,11 @@ import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -32,32 +36,34 @@ public class Calendar extends javax.swing.JFrame {
     private String userType;
     private LocalDate sActual;
     private LocalDate eActual;
-    
+
     /**
-     * Constructor which creates the GeneralCalendar
-     * Frame setting its parent to null.
+     * Constructor which creates the GeneralCalendar Frame setting its parent to
+     * null.
      */
     public Calendar() {
         this.user = null;
         this.userType = "Disconnected";
         init();
     }
-    
+
     /**
-     * Constructor of the GeneralCalendar frame
-     * Setting a reference of its parent.
+     * Constructor of the GeneralCalendar frame Setting a reference of its
+     * parent.
+     *
      * @param parent Parent JFrame
      */
     public Calendar(JFrame parent) {
-        this.user=null;
+        this.user = null;
         this.userType = "Disconnected";
         init();
         this.parent = parent;
     }
-    
-     /**
-     * Constructor of the GeneralCalendar frame
-     * Setting a reference of its parent.
+
+    /**
+     * Constructor of the GeneralCalendar frame Setting a reference of its
+     * parent.
+     *
      * @param parent Parent JFrame
      * @param user User who did login
      */
@@ -66,21 +72,20 @@ public class Calendar extends javax.swing.JFrame {
         this.userType = userType;
         init();
         this.parent = parent;
-        
+
     }
 
-     /**
-     * Dispose method
-     * Sets its parent visible again if the frame
-     * has parent.
+    /**
+     * Dispose method Sets its parent visible again if the frame has parent.
      */
     @Override
-    public void dispose(){
-        if(parent!=null)parent.setVisible(true);
-        super.dispose(); 
+    public void dispose() {
+        if (parent != null) {
+            parent.setVisible(true);
+        }
+        super.dispose();
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -185,6 +190,7 @@ public class Calendar extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        calendarioTable.setDragEnabled(true);
         calendarioTable.setMinimumSize(new java.awt.Dimension(600, 384));
         jScrollPane1.setViewportView(calendarioTable);
 
@@ -296,19 +302,23 @@ public class Calendar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(previusButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton)
-                        .addGap(33, 33, 33)
-                        .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(weekLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageAccountsButton))
-                .addContainerGap())
+                        .addComponent(weekLabel)
+                        .addGap(521, 738, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(previusButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nextButton)
+                                .addGap(33, 33, 33)
+                                .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(manageAccountsButton)
+                                .addGap(73, 73, 73)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,121 +326,116 @@ public class Calendar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(previusButton)
                             .addComponent(nextButton)
-                            .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addComponent(weekLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139)
-                        .addComponent(manageAccountsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(calendarOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(manageAccountsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addComponent(weekLabel))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void init(){
+    private void init() {
         this.parent = null;
-        
+
         initComponents();
         initListeners();
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         calendarioTable.setRowHeight(70);
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
         setIconImage(t.getImage(getClass().getResource("./logo.png")));
-        
+
         //If account type teacher
-        if(userType.equals("Teacher")){
+        if (userType.equals("Teacher")) {
             SelectGroupMenu.setEnabled(false);
             SelectGroupMenu.setVisible(false);
             String[] ops = {"General Calendar", "Tutories and Meetings"};
-            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>( ops );
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(ops);
             calendarOptions.setModel(model);
         }
         //If account type Student
-        if(userType.equals("Student")){
+        if (userType.equals("Student")) {
             manageAccountsButton.setEnabled(false);
             manageAccountsButton.setVisible(false);
             manageGroupsButton.setEnabled(false);
             manageGroupsButton.setVisible(false);
         }
         //start week label
-        LocalDate today = LocalDate.now( ZoneId.of( "Europe/Madrid" ) );
-        LocalDate wMonday = today.with( TemporalAdjusters.previous( DayOfWeek.MONDAY ) );
-        LocalDate wSunday = today.with( TemporalAdjusters.next( DayOfWeek.SUNDAY ) );
-        this.sActual=wMonday;
-        this.eActual=wSunday;
-        weekLabel.setText("From: "+sActual+" To: "+eActual);
-        
+        LocalDate today = LocalDate.now(ZoneId.of("Europe/Madrid"));
+        LocalDate wMonday = today.with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
+        LocalDate wSunday = today.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+        this.sActual = wMonday;
+        this.eActual = wSunday;
+        weekLabel.setText("From: " + sActual + " To: " + eActual);
+
         //Username
-        if(user!=null)
+        if (user != null) {
             nameLabel.setText(user.getUserName());
-        
+        }
+
         setActivities();
 
     }
+
     /*EVENTS & ACTIONS*/
-        
     /**
      * Method that inits event listeners
      */
-    private void initListeners(){
+    private void initListeners() {
         Calendar frame = this;
-        this.addWindowListener( new java.awt.event.WindowAdapter(){
-            
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+
             @Override
-            public void windowClosing(java.awt.event.WindowEvent evt){
-                
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+
                 String[] ops = {"Log out", "Close", "Cancel"};
-                
-                int o = JOptionPane.showOptionDialog(null, "Do you want to exit?", "Exit?", 
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, 
+
+                int o = JOptionPane.showOptionDialog(null, "Do you want to exit?", "Exit?",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                         null, ops, ops[0]);
-                
-                switch(o){
+
+                switch (o) {
                     case 0:
                         frame.dispose();
                         break;
                     case 1:
                         System.exit(0);
-                    case 2: 
+                    case 2:
                         break;
                 }
-                
+
             }
-    
+
         });
-        
-            calendarOptions.addItemListener(new java.awt.event.ItemListener() {
-            
+
+        calendarOptions.addItemListener(new java.awt.event.ItemListener() {
+
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                
+
                 updateTable();
             }
         });
-        
-        
-        
     }
-    
+
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-        
+
         String[] ops = {"Yes", "No"};
-        
-        int o = JOptionPane.showOptionDialog(null, "Do you want to log out?", "Log out?", 
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, 
-                        null, ops, ops[0]);
-        switch(o){
+
+        int o = JOptionPane.showOptionDialog(null, "Do you want to log out?", "Log out?",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, ops, ops[0]);
+        switch (o) {
             case 0:
                 this.dispose();
                 break;
@@ -450,14 +455,14 @@ public class Calendar extends javax.swing.JFrame {
     private void previusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previusButtonActionPerformed
         this.sActual = sActual.minusDays(7);
         this.eActual = eActual.minusDays(7);
-        weekLabel.setText("From: "+sActual+" To: "+eActual);
+        weekLabel.setText("From: " + sActual + " To: " + eActual);
         updateTable();
     }//GEN-LAST:event_previusButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         this.sActual = sActual.plusDays(7);
         this.eActual = eActual.plusDays(7);
-        weekLabel.setText("From: "+sActual+" To: "+eActual);
+        weekLabel.setText("From: " + sActual + " To: " + eActual);
         updateTable();
     }//GEN-LAST:event_nextButtonActionPerformed
 
@@ -474,7 +479,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_myAccountMenuActionPerformed
 
     private void manageGroupsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageGroupsButtonActionPerformed
-       new ManageGroups(this.user).setVisible(true);
+        new ManageGroups(this.user).setVisible(true);
     }//GEN-LAST:event_manageGroupsButtonActionPerformed
 
     private void SelectGroupMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectGroupMenuActionPerformed
@@ -489,108 +494,101 @@ public class Calendar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_calendarOptionsActionPerformed
 
-    private void updateTable(){
-        for(int i = 1; i<8; i++){
-            for(int j = 0; j<24; j++){
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+    private void updateTable() {
+        for (int i = 1; i < 8; i++) {
+            for (int j = 0; j < 24; j++) {
+                DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
                 model.setValueAt("", j, i);
             }
         }
         setActivities();
     }
-    
-    private void setActivities(){
-        
-        String type = String.valueOf(calendarOptions.getSelectedItem());
-        
-        
-        if(type.equals("General Calendar")){
 
-           ArrayList<Lecture> lectures = listLectures(this.user.getID(), sActual, eActual, this.userType);
-            
-            for(Lecture l : lectures){
-            
-                
+    private void setActivities() {
+
+        String type = String.valueOf(calendarOptions.getSelectedItem());
+
+        if (type.equals("General Calendar")) {
+
+            ArrayList<Lecture> lectures = listLectures(this.user.getID(), sActual, eActual, this.userType);
+
+            for (Lecture l : lectures) {
+
                 int sHour = l.getStartTime().getHour();
                 int eHour = l.getEndTime().getHour();
                 int day = (l.getDate().getDayOfWeek().getValue());
-            
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt(model.getValueAt(i, day) + " Name: "+l.getName()+" Place: "+l.getClassroom()+" Comments: "+l.getComments(), i, day);
-                }
-            }
-            
 
-        }else{
-            
-            if(userType.equals("Student")){
-                
-                
-            ArrayList<PersonalActivity> pers=listPersonalActivity(this.user.getID(), sActual, eActual);
-            ArrayList<Tutorship> tutor= listTutorship(this.user.getID(), sActual, eActual, this.userType);
-                
-            for(PersonalActivity p : pers){
-            
-                
-                int sHour = p.getStartTime().getHour();
-                int eHour = p.getEndTime().getHour();
-                int day = p.getDate().getDayOfWeek().getValue();
-            
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt(model.getValueAt(i, day) + " Name: "+p.getName()+" Comments: "+p.getComments(), i, day);
+                DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
+                for (int i = sHour; i <= eHour; i++) {
+                    model.setValueAt("\n Name: " + l.getName() + " Place: " + l.getClassroom() + " Comments: " + l.getComments(), i, day);
                 }
             }
-            
-            for(Tutorship t : tutor){                
-                int sHour = t.getStartTime().getHour();
-                int eHour = t.getEndTime().getHour();
-                int day = (t.getDate().getDayOfWeek().getValue());
-            
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt(model.getValueAt(i, day) + " Name: "+t.getName()+" Student: "+t.getStudent()+" Teacher: "+t.getTeacher()+" Classroom: "+t.getPlace()+" Comments: "+t.getComments(), i, day);
-                }
-            }
-                
-            }else{
 
-            ArrayList<Meeting> meet = listMeeting(this.user.getID(), sActual, eActual);
-            ArrayList<Tutorship> tutor= listTutorship(this.user.getID(), sActual, eActual, this.userType);
-                
-           for(Meeting m : meet){
-            
-                int sHour =  m.getStartTime().getHour();
-                int eHour =  m.getEndTime().getHour();
-                int day =  (m.getDate().getDayOfWeek().getValue());
-            
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt(model.getValueAt(i, day) + " Name: "+ m.getName()+" Teacher 1: "+m.getTeacher1()+
-                            " Teacher 2:"+m.getTeacher2()+" Place: "+m.getPlace()+" Comments: "+ m.getComments(), i, day);
+        } else {
+
+            if (userType.equals("Student")) {
+
+                ArrayList<PersonalActivity> pers = listPersonalActivity(this.user.getID(), sActual, eActual);
+                ArrayList<Tutorship> tutor = listTutorship(this.user.getID(), sActual, eActual, this.userType);
+
+                for (PersonalActivity p : pers) {
+
+                    int sHour = p.getStartTime().getHour();
+                    int eHour = p.getEndTime().getHour();
+                    int day = p.getDate().getDayOfWeek().getValue();
+
+                    DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
+                    for (int i = sHour; i <= eHour; i++) {
+                        model.setValueAt("Name: " + p.getName() + " Comments: " + p.getComments(), i, day);
+                    }
                 }
-            }
-            
-            for(Tutorship t : tutor){                
-                int sHour = t.getStartTime().getHour();
-                int eHour = t.getEndTime().getHour();
-                int day = (t.getDate().getDayOfWeek().getValue());
-            
-                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+""+System.lineSeparator()+"Student: "+t.getStudent()+""+System.lineSeparator()+"Teacher: "+t.getTeacher()+""+System.lineSeparator()+"Classroom: "+t.getPlace()+""+System.lineSeparator()+"Comments: "+t.getComments(), i, day);
+
+                for (Tutorship t : tutor) {
+                    int sHour = t.getStartTime().getHour();
+                    int eHour = t.getEndTime().getHour();
+                    int day = (t.getDate().getDayOfWeek().getValue());
+
+                    DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
+                    for (int i = sHour; i <= eHour; i++) {
+                        model.setValueAt("Name: " + t.getName() + " Student: " + t.getStudent() + " Teacher: " + t.getTeacher() + " Classroom: " + t.getPlace() + " Comments: " + t.getComments(), i, day);
+                    }
                 }
+
+            } else {
+
+                ArrayList<Meeting> meet = listMeeting(this.user.getID(), sActual, eActual);
+                ArrayList<Tutorship> tutor = listTutorship(this.user.getID(), sActual, eActual, this.userType);
+
+                for (Meeting m : meet) {
+
+                    int sHour = m.getStartTime().getHour();
+                    int eHour = m.getEndTime().getHour();
+                    int day = (m.getDate().getDayOfWeek().getValue());
+
+                    DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
+                    for (int i = sHour; i <= eHour; i++) {
+                        model.setValueAt("Name: " + m.getName() + " Teacher 1: " + m.getTeacher1()
+                                + " Teacher 2:" + m.getTeacher2() + " Place: " + m.getPlace() + " Comments: " + m.getComments(), i, day);
+                    }
+                }
+
+                for (Tutorship t : tutor) {
+                    int sHour = t.getStartTime().getHour();
+                    int eHour = t.getEndTime().getHour();
+                    int day = (t.getDate().getDayOfWeek().getValue());
+
+                    DefaultTableModel model = (DefaultTableModel) calendarioTable.getModel();
+                    for (int i = sHour; i <= eHour; i++) {
+                        model.setValueAt("Name: \n" + t.getName() + "" + System.lineSeparator() + "Student: " + t.getStudent() + "" + System.lineSeparator() + "Teacher: " + t.getTeacher() + "" + System.lineSeparator() + "Classroom: " + t.getPlace() + "" + System.lineSeparator() + "Comments: " + t.getComments(), i, day);
+                    }
+                }
+
             }
-            
-   
-            }
-            
-            
+
         }
-        
+
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;
     private javax.swing.JMenuItem CreateActivityMenu;

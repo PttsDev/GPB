@@ -102,8 +102,6 @@ public class Calendar extends javax.swing.JFrame {
         LogOutMenu = new javax.swing.JMenuItem();
         EditMenu = new javax.swing.JMenu();
         CreateActivityMenu = new javax.swing.JMenuItem();
-        EditActivityMenu = new javax.swing.JMenuItem();
-        RemoveActivityMenu = new javax.swing.JMenuItem();
         manageGroupsButton = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         SelectGroupMenu = new javax.swing.JMenuItem();
@@ -261,22 +259,6 @@ public class Calendar extends javax.swing.JFrame {
             }
         });
         EditMenu.add(CreateActivityMenu);
-
-        EditActivityMenu.setText("Edit Activity");
-        EditActivityMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActivityMenuActionPerformed(evt);
-            }
-        });
-        EditMenu.add(EditActivityMenu);
-
-        RemoveActivityMenu.setText("Remove Activity");
-        RemoveActivityMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RemoveActivityMenuActionPerformed(evt);
-            }
-        });
-        EditMenu.add(RemoveActivityMenu);
 
         manageGroupsButton.setText("Manage Groups");
         manageGroupsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -494,14 +476,6 @@ public class Calendar extends javax.swing.JFrame {
        new ManageGroups(this.user).setVisible(true);
     }//GEN-LAST:event_manageGroupsButtonActionPerformed
 
-    private void EditActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActivityMenuActionPerformed
-        new EditActivity(this.user, this.userType).setVisible(true);
-    }//GEN-LAST:event_EditActivityMenuActionPerformed
-
-    private void RemoveActivityMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveActivityMenuActionPerformed
-        new RemoveActivity(this.user, this.userType).setVisible(true);
-    }//GEN-LAST:event_RemoveActivityMenuActionPerformed
-
     private void SelectGroupMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectGroupMenuActionPerformed
         new SelectGroups(this.user).setVisible(true);
     }//GEN-LAST:event_SelectGroupMenuActionPerformed
@@ -542,7 +516,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+l.getName()+" Comments: "+l.getComments(), i, day);
+                    model.setValueAt("Name: "+l.getName()+"\nPlace: "+l.getClassroom()+"\nComments: "+l.getComments(), i, day);
                 }
             }
             
@@ -552,11 +526,6 @@ public class Calendar extends javax.swing.JFrame {
             if(userType.equals("Student")){
                 
                 
-                //LEER PERSONAL CALENDAR PARA STUDENT this.user.getID()
-                //AKA PERSONAL ACTIVITIES Y TUTORSHIPS
-                
-
-            
             ArrayList<PersonalActivity> pers=listPersonalActivity(this.user.getID(), sActual, eActual);
             //ArrayList<Tutorship> tutor= listLectures(this.user.getID());
                 
@@ -569,7 +538,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+p.getName()+" Comments: "+p.getComments(), i, day);
+                    model.setValueAt("Name: "+p.getName()+"\n Comments: "+p.getComments(), i, day);
                 }
             }
             /*
@@ -633,11 +602,9 @@ public class Calendar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;
     private javax.swing.JMenuItem CreateActivityMenu;
-    private javax.swing.JMenuItem EditActivityMenu;
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem HelpMenu;
     private javax.swing.JMenuItem LogOutMenu;
-    private javax.swing.JMenuItem RemoveActivityMenu;
     private javax.swing.JMenuItem SelectGroupMenu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> calendarOptions;

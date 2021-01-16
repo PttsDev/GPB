@@ -17,10 +17,7 @@ public class Activity {
     private String comments;
     private Color color;
     
-    //TODO
-    /*
-    * FALTAN MAS CONSTRUCTORES SOBRECARGADOS QUITANDO DATOS QUE NO SEAN NECESARIOS
-    */
+ 
     public Activity(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime){
         this.ID=ID;
         this.name=name;

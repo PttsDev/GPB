@@ -628,6 +628,7 @@ public class Calendar extends javax.swing.JFrame {
         
         
     }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AccountMenu;

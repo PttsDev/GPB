@@ -59,9 +59,7 @@ public class LectureDAO extends DBConnection {
 
             this.closeC();
         } catch (Exception e) {
-            System.out.println("lecture");
-
-            System.out.println(e);
+           System.out.println("Lecture"+e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         return true;

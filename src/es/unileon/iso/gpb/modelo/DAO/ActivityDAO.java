@@ -39,8 +39,8 @@ public class ActivityDAO extends DBConnection {
 
             while (rs.next()) {
 
-                if (id <= Integer.parseInt(rs.getString("userID"))) {
-                    id = Integer.parseInt(rs.getString("userID")) + 1;
+                if (id <= Integer.parseInt(rs.getString("ActivityID"))) {
+                    id = Integer.parseInt(rs.getString("ActivityID")) + 1;
                 }
             }
             if (activity.getComments() != null) {
@@ -72,9 +72,8 @@ public class ActivityDAO extends DBConnection {
             this.closeC();
             return id;
         } catch (Exception e) {
-            System.out.println("activity");
 
-            System.out.println(e);
+            System.out.println("Activity"+e);
             return 0;
             //Llamar a controlador para sacar mensaje por vista TODO
         }

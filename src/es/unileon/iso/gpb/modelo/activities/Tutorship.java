@@ -24,14 +24,14 @@ public class Tutorship extends Activity{
     /*
     * Añadir constructores sobrecargados
     */
-    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments, Color color, String student, String teacher) {
+    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, String comments, Color color, String student, String teacher, String place) {
         super(ID, name, date, endTime, startTime, comments, color);
         this.place = place;
         this.student = student;
         this.teacher = teacher;
     }
     
-    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, Color color, String student, String teacher) {
+    public Tutorship(long ID, String name, LocalDate date, LocalTime endTime, LocalTime startTime, Color color, String student, String teacher, String place){
         super(ID, name, date, endTime, startTime, color);
         this.place = place;
         this.student = student;

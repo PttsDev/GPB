@@ -59,7 +59,7 @@ public class LectureDAO extends DBConnection {
 
             this.closeC();
         } catch (Exception e) {
-           System.out.println("Lecture"+e);
+            System.out.println("Lecture" + e);
             //Llamar a controlador para sacar mensaje por vista TODO
         }
         return true;
@@ -112,7 +112,7 @@ public class LectureDAO extends DBConnection {
         return lista;
     }
 
-        public ArrayList<Lecture> listLecturesTea(String stuID) {
+    public ArrayList<Lecture> listLecturesTea(String teaID) {
 
         ArrayList<Lecture> lista = new <String>ArrayList();
         String temp = "";
@@ -120,9 +120,9 @@ public class LectureDAO extends DBConnection {
         try {
             this.abrirConexion();
 
-            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE StuID=(?)");
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE TeaID=(?)");
 
-            query0.setString(1, stuID);
+            query0.setString(1, teaID);
 
             ResultSet rs0 = query0.executeQuery();
 

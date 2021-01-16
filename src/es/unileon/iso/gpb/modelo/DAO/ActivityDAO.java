@@ -43,37 +43,29 @@ public class ActivityDAO extends DBConnection {
                     id = Integer.parseInt(rs.getString("ActivityID")) + 1;
                 }
             }
-            if (activity.getComments() != null) {
-                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
+            if (activity.getComments() == null) {
 
-                stat.setInt(1, id);
-                stat.setString(2, activity.getName());
-                stat.setDate(3, Date.valueOf(activity.getDate()));
-                stat.setTime(4, Time.valueOf(activity.getEndTime()));
-                stat.setTime(5, Time.valueOf(activity.getStartTime()));
-                stat.setString(6, activity.getComments());
-                stat.setString(7, String.valueOf(activity.getColor().getRGB()));
-
-                stat.executeUpdate();
-            } else {
-                PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Colour) VALUES (?,?,?,?,?,?)");
-
-                stat.setInt(1, id);
-                stat.setString(2, activity.getName());
-                stat.setDate(3, Date.valueOf(activity.getDate()));
-                stat.setTime(4, Time.valueOf(activity.getEndTime()));
-                stat.setTime(5, Time.valueOf(activity.getStartTime()));
-                stat.setString(6, String.valueOf(activity.getColor().getRGB()));
-
-                stat.executeUpdate();
+                activity.setComments("");
 
             }
+
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
+
+            stat.setInt(1, id);
+            stat.setString(2, activity.getName());
+            stat.setDate(3, Date.valueOf(activity.getDate()));
+            stat.setTime(4, Time.valueOf(activity.getEndTime()));
+            stat.setTime(5, Time.valueOf(activity.getStartTime()));
+            stat.setString(6, activity.getComments());
+            stat.setString(7, String.valueOf(activity.getColor().getRGB()));
+
+            stat.executeUpdate();
 
             this.closeC();
             return id;
         } catch (Exception e) {
 
-            System.out.println("Activity"+e);
+            System.out.println("Activity" + e);
             return 0;
             //Llamar a controlador para sacar mensaje por vista TODO
         }

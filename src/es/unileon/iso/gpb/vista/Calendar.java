@@ -3,6 +3,7 @@ package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.listLectures;
 import static es.unileon.iso.gpb.controller.Controller.listPersonalActivity;
+import static es.unileon.iso.gpb.controller.Controller.listTutorship;
 import es.unileon.iso.gpb.modelo.activities.Lecture;
 import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
@@ -527,7 +528,7 @@ public class Calendar extends javax.swing.JFrame {
                 
                 
             ArrayList<PersonalActivity> pers=listPersonalActivity(this.user.getID(), sActual, eActual);
-            //ArrayList<Tutorship> tutor= listLectures(this.user.getID());
+            ArrayList<Tutorship> tutor= listTutorship(this.user.getID(), sActual, eActual, this.userType);
                 
             for(PersonalActivity p : pers){
             
@@ -541,7 +542,7 @@ public class Calendar extends javax.swing.JFrame {
                     model.setValueAt("Name: "+p.getName()+"\n Comments: "+p.getComments(), i, day);
                 }
             }
-            /*
+            
             for(Tutorship t : tutor){                
                 int sHour = t.getStartTime().getHour();
                 int eHour = t.getEndTime().getHour();
@@ -549,10 +550,10 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+" Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\n Comments: "+t.getComments(), i, day);
                 }
             }
-            */
+            
 
                 
             }else{
@@ -561,11 +562,11 @@ public class Calendar extends javax.swing.JFrame {
                 //AKA TUTORSHIPS Y MEETINGS
                 
 
-            /*
-            ArrayList<Meeting> meet = listLectures(this.user.getID());
-            ArrayList<Tutorship> tutor= listLectures(this.user.getID());
+            
+            //ArrayList<Meeting> meet = listLectures(this.user.getID());
+            ArrayList<Tutorship> tutor= listTutorship(this.user.getID(), sActual, eActual, this.userType);
                 
-            for(Meeting m : meet){
+           /* for(Meeting m : meet){
             
                 
                 int sHour =  m.getStartTime().getHour();
@@ -576,7 +577,7 @@ public class Calendar extends javax.swing.JFrame {
                 for(int i = sHour; i<= eHour; i++){
                     model.setValueAt("Name: "+ m.getName()+" Comments: "+ m.getComments(), i, day);
                 }
-            }
+            }*/
             
             for(Tutorship t : tutor){                
                 int sHour = t.getStartTime().getHour();
@@ -585,18 +586,16 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+" Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\n Comments: "+t.getComments(), i, day);
                 }
             }
             
    
             }
-            */
+            
             
         }
         
-        
-    }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

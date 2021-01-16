@@ -517,7 +517,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+l.getName()+"\nPlace: "+l.getClassroom()+"\nComments: "+l.getComments(), i, day);
+                    model.setValueAt("Name: "+l.getName()+""+System.lineSeparator()+"Place: "+l.getClassroom()+""+System.lineSeparator()+"Comments: "+l.getComments(), i, day);
                 }
             }
             
@@ -539,7 +539,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+p.getName()+"\n Comments: "+p.getComments(), i, day);
+                    model.setValueAt("Name: "+p.getName()+""+System.lineSeparator()+"Comments: "+p.getComments(), i, day);
                 }
             }
             
@@ -550,7 +550,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\nClassroom: "+t.getPlace()+"\n Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+""+System.lineSeparator()+"Student: "+t.getStudent()+""+System.lineSeparator()+"Teacher: "+t.getTeacher()+""+System.lineSeparator()+"Classroom: "+t.getPlace()+""+System.lineSeparator()+"Comments: "+t.getComments(), i, day);
                 }
             }
             
@@ -586,7 +586,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\nClassroom: "+t.getPlace()+"\n Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+""+System.lineSeparator()+"Student: "+t.getStudent()+""+System.lineSeparator()+"Teacher: "+t.getTeacher()+""+System.lineSeparator()+"Classroom: "+t.getPlace()+""+System.lineSeparator()+"Comments: "+t.getComments(), i, day);
                 }
             }
             

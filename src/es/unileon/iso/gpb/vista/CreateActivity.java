@@ -321,7 +321,7 @@ public class CreateActivity extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Comments length must be at most 500!", 
                     "Too long input!", javax.swing.JOptionPane.ERROR_MESSAGE);
             
-        }else if(place.length()!=5){
+        }else if(!type.equals("Personal Activity") && place.length()!=5){
             javax.swing.JOptionPane.showMessageDialog(this, "Classroom name must be lenght 5!", 
                     "Bad input!", javax.swing.JOptionPane.ERROR_MESSAGE);
         }else{

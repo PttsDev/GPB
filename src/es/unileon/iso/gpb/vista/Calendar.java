@@ -517,7 +517,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+l.getName()+""+System.lineSeparator()+"Place: "+l.getClassroom()+""+System.lineSeparator()+"Comments: "+l.getComments(), i, day);
+                    model.setValueAt(model.getValueAt(i, day) + " Name: "+l.getName()+" Place: "+l.getClassroom()+" Comments: "+l.getComments(), i, day);
                 }
             }
             
@@ -539,7 +539,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+p.getName()+""+System.lineSeparator()+"Comments: "+p.getComments(), i, day);
+                    model.setValueAt(model.getValueAt(i, day) + " Name: "+p.getName()+" Comments: "+p.getComments(), i, day);
                 }
             }
             
@@ -550,7 +550,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+""+System.lineSeparator()+"Student: "+t.getStudent()+""+System.lineSeparator()+"Teacher: "+t.getTeacher()+""+System.lineSeparator()+"Classroom: "+t.getPlace()+""+System.lineSeparator()+"Comments: "+t.getComments(), i, day);
+                    model.setValueAt(model.getValueAt(i, day) + " Name: "+t.getName()+" Student: "+t.getStudent()+" Teacher: "+t.getTeacher()+" Classroom: "+t.getPlace()+" Comments: "+t.getComments(), i, day);
                 }
             }
                 
@@ -567,8 +567,8 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+ m.getName()+""+System.lineSeparator()+"Teacher 1: "+m.getTeacher1()+""+System.lineSeparator()+
-                            "Teacher 2:"+m.getTeacher2()+""+System.lineSeparator()+"Place: "+m.getPlace()+""+System.lineSeparator()+"Comments: "+ m.getComments(), i, day);
+                    model.setValueAt(model.getValueAt(i, day) + " Name: "+ m.getName()+" Teacher 1: "+m.getTeacher1()+
+                            " Teacher 2:"+m.getTeacher2()+" Place: "+m.getPlace()+" Comments: "+ m.getComments(), i, day);
                 }
             }
             

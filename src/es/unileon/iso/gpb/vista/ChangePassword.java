@@ -153,7 +153,7 @@ public class ChangePassword extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
         
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-        setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        setIconImage(t.getImage(getClass().getResource("img/logo.png")));
         
         if(admin){
             currentPasswordField.setEnabled(false);

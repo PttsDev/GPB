@@ -168,7 +168,7 @@ public class ManageGroups extends javax.swing.JFrame {
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-        setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        setIconImage(t.getImage(getClass().getResource("img/logo.png")));
         DefaultComboBoxModel<String> model2 = new DefaultComboBoxModel<>( listSubjectHave(this.user.getID()).toArray(new String[0]) );
         subjectsComboBox.setModel(model2);
         

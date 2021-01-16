@@ -263,7 +263,7 @@ public class Register extends JFrame {
         initComponents();
         initListeners();
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-        setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        setIconImage(t.getImage(getClass().getResource("img/logo.png")));
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         createAccountButton.setEnabled(false);

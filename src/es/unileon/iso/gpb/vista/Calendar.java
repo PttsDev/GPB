@@ -354,7 +354,7 @@ public class Calendar extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         calendarioTable.setRowHeight(70);
         java.awt.Toolkit t = java.awt.Toolkit.getDefaultToolkit();
-        setIconImage(t.getImage(getClass().getResource("./logo.png")));
+        setIconImage(t.getImage(getClass().getResource("img/logo.png")));
 
         //If account type teacher
         if (userType.equals("Teacher")) {

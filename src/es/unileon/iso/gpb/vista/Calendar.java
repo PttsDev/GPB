@@ -431,13 +431,7 @@ public class Calendar extends javax.swing.JFrame {
             
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 
-                for(int i = 1; i<8; i++){
-                    for(int j = 0; j<24; j++){
-                        DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
-                        model.setValueAt("", j, i);
-                    }
-                }
-                setActivities();
+                updateTable();
             }
         });
         
@@ -473,14 +467,14 @@ public class Calendar extends javax.swing.JFrame {
         this.sActual = sActual.minusDays(7);
         this.eActual = eActual.minusDays(7);
         weekLabel.setText("From: "+sActual+" To: "+eActual);
-        setActivities();
+        updateTable();
     }//GEN-LAST:event_previusButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         this.sActual = sActual.plusDays(7);
         this.eActual = eActual.plusDays(7);
         weekLabel.setText("From: "+sActual+" To: "+eActual);
-        setActivities();
+        updateTable();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void HelpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpMenuActionPerformed
@@ -519,6 +513,16 @@ public class Calendar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_calendarOptionsActionPerformed
 
+    private void updateTable(){
+        for(int i = 1; i<8; i++){
+            for(int j = 0; j<24; j++){
+                DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
+                model.setValueAt("", j, i);
+            }
+        }
+        setActivities();
+    }
+    
     private void setActivities(){
         
         String type = String.valueOf(calendarOptions.getSelectedItem());

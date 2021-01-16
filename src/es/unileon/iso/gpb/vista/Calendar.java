@@ -547,7 +547,7 @@ public class Calendar extends javax.swing.JFrame {
             
 
         }else{
-            /*
+            
             if(userType.equals("Student")){
                 
                 
@@ -556,22 +556,22 @@ public class Calendar extends javax.swing.JFrame {
                 
 
             
-            ArrayList<PersonalActivity> pers=listLectures(this.user.getID());
-            ArrayList<Tutorship> tutor= listLectures(this.user.getID());
+            ArrayList<PersonalActivity> pers=listPersonalActivity(this.user.getID(), sActual, eActual);
+            //ArrayList<Tutorship> tutor= listLectures(this.user.getID());
                 
             for(PersonalActivity p : pers){
             
                 
                 int sHour = p.getStartTime().getHour();
                 int eHour = p.getEndTime().getHour();
-                int day = p.getDate().getDayOfWeek().getValue()-1;
+                int day = p.getDate().getDayOfWeek().getValue();
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
                     model.setValueAt("Name: "+p.getName()+" Comments: "+p.getComments(), i, day);
                 }
             }
-            
+            /*
             for(Tutorship t : tutor){                
                 int sHour = t.getStartTime().getHour();
                 int eHour = t.getEndTime().getHour();
@@ -582,7 +582,7 @@ public class Calendar extends javax.swing.JFrame {
                     model.setValueAt("Name: "+t.getName()+" Comments: "+t.getComments(), i, day);
                 }
             }
-            
+            */
 
                 
             }else{
@@ -591,7 +591,7 @@ public class Calendar extends javax.swing.JFrame {
                 //AKA TUTORSHIPS Y MEETINGS
                 
 
-            
+            /*
             ArrayList<Meeting> meet = listLectures(this.user.getID());
             ArrayList<Tutorship> tutor= listLectures(this.user.getID());
                 

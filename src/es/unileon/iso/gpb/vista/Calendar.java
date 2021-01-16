@@ -4,6 +4,7 @@ package es.unileon.iso.gpb.vista;
 import static es.unileon.iso.gpb.controller.Controller.listLectures;
 import static es.unileon.iso.gpb.controller.Controller.listPersonalActivity;
 import static es.unileon.iso.gpb.controller.Controller.listTutorship;
+import static es.unileon.iso.gpb.controller.Controller.listMeeting;
 import es.unileon.iso.gpb.modelo.activities.Lecture;
 import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;
@@ -16,10 +17,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+
 
 /**
  *
@@ -553,31 +553,24 @@ public class Calendar extends javax.swing.JFrame {
                     model.setValueAt("Name: "+t.getName()+""+System.lineSeparator()+"Student: "+t.getStudent()+""+System.lineSeparator()+"Teacher: "+t.getTeacher()+""+System.lineSeparator()+"Classroom: "+t.getPlace()+""+System.lineSeparator()+"Comments: "+t.getComments(), i, day);
                 }
             }
-            
-
                 
             }else{
-                
-                //LEER PERSONAL CALENDAR PARA TEACHER this.user.getID()
-                //AKA TUTORSHIPS Y MEETINGS
-                
 
-            
-            //ArrayList<Meeting> meet = listLectures(this.user.getID());
+            ArrayList<Meeting> meet = listMeeting(this.user.getID(), sActual, eActual);
             ArrayList<Tutorship> tutor= listTutorship(this.user.getID(), sActual, eActual, this.userType);
                 
-           /* for(Meeting m : meet){
+           for(Meeting m : meet){
             
-                
                 int sHour =  m.getStartTime().getHour();
                 int eHour =  m.getEndTime().getHour();
                 int day =  (m.getDate().getDayOfWeek().getValue())-1;
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+ m.getName()+" Comments: "+ m.getComments(), i, day);
+                    model.setValueAt("Name: "+ m.getName()+""+System.lineSeparator()+"Teacher 1: "+m.getTeacher1()+""+System.lineSeparator()+
+                            "Teacher 2:"+m.getTeacher2()+""+System.lineSeparator()+"Place: "+m.getPlace()+""+System.lineSeparator()+"Comments: "+ m.getComments(), i, day);
                 }
-            }*/
+            }
             
             for(Tutorship t : tutor){                
                 int sHour = t.getStartTime().getHour();

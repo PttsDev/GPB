@@ -114,13 +114,13 @@ public class LectureDAO extends DBConnection {
 
     public ArrayList<Lecture> listLecturesTea(String teaID) {
 
-        ArrayList<Lecture> lista = new <String>ArrayList();
-        String temp = "";
+        ArrayList<Lecture> lista = new ArrayList<>();
+     
 
         try {
             this.abrirConexion();
 
-            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE TeaID=(?)");
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM teagro WHERE TeaID=(?)");
 
             query0.setString(1, teaID);
 

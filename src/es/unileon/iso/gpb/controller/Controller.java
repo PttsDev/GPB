@@ -432,14 +432,31 @@ public class Controller {
         LectureDAO lectureDAO = new LectureDAO();
         ArrayList<Lecture> lista = null;
         if (type.equals("Student")) {
-            lista =  lectureDAO.listLecturesStu(userID);
-        }else{
-           lista =  lectureDAO.listLecturesTea(userID);
+            lista = lectureDAO.listLecturesStu(userID);
+        } else {
+            lista = lectureDAO.listLecturesTea(userID);
         }
-        
+
         ArrayList<Lecture> lista2 = new ArrayList<Lecture>();
 
         for (Lecture l : lista) {
+            if (!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD))) {
+                lista2.add(l);
+            }
+        }
+        return lista2;
+    }    
+
+    
+
+    public static ArrayList<PersonalActivity> listPersonalActivity(String userID, LocalDate minD, LocalDate maxD) {
+
+        PersonalActivityDAO paDAO = new PersonalActivityDAO();
+        ArrayList<PersonalActivity> lista = lista = paDAO.listPa(userID);
+
+        ArrayList<PersonalActivity> lista2 = new ArrayList<>();
+
+        for (PersonalActivity l : lista) {
             if (!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD))) {
                 lista2.add(l);
             }

@@ -2,6 +2,7 @@
 package es.unileon.iso.gpb.vista;
 
 import static es.unileon.iso.gpb.controller.Controller.listLectures;
+import static es.unileon.iso.gpb.controller.Controller.listPersonalActivity;
 import es.unileon.iso.gpb.modelo.activities.Lecture;
 import es.unileon.iso.gpb.modelo.activities.Meeting;
 import es.unileon.iso.gpb.modelo.activities.PersonalActivity;

@@ -550,7 +550,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\n Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\nClassroom: "+t.getPlace()+"\n Comments: "+t.getComments(), i, day);
                 }
             }
             
@@ -586,7 +586,7 @@ public class Calendar extends javax.swing.JFrame {
             
                 DefaultTableModel model = (DefaultTableModel)calendarioTable.getModel();
                 for(int i = sHour; i<= eHour; i++){
-                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\n Comments: "+t.getComments(), i, day);
+                    model.setValueAt("Name: "+t.getName()+"\nStudent: "+t.getStudent()+"\nTeacher: "+t.getTeacher()+"\nClassroom: "+t.getPlace()+"\n Comments: "+t.getComments(), i, day);
                 }
             }
             

@@ -380,7 +380,7 @@ public class CreateActivity extends javax.swing.JFrame {
                     if(comments.equals(""))
                         created = createActivity(actName, date, sHour, eHour, color, type, place, nameStudent, this.user.getID(), 2);
                     else
-                        created = createActivity(actName, date, sHour, eHour, color, type, comments, place, nameStudent, this.user.getID());
+                        created = createActivity(actName, date, sHour, eHour, color, type, comments, place, nameStudent, this.user.getID(), 2);
                 }
                 
                 if(created){

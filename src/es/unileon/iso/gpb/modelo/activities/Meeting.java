@@ -18,6 +18,8 @@ public class Meeting extends Activity{
     
     private String place;
     private Teachers teachers;
+    private String teacher1;
+    private String teacher2;
     
     //TODO
     /*
@@ -33,6 +35,22 @@ public class Meeting extends Activity{
         super(ID, name, date, endTime, startTime, color);
         this.place = place;
         this.teachers = new Teachers();
+    }
+
+    public String getTeacher1() {
+        return teacher1;
+    }
+
+    public void setTeacher1(String teacher1) {
+        this.teacher1 = teacher1;
+    }
+
+    public String getTeacher2() {
+        return teacher2;
+    }
+
+    public void setTeacher2(String teacher2) {
+        this.teacher2 = teacher2;
     }
     
     public void setPlace(String place){

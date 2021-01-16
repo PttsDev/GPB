@@ -357,7 +357,7 @@ public class Calendar extends javax.swing.JFrame {
         
         initComponents();
         initListeners();
-        setActivities();
+
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         java.awt.Dimension dim = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);  
@@ -392,6 +392,7 @@ public class Calendar extends javax.swing.JFrame {
         if(user!=null)
             nameLabel.setText(user.getUserName());
         
+        setActivities();
 
     }
     /*EVENTS & ACTIONS*/

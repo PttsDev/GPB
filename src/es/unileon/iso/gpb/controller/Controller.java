@@ -337,7 +337,7 @@ public class Controller {
         PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
 
         int id;
-                System.out.println("HOla");
+        System.out.println("HOla");
 
         System.out.println(color.toString());
         if (type.equals("Personal Activity")) {
@@ -398,12 +398,11 @@ public class Controller {
 
         int id;
         id = activityDAO.createActivity(activity);
-        if (type == "Meeting") {
+        if (type.equals("Meeting")) {
             Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
-
             return meetingDAO.createMeeting(meeting, id, userID, name);
-        } else if (type == "Tutorship") {
-            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
+        } else if (type.equals("Tutorship")) {
+            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID, place);
             return tutorshipDAO.createTutorship(tutorship, name, id, userID);
         }
         return false;
@@ -419,11 +418,11 @@ public class Controller {
         int id;
         id = activityDAO.createActivity(activity);
 
-        if (type == "Meeting") {
+        if (type.equals("Meeting")) {
             Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
             return meetingDAO.createMeeting(meeting, id, userID, name);
-        } else if (type == "Tutorship") {
-            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, comments, color, name, userID);
+        } else if (type.equals("Tutorship")) {
+            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, comments, color, name, userID, place);
             return tutorshipDAO.createTutorship(tutorship, name, id, userID);
         }
         return false;
@@ -447,9 +446,7 @@ public class Controller {
             }
         }
         return lista2;
-    }    
-
-    
+    }
 
     public static ArrayList<PersonalActivity> listPersonalActivity(String userID, LocalDate minD, LocalDate maxD) {
 
@@ -466,7 +463,8 @@ public class Controller {
 
         return lista2;
     }
-        public static ArrayList<Tutorship> listTutorship(String userID, LocalDate minD, LocalDate maxD, String type) {
+
+    public static ArrayList<Tutorship> listTutorship(String userID, LocalDate minD, LocalDate maxD, String type) {
 
         TutorshipDAO TutorshipDAO = new TutorshipDAO();
         ArrayList<Tutorship> lista = null;
@@ -484,6 +482,24 @@ public class Controller {
             }
         }
         return lista2;
-    }  
+    }
     
+        public static ArrayList<Meeting> listMeeting(String userID, LocalDate minD, LocalDate maxD) {
+
+        MeetingDAO MeetingDAO = new MeetingDAO();
+        ArrayList<Meeting> lista = null;
+      
+            lista = MeetingDAO.listMeeting(userID);
+   
+
+        ArrayList<Meeting> lista2 = new ArrayList<Meeting>();
+
+        for (Meeting l : lista) {
+            if (!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD))) {
+                lista2.add(l);
+            }
+        }
+        return lista2;
+    }
+
 }

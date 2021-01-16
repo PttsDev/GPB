@@ -28,7 +28,6 @@ public class ActivityDAO extends DBConnection {
 
     public int createActivity(Activity activity) {
         int id = 1;
-                System.out.println("HOla");
 
         System.out.println(activity.getColor().toString());
         try {
@@ -44,11 +43,11 @@ public class ActivityDAO extends DBConnection {
                     id = Integer.parseInt(rs.getString("ActivityID")) + 1;
                 }
             }
-        /*    if (activity.getComments() == null) {
+           if (activity.getComments() == null) {
 
                 activity.setComments("");
 
-            }*/
+            }
 
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
 

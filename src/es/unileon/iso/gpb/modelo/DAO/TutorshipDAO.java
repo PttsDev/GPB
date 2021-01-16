@@ -31,7 +31,7 @@ public class TutorshipDAO extends DBConnection {
             query.setString(1, sName);
             ResultSet rs = query.executeQuery();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, Place, StuID, TeaID) VALUES (?,?,?,?)");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO tutorship (ActivityID, Place, StuID, TeaID) VALUES (?,?,?,?)");
 
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, ts.getPlace());
@@ -71,41 +71,43 @@ public class TutorshipDAO extends DBConnection {
                 query.setString(1, rs0.getString("ActivityID"));
 
                 ResultSet rs = query.executeQuery();
+                if (rs.next()) {
+                    Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
+                            rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
+                            Color.getColor(rs.getString("Colour")), stuID, rs0.getString("TeaID"), rs0.getString("Place"));
 
-                Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
-                        rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
-                        Color.getColor(rs.getString("Colour")), stuID, rs0.getString("TeaID"));
+                    PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
 
-                PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                    query2.setString(1, stuID);
 
-                query2.setString(1, stuID);
+                    ResultSet rs2 = query2.executeQuery();
+                    if (rs2.next()) {
+                        ts.setStudent(rs2.getString("Name"));
+                    }
 
-                ResultSet rs2 = query2.executeQuery();
+                    PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
 
-                ts.setStudent(rs2.getString("Name"));
+                    query3.setString(1, rs0.getString("TeaID"));
 
-                PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                    ResultSet rs3 = query3.executeQuery();
+                    if (rs3.next()) {
+                        ts.setTeacher(rs3.getString("Name"));
+                    }
 
-                query3.setString(1, rs0.getString("TeaID"));
-
-                ResultSet rs3 = query3.executeQuery();
-
-                ts.setTeacher(rs3.getString("Name"));
-
-                lista.add(ts);
-
+                    lista.add(ts);
+                }
             }
             this.closeC();
 
         } catch (Exception e) {
-            System.out.println("listLectures");
+            System.out.println("listtu");
 
             System.out.println(e);
         }
         return lista;
     }
 
-     public ArrayList<Tutorship> listTutorshipTea(String teaID) {
+    public ArrayList<Tutorship> listTutorshipTea(String teaID) {
 
         ArrayList<Tutorship> lista = new ArrayList<>();
 
@@ -125,34 +127,36 @@ public class TutorshipDAO extends DBConnection {
                 query.setString(1, rs0.getString("ActivityID"));
 
                 ResultSet rs = query.executeQuery();
+                if (rs.next()) {
+                    Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
+                            rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
+                            Color.getColor(rs.getString("Colour")), rs0.getString("StuID"), teaID, rs0.getString("Place"));
 
-                Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
-                        rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
-                        Color.getColor(rs.getString("Colour")), rs0.getString("StuID"), teaID);
+                    PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
 
-                PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                    query2.setString(1, rs0.getString("StuID"));
 
-                query2.setString(1, rs0.getString("StuID"));
+                    ResultSet rs2 = query2.executeQuery();
+                    if (rs2.next()) {
+                        ts.setStudent(rs2.getString("Name"));
+                    }
 
-                ResultSet rs2 = query2.executeQuery();
+                    PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
 
-                ts.setStudent(rs2.getString("Name"));
+                    query3.setString(1, teaID);
 
-                PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+                    ResultSet rs3 = query3.executeQuery();
+                    if (rs3.next()) {
+                        ts.setTeacher(rs3.getString("Name"));
+                    }
 
-                query3.setString(1, teaID);
-
-                ResultSet rs3 = query3.executeQuery();
-
-                ts.setTeacher(rs3.getString("Name"));
-
-                lista.add(ts);
-
+                    lista.add(ts);
+                }
             }
             this.closeC();
 
         } catch (Exception e) {
-            System.out.println("listLectures");
+            System.out.println("listtu");
 
             System.out.println(e);
         }

@@ -27,7 +27,7 @@ public class PersonalActivityDAO extends DBConnection {
 
             this.abrirConexion();
 
-            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO lecture (ActivityID, StuID) VALUES (?,?)");
+            PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO personalactivity (ActivityID, StuID) VALUES (?,?)");
 
             stat.setString(1, String.valueOf(aId));
             stat.setString(2, uId);
@@ -57,31 +57,25 @@ public class PersonalActivityDAO extends DBConnection {
 
             while (rs0.next()) {
 
-                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lecture WHERE GroupID=(?)");
-
-                query.setString(1, rs0.getString("GroupID"));
-
-                ResultSet rs = query.executeQuery();
-
-                while (rs.next()) {
+                {
 
                     PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE ActivityID=(?)");
 
-                    query1.setString(1, rs.getString("ActivityID"));
+                    query1.setString(1, rs0.getString("ActivityID"));
 
                     ResultSet rs1 = query1.executeQuery();
                     if (rs1.next()) {
 
                         PersonalActivity pa = new PersonalActivity(Long.valueOf(rs1.getString("ActivityID")), rs1.getString("Name"), rs1.getDate("ActDate").toLocalDate(),
-                                rs1.getTime("endTime").toLocalTime(), rs1.getTime("startTime").toLocalTime(),
+                                rs1.getTime("endTime").toLocalTime(), rs1.getTime("startTime").toLocalTime(), rs1.getString("Comment"),
                                 Color.getColor(rs1.getString("Colour")));
                         lista.add(pa);
                     }
                 }
             }
-          
+
             this.closeC();
-              return lista;
+            return lista;
 
         } catch (Exception e) {
             System.out.println("listLectures");

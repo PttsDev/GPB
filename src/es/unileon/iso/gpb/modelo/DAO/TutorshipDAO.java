@@ -5,12 +5,15 @@
  */
 package es.unileon.iso.gpb.modelo.DAO;
 
+import es.unileon.iso.gpb.modelo.activities.Lecture;
 import es.unileon.iso.gpb.modelo.activities.Tutorship;
 import es.unileon.iso.gpb.modelo.connection.DBConnection;
+import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +36,7 @@ public class TutorshipDAO extends DBConnection {
             stat.setString(1, String.valueOf(Id));
             stat.setString(2, ts.getPlace());
             if (rs.next()) {
-                stat.setString(3,rs.getString("UserID"));
+                stat.setString(3, rs.getString("UserID"));
             }
             stat.setString(4, tId);
 
@@ -48,5 +51,111 @@ public class TutorshipDAO extends DBConnection {
 
     }
 
-    //TODO
+    public ArrayList<Tutorship> listTutorshipStu(String stuID) {
+
+        ArrayList<Tutorship> lista = new ArrayList<>();
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM tutorship WHERE StuID=(?)");
+
+            query0.setString(1, stuID);
+
+            ResultSet rs0 = query0.executeQuery();
+
+            while (rs0.next()) {
+
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM activity WHERE ActivityID=(?)");
+
+                query.setString(1, rs0.getString("ActivityID"));
+
+                ResultSet rs = query.executeQuery();
+
+                Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
+                        rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
+                        Color.getColor(rs.getString("Colour")), stuID, rs0.getString("TeaID"));
+
+                PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+
+                query2.setString(1, stuID);
+
+                ResultSet rs2 = query2.executeQuery();
+
+                ts.setStudent(rs2.getString("Name"));
+
+                PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+
+                query3.setString(1, rs0.getString("TeaID"));
+
+                ResultSet rs3 = query3.executeQuery();
+
+                ts.setTeacher(rs3.getString("Name"));
+
+                lista.add(ts);
+
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println("listLectures");
+
+            System.out.println(e);
+        }
+        return lista;
+    }
+
+     public ArrayList<Tutorship> listTutorshipTea(String teaID) {
+
+        ArrayList<Tutorship> lista = new ArrayList<>();
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM tutorship WHERE TeaID=(?)");
+
+            query0.setString(1, teaID);
+
+            ResultSet rs0 = query0.executeQuery();
+
+            while (rs0.next()) {
+
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM activity WHERE ActivityID=(?)");
+
+                query.setString(1, rs0.getString("ActivityID"));
+
+                ResultSet rs = query.executeQuery();
+
+                Tutorship ts = new Tutorship(Long.valueOf(rs.getString("ActivityID")), rs.getString("Name"), rs.getDate("ActDate").toLocalDate(),
+                        rs.getTime("endTime").toLocalTime(), rs.getTime("startTime").toLocalTime(), rs.getString("Comment"),
+                        Color.getColor(rs.getString("Colour")), rs0.getString("StuID"), teaID);
+
+                PreparedStatement query2 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+
+                query2.setString(1, rs0.getString("StuID"));
+
+                ResultSet rs2 = query2.executeQuery();
+
+                ts.setStudent(rs2.getString("Name"));
+
+                PreparedStatement query3 = this.getConnection().prepareStatement("SELECT * FROM user WHERE UserID=(?)");
+
+                query3.setString(1, teaID);
+
+                ResultSet rs3 = query3.executeQuery();
+
+                ts.setTeacher(rs3.getString("Name"));
+
+                lista.add(ts);
+
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println("listLectures");
+
+            System.out.println(e);
+        }
+        return lista;
+    }
 }

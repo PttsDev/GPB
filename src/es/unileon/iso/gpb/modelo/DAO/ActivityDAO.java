@@ -27,9 +27,10 @@ import java.time.LocalTime;
 public class ActivityDAO extends DBConnection {
 
     public int createActivity(Activity activity) {
-
         int id = 1;
+                System.out.println("HOla");
 
+        System.out.println(activity.getColor().toString());
         try {
 
             this.abrirConexion();
@@ -43,11 +44,11 @@ public class ActivityDAO extends DBConnection {
                     id = Integer.parseInt(rs.getString("ActivityID")) + 1;
                 }
             }
-            if (activity.getComments() == null) {
+        /*    if (activity.getComments() == null) {
 
                 activity.setComments("");
 
-            }
+            }*/
 
             PreparedStatement stat = this.getConnection().prepareStatement("INSERT INTO activity (ActivityID, Name, ActDate, endTime, startTime, Comment, Colour) VALUES (?,?,?,?,?,?,?)");
 
@@ -65,7 +66,7 @@ public class ActivityDAO extends DBConnection {
             return id;
         } catch (Exception e) {
 
-            System.out.println("Activity" + e);
+            System.out.println("Activity" + e.getMessage());
             return 0;
             //Llamar a controlador para sacar mensaje por vista TODO
         }

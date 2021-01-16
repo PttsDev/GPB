@@ -322,23 +322,25 @@ public class Controller {
         PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
         int id;
 
-        if (type == "Personal") {
+        if (type.equals("Personal Activity")) {
             id = activityDAO.createActivity(activity);
             return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
         }
         return false;
     }
 
-    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String comments, String type, String userID) {
+    public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String userID) {
         long ID = (long) (Math.random() * 100 + 1);
-        Activity activity = new Activity(ID, actName, date, eHour, sHour, comments);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, comments, color);
         PersonalActivity personalActivity = new PersonalActivity(ID, actName, date, eHour, sHour, comments, color);
         ActivityDAO activityDAO = new ActivityDAO();
         PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
 
         int id;
+                System.out.println("HOla");
 
-        if (type == "Personal") {
+        System.out.println(color.toString());
+        if (type.equals("Personal Activity")) {
             id = activityDAO.createActivity(activity);
             return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
         }
@@ -348,7 +350,7 @@ public class Controller {
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup, String userID) {
         long ID = (long) (Math.random() * 100 + 1);
         Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
-        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, place);
         ActivityDAO activityDAO = new ActivityDAO();
         LectureDAO lectureDAO = new LectureDAO();
 
@@ -367,7 +369,7 @@ public class Controller {
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup, String userID) {
         long ID = (long) (Math.random() * 100 + 1);
         Activity activity = new Activity(ID, actName, date, eHour, sHour, comments, color);
-        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, "1");
+        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, place);
         ActivityDAO activityDAO = new ActivityDAO();
         LectureDAO lectureDAO = new LectureDAO();
 
@@ -464,4 +466,24 @@ public class Controller {
 
         return lista2;
     }
+        public static ArrayList<Tutorship> listTutorship(String userID, LocalDate minD, LocalDate maxD, String type) {
+
+        TutorshipDAO TutorshipDAO = new TutorshipDAO();
+        ArrayList<Tutorship> lista = null;
+        if (type.equals("Student")) {
+            lista = TutorshipDAO.listTutorshipStu(userID);
+        } else {
+            lista = TutorshipDAO.listTutorshipTea(userID);
+        }
+
+        ArrayList<Tutorship> lista2 = new ArrayList<Tutorship>();
+
+        for (Tutorship l : lista) {
+            if (!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD))) {
+                lista2.add(l);
+            }
+        }
+        return lista2;
+    }  
+    
 }

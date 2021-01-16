@@ -432,13 +432,15 @@ public class Controller {
 
     	LectureDAO lectureDAO = new LectureDAO();
     	ArrayList<Lecture> lista =  lectureDAO.listLectures(teacherID);
+        ArrayList<Lecture> lista2 =  new ArrayList<Lecture>();
+
         
         for(Lecture l:lista){
-            if(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD) ){
-                lista.remove(l);
+            if(!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD)) ){
+               lista2.add(l);
             }
         }
         
-        return lista;
+        return lista2;
     }
 }

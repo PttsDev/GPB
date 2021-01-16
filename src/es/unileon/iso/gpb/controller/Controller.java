@@ -428,10 +428,10 @@ public class Controller {
     }
     
 
-    public static ArrayList<Lecture> listLectures(String teacherID, LocalDate minD, LocalDate maxD){
+    public static ArrayList<Lecture> listLectures(String userID, LocalDate minD, LocalDate maxD, String type){
 
     	LectureDAO lectureDAO = new LectureDAO();
-    	ArrayList<Lecture> lista =  lectureDAO.listLectures(teacherID);
+    	ArrayList<Lecture> lista =  lectureDAO.listLectures(userID);
         ArrayList<Lecture> lista2 =  new ArrayList<Lecture>();
 
         

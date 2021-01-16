@@ -65,7 +65,7 @@ public class LectureDAO extends DBConnection {
         return true;
     }
 
-    public ArrayList<Lecture> listLectures(String stuID) {
+    public ArrayList<Lecture> listLecturesStu(String stuID) {
 
         ArrayList<Lecture> lista = new <String>ArrayList();
         String temp = "";
@@ -112,4 +112,50 @@ public class LectureDAO extends DBConnection {
         return lista;
     }
 
+        public ArrayList<Lecture> listLecturesTea(String stuID) {
+
+        ArrayList<Lecture> lista = new <String>ArrayList();
+        String temp = "";
+
+        try {
+            this.abrirConexion();
+
+            PreparedStatement query0 = this.getConnection().prepareStatement("SELECT * FROM stugro WHERE StuID=(?)");
+
+            query0.setString(1, stuID);
+
+            ResultSet rs0 = query0.executeQuery();
+
+            while (rs0.next()) {
+
+                PreparedStatement query = this.getConnection().prepareStatement("SELECT * FROM lecture WHERE GroupID=(?)");
+
+                query.setString(1, rs0.getString("GroupID"));
+
+                ResultSet rs = query.executeQuery();
+
+                while (rs.next()) {
+
+                    PreparedStatement query1 = this.getConnection().prepareStatement("SELECT * FROM activity WHERE ActivityID=(?)");
+
+                    query1.setString(1, rs.getString("ActivityID"));
+
+                    ResultSet rs1 = query1.executeQuery();
+                    if (rs1.next()) {
+
+                        Lecture lecture = new Lecture(Long.valueOf(rs1.getString("ActivityID")), rs1.getString("Name"), rs1.getDate("ActDate").toLocalDate(), rs1.getTime("endTime").toLocalTime(), rs1.getTime("startTime").toLocalTime(), Color.getColor(rs1.getString("Colour")), rs.getString("Classroom"));
+                        lista.add(lecture);
+                    }
+
+                }
+            }
+            this.closeC();
+
+        } catch (Exception e) {
+            System.out.println("listLectures");
+
+            System.out.println(e);
+        }
+        return lista;
+    }
 }

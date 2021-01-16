@@ -530,7 +530,7 @@ public class Calendar extends javax.swing.JFrame {
         
         if(type.equals("General Calendar")){
 
-           ArrayList<Lecture> lectures = listLectures(this.user.getID(), sActual, eActual);
+           ArrayList<Lecture> lectures = listLectures(this.user.getID(), sActual, eActual, this.userType);
             
             for(Lecture l : lectures){
             

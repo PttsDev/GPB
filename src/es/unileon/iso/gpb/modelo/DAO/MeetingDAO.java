@@ -37,7 +37,7 @@ public class MeetingDAO extends DBConnection {
             stat.setString(2, mt.getPlace());
             stat.setString(3, tId);
             if (rs.next()) {
-                stat.setString(4, rs.getString("userName"));
+                stat.setString(4, rs.getString("UserID"));
             }
 
             stat.executeUpdate();

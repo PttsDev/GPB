@@ -252,7 +252,7 @@ public class Controller {
             subDAO.joinSubjectTea(ID, subjectName);
         }
     }
-    
+
     public static void leaveSubject(String ID, String subjectName) {
         StudentDAO userDAO = new StudentDAO();
         SubjectDAO subDAO = new SubjectDAO();
@@ -264,181 +264,187 @@ public class Controller {
     }
 
     public static boolean createGroup(String subject, String number, String type, String userID) {
-    	    	
-    	GroupDAO groupDAO = new GroupDAO();
-    
-    	boolean sol = groupDAO.createGroup( subject,  number, type);
+
+        GroupDAO groupDAO = new GroupDAO();
+
+        boolean sol = groupDAO.createGroup(subject, number, type);
         groupDAO.assignTeaGroup(userID, subject, number);
         return sol;
-    	
-    }  
-    
-    public static ArrayList<String> listGroups(String nameSubject){
-    	GroupDAO groupDAO = new GroupDAO();
-    	
-    	return groupDAO.listGroups(nameSubject);
+
     }
-    
+
+    public static ArrayList<String> listGroups(String nameSubject) {
+        GroupDAO groupDAO = new GroupDAO();
+
+        return groupDAO.listGroups(nameSubject);
+    }
+
     public static String findGroup(String userID, String subjectName) {
-    	GroupDAO groupDAO = new GroupDAO();
-    	
-    	return groupDAO.findGroup(userID, subjectName);
+        GroupDAO groupDAO = new GroupDAO();
+
+        return groupDAO.findGroup(userID, subjectName);
     }
-    
+
     public static boolean assignStuGroup(String userID, String subject, String nameGroup) {
-    	GroupDAO groupDAO = new GroupDAO();
-    	String part[] = nameGroup.split(" ");
-    	return groupDAO.assignStuGroup(userID, subject, part[0]);
+        GroupDAO groupDAO = new GroupDAO();
+        String part[] = nameGroup.split(" ");
+        return groupDAO.assignStuGroup(userID, subject, part[0]);
     }
-    
+
     public static boolean deleteGroup(String subject, String nameGroup) {
-    	
-    	GroupDAO groupDAO = new GroupDAO();
-    	String part[] = nameGroup.split(" ");
-    	return groupDAO.deleteGroup(subject, part[0]);
-    	
+
+        GroupDAO groupDAO = new GroupDAO();
+        String part[] = nameGroup.split(" ");
+        return groupDAO.deleteGroup(subject, part[0]);
+
     }
-    
-    public static ArrayList<String> listStudents(){
-    	UserDAO userDAO = new UserDAO();
-    	return userDAO.listStudent();
+
+    public static ArrayList<String> listStudents() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.listStudent();
     }
-    
-    public static ArrayList<String> listTeachers(){
-    	UserDAO teacherDAO = new UserDAO();
-    	return teacherDAO.listTeacher();
+
+    public static ArrayList<String> listTeachers() {
+        UserDAO teacherDAO = new UserDAO();
+        return teacherDAO.listTeacher();
     }
-    
-    public static ArrayList<String> listGroup(String teacherID){
-    	GroupDAO groupDAO = new GroupDAO();
-    	return groupDAO.listGroup(teacherID);
+
+    public static ArrayList<String> listGroup(String teacherID) {
+        GroupDAO groupDAO = new GroupDAO();
+        return groupDAO.listGroup(teacherID);
     }
-    
+
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String userID) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
-    	PersonalActivity personalActivity = new PersonalActivity(ID, actName, date, eHour, sHour, color);
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
-    	int id;
-    	
-    	if(type == "Personal") {
-    		id = activityDAO.createActivity(activity);
-    		return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
-    	}
-    	return false;
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
+        PersonalActivity personalActivity = new PersonalActivity(ID, actName, date, eHour, sHour, color);
+        ActivityDAO activityDAO = new ActivityDAO();
+        PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
+        int id;
+
+        if (type == "Personal") {
+            id = activityDAO.createActivity(activity);
+            return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
+        }
+        return false;
     }
 
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String comments, String type, String userID) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour, comments);
-    	PersonalActivity personalActivity = new PersonalActivity(ID, actName, date, eHour, sHour, comments, color);
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
-    	
-    	int id;
-    	
-    	if(type == "Personal") {
-    		id = activityDAO.createActivity(activity);
-    		return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
-    	}
-    	return false;
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, comments);
+        PersonalActivity personalActivity = new PersonalActivity(ID, actName, date, eHour, sHour, comments, color);
+        ActivityDAO activityDAO = new ActivityDAO();
+        PersonalActivityDAO personalActivityDAO = new PersonalActivityDAO();
+
+        int id;
+
+        if (type == "Personal") {
+            id = activityDAO.createActivity(activity);
+            return personalActivityDAO.createPersonalActivity(personalActivity, id, userID);
+        }
+        return false;
     }
-    
+
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String nameGroup, String userID) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
-    	Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	LectureDAO lectureDAO = new LectureDAO();
-    	
-    	int id;
-    	
-    	if(type == "Lecture") {
-    		id = activityDAO.createActivity(activity);
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
+        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, color, "1");
+        ActivityDAO activityDAO = new ActivityDAO();
+        LectureDAO lectureDAO = new LectureDAO();
+
+        int id;
+
+        if (type == "Lecture") {
+            id = activityDAO.createActivity(activity);
             String grpYsub[] = nameGroup.split(" ");
             String asignatura = grpYsub[0];
             String numero = grpYsub[1];
             return lectureDAO.createActivity(lecture, numero, asignatura, id);
-    	}
-    	return false;
+        }
+        return false;
     }
-    
+
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String nameGroup, String userID) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour,comments, color);
-    	Lecture lecture = new Lecture(ID, actName, date, eHour, sHour,comments, color, "1");
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	LectureDAO lectureDAO = new LectureDAO();
-    	
-    	int id;
-    	
-    	if(type == "Lecture") {
-    
-    		id = activityDAO.createActivity(activity);
-    		
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, comments, color);
+        Lecture lecture = new Lecture(ID, actName, date, eHour, sHour, comments, color, "1");
+        ActivityDAO activityDAO = new ActivityDAO();
+        LectureDAO lectureDAO = new LectureDAO();
+
+        int id;
+
+        if (type == "Lecture") {
+
+            id = activityDAO.createActivity(activity);
+
             String grpYsub[] = nameGroup.split(" ");
             String asignatura = grpYsub[0];
             String numero = grpYsub[1];
-            
+
             return lectureDAO.createActivity(lecture, numero, asignatura, id);
-            
-    	}
-    	return false;
-    } 
-    
+
+        }
+        return false;
+    }
+
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String place, String name, String userID, int aux) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	MeetingDAO meetingDAO = new MeetingDAO();
-    	TutorshipDAO tutorshipDAO = new TutorshipDAO();
-    	
-    	int id;
-    	id = activityDAO.createActivity(activity);
-    	if(type == "Meeting") {
-    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
-    	
-    		return meetingDAO.createMeeting(meeting, id, userID, name);
-    	}else if(type == "Tutorship") {
-    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, name, id, userID);
-    	}
-    	return false;
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, color);
+        ActivityDAO activityDAO = new ActivityDAO();
+        MeetingDAO meetingDAO = new MeetingDAO();
+        TutorshipDAO tutorshipDAO = new TutorshipDAO();
+
+        int id;
+        id = activityDAO.createActivity(activity);
+        if (type == "Meeting") {
+            Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, color, place);
+
+            return meetingDAO.createMeeting(meeting, id, userID, name);
+        } else if (type == "Tutorship") {
+            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, color, name, userID);
+            return tutorshipDAO.createTutorship(tutorship, name, id, userID);
+        }
+        return false;
     }
-    
+
     public static boolean createActivity(String actName, LocalDate date, LocalTime sHour, LocalTime eHour, java.awt.Color color, String type, String comments, String place, String name, String userID, int aux) {
-    	long ID = (long) (Math.random()*100+1);
-    	Activity activity = new Activity(ID, actName, date, eHour, sHour,comments, color);
-    	ActivityDAO activityDAO = new ActivityDAO();
-    	MeetingDAO meetingDAO = new MeetingDAO();
-    	TutorshipDAO tutorshipDAO = new TutorshipDAO();
-    	
-    	int id;
-    	id = activityDAO.createActivity(activity);
-    	
-    	if(type == "Meeting") {
-    		Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
-    		return meetingDAO.createMeeting(meeting, id, userID, name);
-    	}else if(type == "Tutorship") {
-    		Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour,comments, color, name, userID);
-    		return tutorshipDAO.createTutorship(tutorship, name, id, userID);
-    	}
-    	return false;
+        long ID = (long) (Math.random() * 100 + 1);
+        Activity activity = new Activity(ID, actName, date, eHour, sHour, comments, color);
+        ActivityDAO activityDAO = new ActivityDAO();
+        MeetingDAO meetingDAO = new MeetingDAO();
+        TutorshipDAO tutorshipDAO = new TutorshipDAO();
+
+        int id;
+        id = activityDAO.createActivity(activity);
+
+        if (type == "Meeting") {
+            Meeting meeting = new Meeting(ID, actName, date, eHour, sHour, comments, color, place);
+            return meetingDAO.createMeeting(meeting, id, userID, name);
+        } else if (type == "Tutorship") {
+            Tutorship tutorship = new Tutorship(ID, actName, date, eHour, sHour, comments, color, name, userID);
+            return tutorshipDAO.createTutorship(tutorship, name, id, userID);
+        }
+        return false;
     }
-    
 
-    public static ArrayList<Lecture> listLectures(String teacherID, LocalDate minD, LocalDate maxD){
+    public static ArrayList<Lecture> listLectures(String userID, LocalDate minD, LocalDate maxD, String type) {
 
-    	LectureDAO lectureDAO = new LectureDAO();
-    	ArrayList<Lecture> lista =  lectureDAO.listLectures(teacherID);
-        
-        for(Lecture l:lista){
-            if(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD) ){
-                lista.remove(l);
-            }
+        LectureDAO lectureDAO = new LectureDAO();
+        ArrayList<Lecture> lista = null;
+        if (type.equals("Student")) {
+            lista =  lectureDAO.listLecturesStu(userID);
+        }else{
+           lista =  lectureDAO.listLecturesTea(userID);
         }
         
-        return lista;
+        ArrayList<Lecture> lista2 = new ArrayList<Lecture>();
+
+        for (Lecture l : lista) {
+            if (!(l.getDate().isBefore(minD) || l.getDate().isAfter(maxD))) {
+                lista2.add(l);
+            }
+        }
+
+        return lista2;
     }
 }
